@@ -35,7 +35,7 @@ export default function Header() {
   const navLinks = ['Home', 'About', 'Skills', 'Project', 'Contact'];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 h-auto bg-[#1a1c20] ">
+    <header className="fixed top-0 left-0 w-full z-50 h-[100px] bg-[#1a1c20] ">
       <nav className="flex items-center justify-between   px-4 md:px-10 shadow-md flex-wrap relative z-50">
         {/* Logo */}
           <a href="#" className='text-3xl md:text-5xl '>
