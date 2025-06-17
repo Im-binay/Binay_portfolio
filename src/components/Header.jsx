@@ -44,7 +44,7 @@ export default function Header() {
        
 
         {/* Hamburger and Dark Mode (Mobile) */}
-        <div className="md:hidden z-50 flex items-center gap-4 text-ba">
+        <div className="md:hidden z-50 flex items-center gap-4 ">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-white dark:text-white"
