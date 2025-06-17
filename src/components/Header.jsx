@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50q bg-[#1a1c20] items-center ">
-      <nav className="flex items-center justify-between   h-[100px] px-4 md:px-10 shadow-md flex-wrap relative z-50">
+      <nav className="flex items-center justify-between   h-[80px] px-4 md:px-10 shadow-md flex-wrap relative z-50">
         {/* Logo */}
           <a href="#" className='text-3xl md:text-5xl '>
             <h1 className='mt-3 text-white '>Binay</h1>
