@@ -1,0 +1,48 @@
+import profile from '../assets/images/binay.jpg';
+
+export default function About() {
+  return (
+    <section
+      id="about"
+      className="flex flex-col items-center justify-center py-10 px-4 md:px-0 bg-light text-dark transition-colors duration-300"
+    >
+      <div
+        className="flex flex-col justify-around md:flex-row items-center gap-10 max-w-6xl mx-auto p-5"
+        data-aos="fade-up"
+      >
+        <p className="text-justify w-full md:w-[45%] text-xs mt-10 md:text-lg">
+          I'm Binay Sharma — a Frontend Developer with a strong foundation in
+          HTML, Tailwind CSS, JavaScript, and Figma. I specialize in crafting
+          responsive, user-focused websites that balance clean design with
+          optimal performance. Currently in my final semester of a Bachelor’s
+          in Computer Application (BCA) at Pokhara University, I’m passionate
+          about building seamless digital experiences and staying current with
+          modern web trends and technologies.
+        </p>
+        <div
+          className="w-full md:w-[30%] mt-10 md:mt-10 perspective"
+          data-aos="fade-up"
+          style={{ perspective: '1000px' }}
+        >
+          <div className="transform-style preserve-3d transition-transform duration-500  cursor-pointer rounded-lg shadow-xl">
+            <img
+              src={profile}
+              alt="Profile"
+              className="object-cover h-full w-full rounded-lg shadow-md"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .transform-style {
+          transform-style: preserve-3d;
+        }
+        .hover\\:rotate-y-6:hover {
+          transform: rotateY(6deg) scale(1.05);
+        }
+      `}</style>
+    </section>
+  );
+}
