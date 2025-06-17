@@ -48,7 +48,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-8" id="contact">
+    <section className="min-h-screen w-full flex items-center justify-center px-4 py-8" id="contact">
       <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 pr-5 pl-5 mr-5 ml-5 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-10 bg-blue-50" data-aos="fade-in">
         
         {/* Left Side - Contact Info */}
