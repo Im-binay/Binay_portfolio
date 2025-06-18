@@ -49,10 +49,10 @@ export default function Contact() {
 
   return (
     <section className="min-h-screen w-full flex items-center justify-center px-4 py-8" id="contact">
-      <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 pr-5 pl-5 mr-5 ml-5 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-10 bg-blue-50" data-aos="fade-in">
+      <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-5 mx-5 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-10 bg-blue-50" data-aos="fade-in">
         
         {/* Left Side - Contact Info */}
-        <div className="px-4 py-8 mb-8 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="px-2 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Contact Information</h1>
           <p className="text-justify mb-5 mt-5 md:mt-10 text-sm">
             Please do not hesitate to get in touch with me regarding any

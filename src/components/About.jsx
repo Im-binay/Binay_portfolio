@@ -10,7 +10,7 @@ export default function About() {
         className="flex flex-col justify-around md:flex-row items-center gap-10 max-w-6xl mx-auto p-5"
         data-aos="fade-up"
       >
-        <p className="text-justify w-full md:w-[45%] text-xs mt-10 md:text-lg">
+        <p className="text-justify w-full md:w-[45%] text-base mt-10 md:text-lg">
           I'm Binay Sharma — a Frontend Developer with a strong foundation in
           HTML, Tailwind CSS, JavaScript, and Figma. I specialize in crafting
           responsive, user-focused websites that balance clean design with
