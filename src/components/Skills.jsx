@@ -45,7 +45,7 @@ export default function Skill() {
 
         {/* Education Section */}
         <div
-          className="w-full md:w-[50%] bg-light-alt shadow-lg p-5 mt-8 md:mt-0 rounded-lg bg-blue-50"
+          className="w-full md:w-[50%] bg-light-alt shadow-lg p-5 mt-8 pb-8 md:mt-0 rounded-lg bg-blue-50"
           data-aos="fade-up"
         >
           <div className="w-full flex justify-between">

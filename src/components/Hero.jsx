@@ -11,7 +11,7 @@ export default function Hero() {
         <h4
           data-aos="fade-down"
           data-aos-duration="1000"
-          className="text-sm md:text-base"
+          className="text-sm md:text-base mb-5"
         >
           Developing Interactive Website since — 2023
         </h4>

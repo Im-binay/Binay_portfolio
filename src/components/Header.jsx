@@ -85,7 +85,7 @@ export default function Header() {
             ))}
 
             {/* Hire Me */}
-            <li className="bg-[#141d97] px-3 cursor-pointer py-1 rounded text-white ml-0 md:ml-4 mb-2 md:mb-0 hover:bg-blue-500">
+            <li className="bg-[#141d97] px-3 cursor-pointer py-1 mt-2 rounded text-white ml-0 md:ml-4 mb-2 md:mb-0 hover:bg-blue-500">
               <a
                 href="https://wa.me/9779869681196?text=Hi%20Binay,%20I%20am%20interested%20in%20working%20with%20you."
                 target="_blank"
