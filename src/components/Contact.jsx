@@ -100,7 +100,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <div className="px-2 py-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="px-2 pt-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Get in Touch</h1>
           <form ref={form} onSubmit={sendEmail} className="space-y-4 text-[15px]">
             <div>
@@ -134,10 +134,10 @@ export default function Contact() {
                 minLength={10}
               ></textarea>
             </div>
-            <div className="text-center mt-4 pb-4">
+            <div className="text-center mt-2 pb-4">
               <button
                 type="submit"
-                className="bg-[#141d97] text-white px-3 py-3 rounded-xl hover:bg-blue-500 transition"
+                className="bg-[#141d97] text-white px-3 py-2 rounded-xl hover:bg-blue-500 transition"
               >
                 Send Message
               </button>

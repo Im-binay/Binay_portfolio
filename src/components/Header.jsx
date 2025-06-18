@@ -101,7 +101,7 @@ export default function Header() {
         {/* Dark Mode (Desktop) */}
         <div className="hidden md:block text-white">
           <button
-            className="w-5 h-5 cursor-pointer hover:text-blue-500"
+            className="w-8 h-8 cursor-pointer hover:text-blue-500"
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle dark mode"
           >

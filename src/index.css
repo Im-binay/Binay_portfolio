@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
 @import "tailwindcss";
 
-/* * {
+* {
   outline: 1px solid red;
-}  */
+} 
 
 html{
   scroll-behavior: smooth;
@@ -88,6 +88,3 @@ body.dark-mode footer {
   color: #e2e8f0; /* Tailwind gray-200 */
 }
 
-body.dark-mode footer u {
-  color: #60a5fa; /* Tailwind blue-400 */
-}
