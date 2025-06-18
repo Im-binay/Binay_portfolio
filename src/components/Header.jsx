@@ -50,7 +50,7 @@ export default function Header() {
             aria-label="Toggle dark mode"
           >
             <i
-              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} 
+              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-xl
                 transition-transform duration-500 ease-in-out 
                 ${darkMode ? 'rotate-180' : 'rotate-0'}`}
             />
@@ -85,7 +85,7 @@ export default function Header() {
             ))}
 
             {/* Hire Me */}
-            <li className="bg-[#141d97] px-3 cursor-pointer py-1 mt-1 rounded text-white ml-0   md:mb-0 hover:bg-blue-500">
+            <li className="bg-[#141d97] px-3 cursor-pointer py-1 mt-1 rounded text-white ml-0 md:mb-0 hover:bg-blue-500">
               <a
                 href="https://wa.me/9779869681196?text=Hi%20Binay,%20I%20am%20interested%20in%20working%20with%20you."
                 target="_blank"
@@ -101,14 +101,14 @@ export default function Header() {
         {/* Dark Mode (Desktop) */}
         <div className="hidden md:block text-white">
           <button
-            className="w-8 h-8 cursor-pointer hover:text-blue-500"
+            className="w-10 h-10 cursor-pointer hover:text-blue-500"
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle dark mode"
           >
             <i
-              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} 
+              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-xl
                 transition-transform duration-500 ease-in-out 
-                ${darkMode ? 'rotate-180' : 'rotate-0'} text-2xl`}
+                ${darkMode ? 'rotate-180' : 'rotate-0'}`}
             />
           </button>
         </div>
