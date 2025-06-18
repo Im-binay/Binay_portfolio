@@ -7,7 +7,7 @@ export default function Hero() {
       id="home"
       className="h-screen flex flex-col items-center justify-center text-center text-dark bg-light"
     >
-      <div className="flex flex-col items-center justify-center gap-2 mt-15">
+      <div className="flex flex-col items-center justify-center gap-2 mt-10">
         <h4
           data-aos="fade-down"
           data-aos-duration="1000"
@@ -16,13 +16,13 @@ export default function Hero() {
           Developing Interactive Website since — 2023
         </h4>
         <h1
-          className="text-6xl md:text-9xl lg:text-9xl text-blue-600 font-extrabold uppercase"
+          className="text-8xl md:text-9xl lg:text-9xl text-blue-600 font-extrabold uppercase"
           data-aos="fade-right"
         >
           Binay
         </h1>
         <h2
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
+          className="text-7xl md:text-7xl lg:text-8xl font-extrabold uppercase"
           data-aos="fade-left"
         >
           Sharma
