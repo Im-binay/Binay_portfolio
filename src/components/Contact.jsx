@@ -52,7 +52,7 @@ export default function Contact() {
       <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-2 mx-2 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-3 bg-blue-50" data-aos="fade-in">
         
         {/* Left Side - Contact Info */}
-        <div className="pl-6 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="px-6 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Contact Information</h1>
           <p className=" mb-5 mt-5 md:mt-10 text-base">
             Please do not hesitate to get in touch with me regarding any
@@ -100,7 +100,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <div className="pl-5 pt-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="px-5 pt-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Get in Touch</h1>
           <form ref={form} onSubmit={sendEmail} className="space-y-4 text-[15px]">
             <div>
