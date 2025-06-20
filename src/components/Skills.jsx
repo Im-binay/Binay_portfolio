@@ -61,7 +61,7 @@ export default function Skill() {
               <div className="border-b pb-2 mt-1">
                 <div className="text-base md:text-lg font-medium flex flex-col md:flex-row gap-1 md:gap-2">
                   <h4>Bal Bikas English Boarding School</h4>
-                  <span className="w-auto bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-3 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
+                  <span className="w-[85px] bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-3 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
                     🏅 GPA: 3.7
                   </span>
                 </div>
@@ -73,7 +73,7 @@ export default function Skill() {
               <div className="border-b pb-2 mt-6">
                 <div className="text-base md:text-lg font-medium flex flex-col md:flex-row gap-1 md:gap-2">
                   <h4>Gaindakot Namuna Secondary School</h4>
-                  <span className="w-auto bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-2 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
+                  <span className="w-[85px] bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-2 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
                     🏅 GPA: 3.16
                   </span>
                 </div>
