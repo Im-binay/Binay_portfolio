@@ -93,7 +93,7 @@ export default function Contact() {
             </li>
             <li>
               <a href="https://github.com/Im-binay" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-github fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-github fa-xl text-yellow-300"></i>
               </a>
             </li>
           </ul>
