@@ -4,13 +4,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="flex flex-col items-center justify-center py-10 px-4 md:px-0 bg-light text-dark transition-colors duration-300"
+      className="flex flex-col items-center justify-center pb-10 px-4 md:px-0 bg-light text-dark transition-colors duration-300"
     >
       <div
-        className="flex flex-col justify-around md:flex-row items-center gap-10 max-w-6xl mx-auto p-5"
+        className="flex flex-col justify-around md:flex-row items-center gap-10 max-w-6xl mx-auto py-5"
         data-aos="fade-up"
       >
-        <p className="text-justify w-full md:w-[45%] text-base mt-10 md:text-lg">
+        <p className="text-justify w-full md:w-[45%] text-base mt-10 md:text-xl">
           I'm Binay Sharma — a Frontend Developer with a strong foundation in
           HTML, Tailwind CSS, JavaScript, and Figma. I specialize in crafting
           responsive, user-focused websites that balance clean design with
@@ -20,7 +20,7 @@ export default function About() {
           modern web trends and technologies.
         </p>
         <div
-          className="w-full md:w-[30%] mt-10 md:mt-10 perspective"
+          className="w-full md:w-[30%] mt-10 md:pt-10 perspective"
           data-aos="fade-up"
           style={{ perspective: '1000px' }}
         >
@@ -28,7 +28,7 @@ export default function About() {
             <img
               src={profile}
               alt="Profile"
-              className="object-cover h-full w-full rounded-lg shadow-md"
+              className="object-cover h-[380px] w-full rounded-lg shadow-md"
               loading="lazy"
             />
           </div>

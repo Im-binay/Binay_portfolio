@@ -48,25 +48,25 @@ export default function Contact() {
   };
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-center px-4 py-8" id="contact">
-      <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-2 mx-2 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-10 bg-blue-50" data-aos="fade-in">
+    <section className="min-h-screen w-full flex items-center justify-center px-4 pb-2" id="contact">
+      <div className="w-screen max-w-6xl h-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-2 mx-2 md:pr-8 text-dark bg-light shadow-xl rounded-2xl mt-10 md:mt-3 bg-blue-50" data-aos="fade-in">
         
         {/* Left Side - Contact Info */}
-        <div className="px-2 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="pl-6 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Contact Information</h1>
-          <p className="text-justify mb-5 mt-5 md:mt-10 text-sm">
+          <p className=" mb-5 mt-5 md:mt-10 text-base">
             Please do not hesitate to get in touch with me regarding any
             inquiries or opportunities. I will respond at my earliest
             convenience.
           </p>
-          <ul className="space-y-4 text-[14px]">
+          <ul className="space-y-4 text-[16px]">
             <li className="flex items-center">
               <i className="fas fa-map-marker-alt w-5 h-5 mr-3 text-blue-600"></i>
               <span>Gaindakot-1, Nawalpur, Nepal</span>
             </li>
             <li className="flex items-center">
               <i className="fa fa-phone w-5 h-5 mr-3 text-blue-600"></i>
-              <span>+977 9869681196</span>
+              <span>+977-9869681196</span>
             </li>
             <li className="flex items-center">
               <i className="fas fa-envelope w-5 h-5 mr-3 text-blue-600"></i>
@@ -100,7 +100,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <div className="px-2 pt-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="pl-5 pt-8 border-t-5 md:border-l-5 md:border-t-0 border-blue-300" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Get in Touch</h1>
           <form ref={form} onSubmit={sendEmail} className="space-y-4 text-[15px]">
             <div>

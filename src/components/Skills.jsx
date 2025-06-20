@@ -5,7 +5,7 @@ export default function Skill() {
     <section
       aria-labelledby="skill-heading"
       id="skills"
-      className="flex flex-col items-center justify-center h-auto py-5 px-2 md:px-5 bg-light text-dark transition-colors duration-300"
+      className="flex flex-col items-center justify-center h-auto pb-5 px-2 md:px-5 bg-light text-dark transition-colors duration-300"
     >
       <div className="flex flex-col md:flex-row justify-evenly mx-auto mt-10 md:mt-25 gap-5 rounded h-auto w-full max-w-6xl">
         {/* Skill Section */}
@@ -15,9 +15,9 @@ export default function Skill() {
         >
           <h1
             id="skill-heading"
-            className="p-2 rounded-md mb-2 text-blue-800 font-bold text-xl md:text-2xl"
+            className="p-2 rounded-md mb-2 text-blue-800 font-bold text-xl md:text-3xl"
           >
-            Skill
+            Skills
           </h1>
           <div className="flex flex-col gap-4 border-l-2 border-primary px-2">
   {[
@@ -49,7 +49,7 @@ export default function Skill() {
           data-aos="fade-up"
         >
           <div className="w-full flex justify-between">
-            <h1 className="p-2 rounded-md text-blue-800 font-bold text-xl md:text-2xl">
+            <h1 className="p-2 rounded-md text-blue-800 font-bold text-xl md:text-3xl">
               Education
             </h1>
           </div>
@@ -61,7 +61,7 @@ export default function Skill() {
               <div className="border-b pb-2 mt-1">
                 <div className="text-base md:text-lg font-medium flex flex-col md:flex-row gap-1 md:gap-2">
                   <h4>Bal Bikas English Boarding School</h4>
-                  <span className="w-[105px] bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-3 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
+                  <span className="w-auto bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-3 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
                     🏅 GPA: 3.7
                   </span>
                 </div>
@@ -73,7 +73,7 @@ export default function Skill() {
               <div className="border-b pb-2 mt-6">
                 <div className="text-base md:text-lg font-medium flex flex-col md:flex-row gap-1 md:gap-2">
                   <h4>Gaindakot Namuna Secondary School</h4>
-                  <span className="w-[105px] bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-2 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
+                  <span className="w-auto bg-gradient-to-r from-blue-100 to-blue-200 text-blue-900 text-xs font-semibold px-2 py-2 rounded-full shadow ring-1 ring-blue-400 transition-transform duration-300 hover:scale-105">
                     🏅 GPA: 3.16
                   </span>
                 </div>

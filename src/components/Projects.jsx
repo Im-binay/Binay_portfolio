@@ -33,11 +33,11 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="min-h-screen flex items-center justify-center px-4 py-5 bg-light text-dark"
+      className="min-h-screen flex items-center justify-center px-4 pb-3 bg-light text-dark"
       
     >
-      <div className="w-full max-w-6xl mt-10 mx-auto text-center" data-aos="fade-in">
-        <h1 className="text-2xl md:text-4xl font-bold text-blue-800 underline mb-10" >
+      <div className="w-full max-w-6xl mt-5 mx-auto text-center" data-aos="fade-in">
+        <h1 className="text-2xl md:text-3xl font-bold text-blue-800  mb-10" >
           Projects
         </h1>
 
@@ -57,13 +57,13 @@ export default function Project() {
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
               
-              <p className="text-sm text-justify mb-4">{project.description}</p>
+              <p className="text-base text-center mb-4">{project.description}</p>
               
               <div className="flex flex-wrap gap-2 mb-4 justify-center">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="tech-tag px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded"
+                    className="tech-tag px-2 py-1 bg-blue-100 text-blue-700 text-base font-medium rounded"
                   >
                     {tech}
                   </span>
@@ -74,7 +74,7 @@ export default function Project() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-link text-blue-600 hover:text-blue-800 text-sm font-medium"
+                className="project-link text-blue-600 hover:text-blue-800 text-base font-bold"
               >
                 View Project →
               </a>

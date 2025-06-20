@@ -11,7 +11,7 @@ export default function Hero() {
         <h4
           data-aos="fade-down"
           data-aos-duration="1000"
-          className="text-sm md:text-base mb-5"
+          className="text-sm md:text-xl mb-1"
         >
           Developing Interactive Website since — 2023
         </h4>
@@ -22,7 +22,7 @@ export default function Hero() {
           Binay
         </h1>
         <h2
-          className="text-7xl md:text-7xl lg:text-8xl font-extrabold uppercase"
+          className="text-7xl md:text-6xl lg:text-8xl font-extrabold uppercase"
           data-aos="fade-left"
         >
           Sharma

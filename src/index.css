@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 @import "tailwindcss";
 
 /* * {
@@ -11,7 +12,8 @@ html{
 }
 
 body {
-  font-family: 'Aldrich', sans-serif;
+  font-family: 'Crimson Text', serif;
+  /* font-family: monospace; */
   max-width: 100vw;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
