@@ -8,7 +8,7 @@ const projects = [
   {
     title: 'Royal Rhino Rider Website',
     description: 'A professional UI design for the Royal Rider Rhino website.',
-    link: 'https://yourportfolio.com',
+    link: 'https://www.figma.com/design/xWMRIaZRgfXPB6aJ1V29SX/RRR?node-id=51-156&t=FpocDyGID5Rpop7x-0',
     tech: ['Figma', 'Wireframe'],
     image: rrrUiImage,
   },

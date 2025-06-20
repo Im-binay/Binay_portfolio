@@ -68,6 +68,9 @@ body.dark-mode .animate-bounce {
   }
 }
 
+body.dark-mode .project-card .project-link{
+  color:white;
+}
 body.dark-mode .project-card {
   background-color: #2d3748; /* dark gray (Tailwind gray-800) */
   border: 1px solid #4a5568; /* subtle border (gray-700) */
@@ -78,6 +81,10 @@ body.dark-mode #contact{
 }
 body.dark-mode #contact div{
   background-color: #2d3748;
+}
+
+body.dark-mode #contact .fa-brands, body.dark-mode #contact .fas,body.dark-mode #contact .fa{
+  color: white;
 }
 body.dark-mode #skills div div{
   background-color: #2d3748;
