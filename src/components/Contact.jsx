@@ -54,7 +54,7 @@ export default function Contact() {
         {/* Left Side - Contact Info */}
         <div className="px-6 py-8 mb-5 md:mb-0" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-5 text-center underline">Contact Information</h1>
-          <p className=" mb-5 mt-5 md:mt-10 text-base">
+          <p className=" px-5 mb-5 mt-5 md:mt-10 text-base">
             Please do not hesitate to get in touch with me regarding any
             inquiries or opportunities. I will respond at my earliest
             convenience.
