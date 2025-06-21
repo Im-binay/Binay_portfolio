@@ -7,10 +7,10 @@ export default function Skill() {
       id="skills"
       className="flex flex-col items-center justify-center h-auto pb-5 px-2 md:px-5 bg-light text-dark transition-colors duration-300"
     >
-      <div className="flex flex-col md:flex-row justify-evenly mx-auto mt-10 md:mt-25 gap-5 rounded h-auto w-full max-w-6xl">
+      <div className="flex flex-col md:flex-row justify-evenly mx-auto mt-10 md:mt-25 gap-5 rounded  w-full max-w-6xl">
         {/* Skill Section */}
         <div
-          className="w-full md:w-[50%] flex flex-col p-5 shadow-lg rounded-lg bg-blue-50"
+          className="w-full md:w-[50%] flex h-auto flex-col p-5 shadow-lg rounded-lg bg-blue-50"
           data-aos="fade-up"
         >
           <h1
@@ -22,10 +22,11 @@ export default function Skill() {
           <div className="flex flex-col gap-4 border-l-2 border-primary px-2">
   {[
     { name: 'HTML/CSS', percent: 90 },
-    { name: 'Figma', percent: 85 },
     { name: 'JavaScript', percent: 75 },
-    { name: 'Tailwind CSS', percent: 85 },
-    { name: 'SQL', percent: 60 },
+    { name: 'Figma', percent: 90 },
+    { name: 'Tailwind CSS', percent: 85},
+    // { name: 'SQL', percent: 80 },
+    { name: 'React', percent: 70 },
   ].map((skill) => (
     <div key={skill.name}>
       <label htmlFor={skill.name}>{skill.name}</label>
@@ -45,7 +46,7 @@ export default function Skill() {
 
         {/* Education Section */}
         <div
-          className="w-full md:w-[50%] bg-light-alt shadow-lg p-5 mt-8 pb-8 md:mt-0 rounded-lg bg-blue-50"
+          className="w-full  md:w-[50%] bg-light-alt shadow-lg p-5 mt-8 pb-8 md:mt-0 rounded-lg bg-blue-50"
           data-aos="fade-up"
         >
           <div className="w-full flex justify-between">
@@ -90,6 +91,8 @@ export default function Skill() {
                   <p>Bachelor of Computer Application (BCA) / 2021 AD - Present</p>
                 </div>
               </div>
+
+              
             </div>
           </div>
         </div>
