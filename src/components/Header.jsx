@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import logo from '../assets/images/BsLogo.png';
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // Default to light mode if nothing saved in localStorage
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true';
+    const saved = localStorage.getItem('darkMode');
+    return saved ? saved === 'true' : false;
   });
 
   useEffect(() => {
@@ -17,11 +18,14 @@ export default function Header() {
     }
   }, [darkMode]);
 
+  // Close menu on scroll
   useEffect(() => {
     const handleScroll = () => setMenuOpen(false);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = ['Home', 'About', 'Skills', 'Project', 'Contact'];
 
