@@ -1,6 +1,6 @@
 import React from 'react';
 
-import rrrUiImage from '../assets/images/ui.ux.jpg';
+import UiImage from '../assets/images/ui.ux.jpg';
 import skillHiringImg from '../assets/images/skill-hiring.jpg';
 import courierTrackingImg from '../assets/images/Courier-Tracking.jpg';
 
@@ -10,7 +10,7 @@ const projects = [
     description: 'A professional UI design for the Royal Rider Rhino website.',
     link: 'https://www.figma.com/design/xWMRIaZRgfXPB6aJ1V29SX/RRR?node-id=51-156&t=FpocDyGID5Rpop7x-0',
     tech: ['Figma', 'Wireframe'],
-    image: rrrUiImage,
+    image: UiImage,
   },
   {
     title: 'Courier Tracking System',
@@ -20,11 +20,11 @@ const projects = [
     image: courierTrackingImg,
   },  
   {
-    title: 'Skill Hiring App',
+    title: 'Demo College Ui Design',
     description: 'A platform connecting service seekers with local skilled professionals.',
-    link: 'https://github.com/Im-binay/SkillHiringApp',
-    tech: ['React Native', 'Firebase', 'Figma'],
-    image: skillHiringImg,
+    link: 'https://www.figma.com/proto/q8dZbHStkVHuaK33mcMehY/College-Website?node-id=1-3&t=RCWaGgqGTmo7bfJm-1',
+    tech: ['Wireframe', 'Figma'],
+    image: UiImage,
   },
   
 ];
