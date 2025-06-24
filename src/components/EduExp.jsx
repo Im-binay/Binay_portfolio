@@ -96,7 +96,7 @@ export default function EduExp() {
               {/* Internship */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
                 <h4 className=" text-base md:text-2xl font-semibold">Frontend Developer Intern</h4>
-                <p className="text-sm text-blue-500 font-bold dark:text-gray-300">
+                <p className="text-sm text-blue-600 font-bold ">
                   Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025 )
                 </p>
                 <ul className="list-disc list-outside  text-base mt-1  ml-4 dark:text-gray-300">
@@ -108,7 +108,7 @@ export default function EduExp() {
               {/* Data Entry */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
                 <h4 className="text-base md:text-2xl font-semibold">Data Entry</h4>
-                <p className="text-sm text-blue-500 font-bold">
+                <p className="text-sm text-blue-600 font-bold">
                   Navya Technologies (Jan 2025 - Mar 2025)
                 </p>
                 <ul className="list-disc list-outside text-base mt-1 ml-4 dark:text-gray-300">
