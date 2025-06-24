@@ -101,7 +101,7 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold">
                   Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025)
                 </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-4  text-black">
+                <ul className="list-disc list-outside text-base mt-1 ml-4  text-black dark:text-white">
                   <li>Built responsive UI using HTML, Tailwind CSS, React</li>
                   <li>Worked closely with designers on UI/UX improvements</li>
                 </ul>
@@ -113,7 +113,7 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold">
                   Navya Technologies (Jan&nbsp;2025&nbsp;–&nbsp;Mar&nbsp;2025) 
                 </p>
-                <ul className="list-disc list-outside text-black text-base mt-1 ml-4">
+                <ul className="list-disc list-outside text-black dark:text-white text-base mt-1 ml-4">
                   <li>Accurately digitised 5,000+ building-permit records</li>
                   <li>Maintained data quality and supported smooth rollout</li>
                 </ul>
