@@ -76,7 +76,7 @@ body.dark-mode .project-card .project-link{
 body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-card,body.dark-mode .education-card ,body.dark-mode .project-card,body.dark-mode .experience-card{
   background-color: #2d3748; /* dark gray (Tailwind gray-800) */
   border: 1px solid #4a5568; /* subtle border (gray-700) */
-  color: white;
+  
 }
 
  body.dark-mode .radio {
