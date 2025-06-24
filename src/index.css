@@ -79,7 +79,7 @@ body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-
   
 }
 
-body.dark-mode .education-card ul{
+body.dark-mode .education-card ul li{
   color: white;
 }
 
