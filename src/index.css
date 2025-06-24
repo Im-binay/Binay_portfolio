@@ -79,6 +79,10 @@ body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-
   
 }
 
+body.dark-mode .education-card ul{
+  color: white;
+}
+
  body.dark-mode .radio {
   
   background-color: #2d3748;
