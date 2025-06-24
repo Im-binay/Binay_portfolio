@@ -20,7 +20,7 @@ export default function About() {
           modern web trends and technologies.
         </p>
         <div
-          className="w-full md:w-[30%] mt-10 md:pt-10 perspective"
+          className="w-full md:w-[30%] mt-10  md:pt-5 perspective"
           data-aos="fade-up"
           style={{ perspective: '1000px' }}
         >
@@ -28,7 +28,7 @@ export default function About() {
             <img
               src={profile}
               alt="Profile"
-              className="object-cover h-[380px] w-full rounded-lg shadow-md"
+              className="object-contain h-[380px] w-full rounded-lg shadow-md"
               loading="lazy"
             />
           </div>

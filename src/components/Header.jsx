@@ -27,7 +27,7 @@ export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = ['Home', 'About', 'Skills', 'Project', 'Contact'];
+  const navLinks = ['Home', 'About', 'Skills','Education', 'Project', 'Contact'];
 
   return (
     <header className="fixed top-0 left-0 w-screen z-50 bg-[#1a1c20]">
@@ -110,7 +110,7 @@ export default function Header() {
             aria-label="Toggle dark mode"
           >
             <i
-              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-xl
+              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-base
                 transition-transform duration-500 ease-in-out 
                 ${darkMode ? 'rotate-180' : 'rotate-0'}`}
             />
