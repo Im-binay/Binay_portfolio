@@ -23,7 +23,7 @@ export default function EduExp() {
             className={`px-4 py-2 rounded-full transition-colors font-bold duration-300 ${
               selected === 'education'
                 ? 'bg-blue-600 text-white'
-                : 'text-gray-700 dark:text-gray-300'
+                : 'text-black dark:text-gray-300'
             }`}
           >
             Education
@@ -43,7 +43,7 @@ export default function EduExp() {
             className={`px-4 py-2 rounded-full font-bold transition-colors duration-300 ${
               selected === 'experience'
                 ? 'bg-blue-600 text-white'
-                : 'text-gray-700 dark:text-gray-300'
+                : 'text-black dark:text-gray-300'
             }`}
           >
             Experience
