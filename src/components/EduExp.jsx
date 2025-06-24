@@ -78,7 +78,7 @@ export default function EduExp() {
               {/* Bachelor */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-6">
                 <h4 className="text-xl md:text-2xl font-semibold">Oxford College of Engineering and Management</h4>
-                <p className="text-sm md:text-base leading-5 dark:text-gray-300">
+                <p className="text-sm md:text-base leading-5 text-black">
                   Bachelor of Computer Application (BCA) / 2021 - Present
                 </p>
               </div>
