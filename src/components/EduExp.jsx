@@ -62,7 +62,7 @@ export default function EduExp() {
               {/* SEE */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-1">
                 <h4 className="text-xl md:text-2xl font-semibold">Bal Bikas English Boarding School</h4>
-                <p className="text-sm md:text-base leading-5 dark:text-black">
+                <p className="text-sm md:text-base leading-5 text-black">
                   Secondary Education Examination (SEE) / 2018 AD
                 </p>
               </div>
@@ -70,7 +70,7 @@ export default function EduExp() {
               {/* +2 */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-6">
                 <h4 className="text-xl md:text-2xl font-semibold">Gaindakot Namuna Secondary School</h4>
-                <p className="text-sm md:text-base leading-5 dark:text-gray-300">
+                <p className="text-sm md:text-base leading-5 text-black">
                   +2 (Computer Science) / 2020 AD
                 </p>
               </div>
