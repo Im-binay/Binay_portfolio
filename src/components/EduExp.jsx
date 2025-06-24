@@ -101,7 +101,7 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold">
                   Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025)
                 </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-4  dark:text-black">
+                <ul className="list-disc list-outside text-base mt-1 ml-4  dark:text-white">
                   <li>Built responsive UI using HTML, Tailwind CSS, React</li>
                   <li>Worked closely with designers on UI/UX improvements</li>
                 </ul>
