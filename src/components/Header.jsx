@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from '../assets/images/BsLogo.png';
+
 
 export default function Header() {
   // Default to light mode if nothing saved in localStorage
