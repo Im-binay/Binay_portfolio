@@ -83,6 +83,9 @@ body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-
   color: white;
   background-color: #2d3748;
  }
+ body.dark-mode .radio{
+  background-color:#2d3748 ;
+ }
   body.dark-mode .radio span{
     color: white;
   }
