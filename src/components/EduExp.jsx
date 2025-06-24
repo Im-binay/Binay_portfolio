@@ -9,7 +9,7 @@ export default function EduExp() {
       className="flex flex-col items-center justify-center h-auto pb-10 pt-8 md:px-5 bg-light text-black dark:bg-gray-800 dark:text-white transition-colors duration-300"
     >
       {/* Radio Toggle */}
-      <div className=" radio flex gap-4 mb-8 mt-10 bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow-inner">
+      <div className=" radio flex gap-4 mb-8 mt-10 bg-blue-100 dark:bg-gray-700 p-2 rounded-full shadow-inner">
         {['education', 'experience'].map((type) => (
           <label key={type} className="flex items-center cursor-pointer">
             <input
