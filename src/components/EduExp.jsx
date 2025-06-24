@@ -89,7 +89,7 @@ export default function EduExp() {
         {/* === EXPERIENCE SECTION === */}
         {selected === 'experience' && (
           <div className="experience-card bg-blue-50 dark:bg-dark-alt shadow-lg p-5 rounded-lg">
-            <h1 className="text-blue-800 dark:text-blue-300 font-bold text-xl md:text-3xl mb-4">
+            <h1 className="text-blue-800  font-bold text-xl md:text-3xl mb-4">
               Experience
             </h1>
             <div className="border-l-2 border-primary dark:border-blue-500 px-4">
@@ -99,7 +99,7 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold ">
                   Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025 )
                 </p>
-                <ul className="list-disc list-outside  text-base mt-1  ml-4 dark:text-gray-300">
+                <ul className="list-disc list-outside text-black text-base mt-1  ml-4 dark:text-gray-300">
                   <li>Built responsive UI using HTML, Tailwind CSS, React</li>
                   <li>Worked closely with designers on UI/UX improvements</li>
                 </ul>
@@ -111,7 +111,7 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold">
                   Navya Technologies (Jan 2025 - Mar 2025)
                 </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-4 dark:text-gray-300">
+                <ul className="list-disc list-outside text-base text-black mt-1 ml-4 dark:text-gray-300">
                   <li>Accurately entered and digitized 5,000+ building permit records.</li>
                   <li>Maintained data quality and supported smooth software rollout.</li>
                 </ul>
