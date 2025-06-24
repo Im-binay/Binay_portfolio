@@ -23,7 +23,7 @@ export default function EduExp() {
             className={`px-4 py-2 rounded-full transition-colors font-bold duration-300 ${
               selected === 'education'
                 ? 'bg-blue-600 text-white'
-                : 'text-black dark:text-gray-300'
+                : 'text-black'
             }`}
           >
             Education
@@ -43,7 +43,7 @@ export default function EduExp() {
             className={`px-4 py-2 rounded-full font-bold transition-colors duration-300 ${
               selected === 'experience'
                 ? 'bg-blue-600 text-white'
-                : 'text-black dark:text-gray-300'
+                : 'text-black'
             }`}
           >
             Experience
@@ -55,14 +55,14 @@ export default function EduExp() {
         {/* === EDUCATION SECTION === */}
         {selected === 'education' && (
           <div className="education-card bg-blue-50 dark:bg-dark-alt shadow-lg p-5 rounded-lg">
-            <h1 className="text-blue-800 dark:text-blue-300 font-bold text-xl md:text-3xl mb-4">
+            <h1 className="text-blue-800 font-bold text-xl md:text-3xl mb-4">
               Education
             </h1>
             <div className="border-l-2 border-primary dark:border-blue-500 px-4">
               {/* SEE */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-1">
                 <h4 className="text-xl md:text-2xl font-semibold">Bal Bikas English Boarding School</h4>
-                <p className="text-sm md:text-base leading-5 dark:text-gray-300">
+                <p className="text-sm md:text-base leading-5 dark:text-black">
                   Secondary Education Examination (SEE) / 2018 AD
                 </p>
               </div>
