@@ -111,9 +111,9 @@ export default function EduExp() {
                 <p className="text-sm text-blue-600 font-bold">
                   Navya Technologies (Jan 2025 - Mar 2025)
                 </p>
-                <ul className="list-disc list-outside text-base text-black mt-1 ml-4 dark:text-gray-300">
-                  <li>Accurately entered and digitized 5,000+ building permit records.</li>
-                  <li>Maintained data quality and supported smooth software rollout.</li>
+                <ul className="list-disc list-outside text-base mt-1 ml-4 dark:text-gray-300">
+                  <li className=' text-black'>Accurately entered and digitized 5,000+ building permit records.</li>
+                  <li className=' text-black'>Maintained data quality and supported smooth software rollout.</li>
                 </ul>
               </div>
             </div>
