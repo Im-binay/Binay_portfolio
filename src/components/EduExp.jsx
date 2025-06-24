@@ -61,7 +61,7 @@ export default function EduExp() {
                   Bal Bikas English Boarding School
                 </h4>
                 <p className="text-sm md:text-base leading-5">
-                  Secondary Education Examination (SEE) / 2018&nbsp;AD
+                  Secondary Education Examination (SEE) / 2018in  AD
                 </p>
               </div>
 
@@ -71,7 +71,7 @@ export default function EduExp() {
                   Gaindakot Namuna Secondary School
                 </h4>
                 <p className="text-sm md:text-base leading-5">
-                  +2 (Computer Science) / 2020&nbsp;AD
+                  +2 (Computer Science) / 2020 AD
                 </p>
               </div>
 
@@ -96,18 +96,14 @@ export default function EduExp() {
             </h1>
             <div className="border-l-2 border-primary dark:border-blue-500 px-4">
               {/* Internship */}
-              <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
-                <h4 className="text-base md:text-2xl font-semibold">
-                  Frontend Developer&nbsp;Intern
-                </h4>
+             <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
+                <h4 className="text-base md:text-2xl font-semibold">Frontend Developer Intern</h4>
                 <p className="text-sm text-blue-600 font-bold">
-                  Akshyaraanga Sanjaal Pvt. Ltd. — (1
-                  <sup>st</sup>Dec 2024 – 16
-                  <sup>th</sup>Feb 2025)
+                  Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025)
                 </p>
-                <ul className="list-disc list-outside text-black dark:text-white text-base mt-1 ml-4">
-                  <li>Built responsive UI with HTML, Tailwind&nbsp;CSS&nbsp;&amp; React</li>
-                  <li>Collaborated with designers on UI/UX improvements</li>
+                <ul className="list-disc list-outside text-base mt-1 ml-4 text-black dark:text-white">
+                  <li>Built responsive UI using HTML, Tailwind CSS, React</li>
+                  <li>Worked closely with designers on UI/UX improvements</li>
                 </ul>
               </div>
 
