@@ -8,8 +8,8 @@ export default function EduExp() {
       id="education"
       className="flex flex-col items-center justify-center h-auto pb-10 pt-8 md:px-5 bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300"
     >
-      {/* Radio Toggle */}
-      <div className=" radio flex gap-4 mb-8 mt-10 bg-blue-50 dark:bg-dark-alt p-2 rounded-full shadow-inner">
+      {/* === RADIO TOGGLE ===================================================== */}
+      <div className="radio flex gap-4 mb-8 mt-10 bg-blue-50 dark:bg-dark-alt p-2 rounded-full shadow-inner">
         <label className="flex items-center cursor-pointer">
           <input
             type="radio"
@@ -20,10 +20,8 @@ export default function EduExp() {
             className="hidden"
           />
           <span
-            className={`px-4 py-2 rounded-full transition-colors font-bold duration-300 ${
-              selected === 'education'
-                ? 'bg-blue-600 text-white'
-                : 'text-black'
+            className={`px-4 py-2 rounded-full font-bold transition-colors duration-300 ${
+              selected === 'education' ? 'bg-blue-600 text-white' : 'text-black dark:text-white'
             }`}
           >
             Education
@@ -41,9 +39,7 @@ export default function EduExp() {
           />
           <span
             className={`px-4 py-2 rounded-full font-bold transition-colors duration-300 ${
-              selected === 'experience'
-                ? 'bg-blue-600 text-white'
-                : 'text-black'
+              selected === 'experience' ? 'bg-blue-600 text-white' : 'text-black dark:text-white'
             }`}
           >
             Experience
@@ -52,7 +48,7 @@ export default function EduExp() {
       </div>
 
       <div className="w-full max-w-4xl" data-aos="fade-up">
-        {/* === EDUCATION SECTION === */}
+        {/* === EDUCATION SECTION ============================================== */}
         {selected === 'education' && (
           <div className="education-card bg-blue-50 dark:bg-dark-alt shadow-lg p-5 rounded-lg">
             <h1 className="text-blue-800 font-bold text-xl md:text-3xl mb-4">
@@ -61,47 +57,57 @@ export default function EduExp() {
             <div className="border-l-2 border-primary dark:border-blue-500 px-4">
               {/* SEE */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-1">
-                <h4 className="text-xl md:text-2xl font-semibold">Bal Bikas English Boarding School</h4>
-                <p className="text-sm md:text-base leading-5 text-black">
-                  Secondary Education Examination (SEE) / 2018 AD
+                <h4 className="text-xl md:text-2xl font-semibold">
+                  Bal Bikas English Boarding School
+                </h4>
+                <p className="text-sm md:text-base leading-5">
+                  Secondary Education Examination (SEE) / 2018&nbsp;AD
                 </p>
               </div>
 
               {/* +2 */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-6">
-                <h4 className="text-xl md:text-2xl font-semibold">Gaindakot Namuna Secondary School</h4>
-                <p className="text-sm md:text-base leading-5 text-black">
-                  +2 (Computer Science) / 2020 AD
+                <h4 className="text-xl md:text-2xl font-semibold">
+                  Gaindakot Namuna Secondary School
+                </h4>
+                <p className="text-sm md:text-base leading-5">
+                  +2 (Computer Science) / 2020&nbsp;AD
                 </p>
               </div>
 
               {/* Bachelor */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-2 mt-6">
-                <h4 className="text-xl md:text-2xl font-semibold">Oxford College of Engineering and Management</h4>
-                <p className="text-sm md:text-base leading-5 text-black">
-                  Bachelor of Computer Application (BCA) / 2021 - Present
+                <h4 className="text-xl md:text-2xl font-semibold">
+                  Oxford College of Engineering and Management
+                </h4>
+                <p className="text-sm md:text-base leading-5">
+                  Bachelor of Computer Application (BCA) / 2021&nbsp;–&nbsp;Present
                 </p>
               </div>
             </div>
           </div>
         )}
 
-        {/* === EXPERIENCE SECTION === */}
+        {/* === EXPERIENCE SECTION ============================================ */}
         {selected === 'experience' && (
           <div className="experience-card bg-blue-50 dark:bg-dark-alt shadow-lg p-5 rounded-lg">
-            <h1 className="text-blue-800  font-bold text-xl md:text-3xl mb-4">
+            <h1 className="text-blue-800 font-bold text-xl md:text-3xl mb-4">
               Experience
             </h1>
             <div className="border-l-2 border-primary dark:border-blue-500 px-4">
               {/* Internship */}
               <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
-                <h4 className=" text-base md:text-2xl font-semibold">Frontend Developer Intern</h4>
-                <p className="text-sm text-blue-600 font-bold ">
-                  Akshyaraanga Sanjaal Pvt. Ltd. — (1<sup>st</sup> Dec 2024 – 16<sup>th</sup> Feb 2025 )
+                <h4 className="text-base md:text-2xl font-semibold">
+                  Frontend Developer&nbsp;Intern
+                </h4>
+                <p className="text-sm text-blue-600 font-bold">
+                  Akshyaraanga Sanjaal Pvt. Ltd. — (1
+                  <sup>st</sup>Dec 2024 – 16
+                  <sup>th</sup>Feb 2025)
                 </p>
-                <ul className="list-disc list-outside text-black text-base mt-1  ml-4 dark:text-gray-300">
-                  <li>Built responsive UI using HTML, Tailwind CSS, React</li>
-                  <li>Worked closely with designers on UI/UX improvements</li>
+                <ul className="list-disc list-outside text-black dark:text-white text-base mt-1 ml-4">
+                  <li>Built responsive UI with HTML, Tailwind&nbsp;CSS&nbsp;&amp; React</li>
+                  <li>Collaborated with designers on UI/UX improvements</li>
                 </ul>
               </div>
 
@@ -109,11 +115,11 @@ export default function EduExp() {
               <div className="border-b border-gray-300 dark:border-gray-600 pb-3 mt-1">
                 <h4 className="text-base md:text-2xl font-semibold">Data Entry</h4>
                 <p className="text-sm text-blue-600 font-bold">
-                  Navya Technologies (Jan 2025 - Mar 2025)
+                  Navya Technologies (Jan&nbsp;2025&nbsp;–&nbsp;Mar&nbsp;2025)
                 </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-4 dark:text-gray-300">
-                  <li className=' text-black'>Accurately entered and digitized 5,000+ building permit records.</li>
-                  <li className=' text-black'>Maintained data quality and supported smooth software rollout.</li>
+                <ul className="list-disc list-outside text-black dark:text-white text-base mt-1 ml-4">
+                  <li>Accurately digitised 5,000+ building-permit records</li>
+                  <li>Maintained data quality and supported smooth rollout</li>
                 </ul>
               </div>
             </div>
@@ -121,7 +127,7 @@ export default function EduExp() {
         )}
       </div>
 
-      {/* Download CV */}
+      {/* === DOWNLOAD CV BUTTON ============================================== */}
       <div className="mt-10 flex justify-center">
         <a
           href="/BinaySharmaCV.pdf"
