@@ -43,7 +43,12 @@ export default function EduExp() {
                 </h4>
                 <p className="text-xs md:text-base">
                   Secondary Education Examination (SEE) / 2018 AD
+                  <br className="md:hidden" />
+                  <span className="inline-flex items-center gap-1 md:ml-2 bg-blue-100   text-blue-800 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full">
+                  🎓 GPA 3.7
+                </span>
                 </p>
+                
               </div>
               <div className="border-b border-gray-300 pb-2 mt-6">
                 <h4 className="text-xl md:text-2xl font-medium">
@@ -51,7 +56,12 @@ export default function EduExp() {
                 </h4>
                 <p className="text-xs md:text-base eduexp-muted">
                   +2 with Computer Science / 2020 AD
+                  <br className="md:hidden" />
+                      <span className="inline-block md:inline-flex items-center gap-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 mt-1 md:mt-0 md:ml-2 px-2 py-0.5 rounded-full">
+                        🎓 GPA 3.22
+                    </span>
                 </p>
+
               </div>
               <div className="border-b border-gray-300 pb-2 mt-6">
                 <h4 className="text-xl md:text-2xl font-medium">
@@ -59,6 +69,10 @@ export default function EduExp() {
                 </h4>
                 <p className="text-xs md:text-base eduexp-muted">
                   Bachelor of Computer Application (BCA) / 2021 - Present
+                  <br className="md:hidden" />
+                  <span className="nline-flex items-center gap-1 md:ml-2 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100  px-2 py-0.5 rounded-full">
+                  📚 Currently Studying
+                  </span>
                 </p>
               </div>
             </div>
