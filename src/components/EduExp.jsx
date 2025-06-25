@@ -70,7 +70,7 @@ export default function EduExp() {
                 <p className="text-xs md:text-base eduexp-muted">
                   Bachelor of Computer Application (BCA) / 2021 - Present
                   <br className="md:hidden" />
-                  <span className="nline-flex items-center gap-1 md:ml-2 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100  mt-1 md:mt-0  px-2 py-0.5 rounded-full">
+                  <span className="inline-block md:inline-flex items-center gap-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 mt-1 md:mt-0 md:ml-2 px-2 py-0.5 rounded-full">
                   📚 Currently Studying
                   </span>
                 </p>
