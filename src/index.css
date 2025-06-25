@@ -73,7 +73,7 @@ body.dark-mode .animate-bounce {
 body.dark-mode .project-card .project-link{
   color:white;
 }
-body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-card,body.dark-mode .project-card{
+body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-card,body.dark-mode .project-card, body.dark-mode #education{
   background-color: #2d3748; /* dark gray (Tailwind gray-800) */
   border: 1px solid #4a5568; /* subtle border (gray-700) */
   
@@ -81,10 +81,10 @@ body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-
 
  body.dark-mode .education-card,body.dark-mode .experience-card {
   color: white;
-  background-color: #2d3748;
+  background-color: #404a5cab;
  }
  body.dark-mode .radio{
-  background-color:#2d3748 ;
+  background-color:#3d2b30 ;
  }
   body.dark-mode .radio span{
     color: white;
