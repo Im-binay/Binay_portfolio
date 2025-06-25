@@ -5,10 +5,10 @@ export default function Skill() {
     <section
       aria-labelledby="skill-heading"
       id="skills"
-      className="flex flex-col items-center justify-center h-auto pb-10 pt-8 md:px-5 bg-light text-dark transition-colors duration-300"
+      className="flex flex-col items-center justify-center h-auto pb-10 p-5 pt-8 md:px-5 bg-light text-dark transition-colors duration-300"
     >
       <div
-        className=" skill-div w-full max-w-4xl mt-15 p-5  bg-blue-50 shadow-lg rounded-lg"
+        className=" skill-div w-full max-w-4xl mt-15 p-6  bg-blue-50 shadow-lg rounded-lg"
         data-aos="fade-up"
       >
         <h1
