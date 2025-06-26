@@ -77,8 +77,8 @@ export default function Contact() {
           <h5 className="mt-8 mb-3 underline">Follow me on:</h5>
           <ul className="flex justify-evenly w-full md:w-[50%]">
             <li>
-              <a href="https://www.facebook.com/binay.sharma.bashyal" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-facebook fa-xl text-blue-800"></i>
+              <a href="https://wa.me/9779869681196?" target="_blank" rel="noreferrer">
+                <i className="fa-brands fa-square-whatsapp fa-xl text-blue-800"></i>
               </a>
             </li>
             <li>
@@ -93,7 +93,7 @@ export default function Contact() {
             </li>
             <li>
               <a href="https://github.com/Im-binay" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-github fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-square-github fa-xl text-blue-800"></i>
               </a>
             </li>
           </ul>
