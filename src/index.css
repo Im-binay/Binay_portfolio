@@ -6,60 +6,36 @@
   outline: 1px solid red;
 }  */
 
-html{
-  scroll-behavior: smooth;
-  scroll-padding: 40px;
-}
+html{scroll-behavior: smooth; scroll-padding: 40px;}
 
-body {
-  font-family: 'Crimson Text', serif;
-  /* font-family: monospace; */
-  max-width: 100vw;
-  overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
+body { font-family: 'Crimson Text', serif;  max-width: 100vw;  overflow-x: hidden;  transition: background-color 0.5s ease, color 0.5s ease; }
 
 
-#theme-transition{
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
+#theme-transition{ transition: background-color 0.5s ease, color 0.5s ease;}
+
+
 /* =========================
    Dark Mode Overrides ONLY
    ========================= */
 
-body.dark-mode {
-  background-color: #1a1c20; /* gray-900 */
-  color: #e2e8f0; /* gray-200 */
-}
+body.dark-mode { background-color: #1a1c20; /* gray-900 */  color: #e2e8f0; /* gray-200 */ }
 
-body.dark-mode nav {
-  background-color: #111827; /* darker gray */
-}
+body.dark-mode nav { background-color: #111827; /* darker gray */ }
 
-body.dark-mode nav a {
-  color: #e2e8f0;
-}
+body.dark-mode nav a { color: #e2e8f0;}
 
-body.dark-mode .bg-light {
-  background-color: #1a202c;
-}
+body.dark-mode .bg-light { background-color: #1a202c;}
 
-body.dark-mode h2{
-  color:#2563EB;
-}
-body.dark-mode .fa-sun:hover{
-  color: yellow;
-}
-body.dark-mode h1, body.dark-mode .fa-solid,body.dark-mode .text-dark,body.dark-mode #hire-me-button:hover,body.dark-mode button {
-  color: white;
-}
-body.dark-mode .text-primary, body.dark-mode .text-link,body.dark-mode nav a::after,body.dark-mode nav a:hover {
-  color: #60a5fa;
-}
+body.dark-mode h2{  color:#2563EB;}
+
+body.dark-mode .fa-sun:hover{ color: yellow;}
+
+body.dark-mode h1, .dark-mode .fa-solid, .dark-mode .text-dark, .dark-mode #hire-me-button:hover, .dark-mode button { color: #fff; }
+
+.dark-mode .text-primary, .dark-mode .text-link, .dark-mode nav a::after, .dark-mode nav a:hover { color: #60a5fa; }
+
 /* Bounce animation for arrow icon */
-body.dark-mode .animate-bounce {
-  animation: bounce 1s infinite;
-}
+body.dark-mode .animate-bounce { animation: bounce 1s infinite;}
 
 @keyframes bounce {
   0%, 100% {
@@ -70,49 +46,27 @@ body.dark-mode .animate-bounce {
   }
 }
 
-body.dark-mode .project-card .project-link{
-  color:white;
-}
-body.dark-mode .project-card,body.dark-mode .skill-div ,body.dark-mode .project-card,body.dark-mode .project-card{
-  background-color: #2d3748; /* dark gray (Tailwind gray-800) */
-  border: 1px solid #4a5568; 
-  
-}
+body.dark-mode .project-card .project-link{ color:white;}
 
-body.dark-mode #education{
-  background-color:#1a202c ;
-}
- body.dark-mode .education-card,body.dark-mode .experience-card {
-  color: white;
-  background-color: #404a5cab;
- }
- body.dark-mode .radio{
-  background-color:#3d2b30 ;
- }
-  body.dark-mode .radio span{
-    color: white;
-  }
-body.dark-mode #contact{
-  background-color: #1a202c;
-}
-body.dark-mode #contact div{
-  background-color: #2d3748;
-}
+body.dark-mode .project-card,.dark-mode .skill-div { background-color: #2d3748; border: 1px solid #4a5568; }
 
-body.dark-mode #contact .fa-brands, body.dark-mode #contact .fas,body.dark-mode #contact .fa{
-  color: white;
-}
-body.dark-mode #skills div div{
-  background-color: #2d3748;
-}
+body.dark-mode #education{ background-color:#1a202c ; }
 
-body.dark-mode #skills .skill-percent{
+ body.dark-mode .education-card,.dark-mode .experience-card { color: white; background-color: #404a5cab; }
 
-  background: #99999929;
-}
+ body.dark-mode .radio{ background-color:#3d2b30 ; }
 
-body.dark-mode footer {
-  background-color: #1a202c; /* Tailwind gray-900 */
-  color: #e2e8f0; /* Tailwind gray-200 */
-}
+body.dark-mode .radio span{color: white;}
+
+body.dark-mode #contact{ background-color: #1a202c;}
+
+body.dark-mode #contact div{ background-color: #2d3748;}
+
+body.dark-mode #contact .fa{ color: white;}
+
+body.dark-mode #skills div div{ background-color: #2d3748;}
+
+body.dark-mode #skills .skill-percent{ background: #99999929;}
+
+body.dark-mode footer { background-color: #1a202c; /* Tailwind gray-900 */  color: #e2e8f0; /* Tailwind gray-200 */ }
 

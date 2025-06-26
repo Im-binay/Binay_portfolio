@@ -1,7 +1,6 @@
 import React from 'react';
 
-import UiImage from '../assets/images/ui.ux.jpg';
-import skillHiringImg from '../assets/images/skill-hiring.jpg';
+import UiImage from '../assets/images/ui.ux.jpg';;
 import courierTrackingImg from '../assets/images/Courier-Tracking.jpg';
 
 const projects = [
