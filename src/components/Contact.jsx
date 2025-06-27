@@ -61,7 +61,7 @@ export default function Contact() {
           </p>
           <ul className="space-y-4 text-[16px]">
             <li className="flex items-center">
-              <i className="fas fa-map-marker-alt w-5 h-5 mr-3 text-blue-600"></i>
+              <i className="fa fa-map-marker-alt w-5 h-5 mr-3 text-blue-600"></i>
               <span>Gaindakot-1, Nawalpur, Nepal</span>
             </li>
             <li className="flex items-center">
@@ -69,7 +69,7 @@ export default function Contact() {
               <span>+977-9869681196</span>
             </li>
             <li className="flex items-center">
-              <i className="fas fa-envelope w-5 h-5 mr-3 text-blue-600"></i>
+              <i className="fa fa-envelope w-5 h-5 mr-3 text-blue-600"></i>
               <span>sharmabinay88@gmail.com</span>
             </li>
           </ul>
@@ -78,22 +78,22 @@ export default function Contact() {
           <ul className="flex justify-evenly w-full md:w-[50%]">
             <li>
               <a href="https://wa.me/9779869681196?" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-square-whatsapp fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-square-whatsapp fa-xl text-blue-600"></i>
               </a>
             </li>
             <li>
               <a href="https://www.instagram.com/imbinay_/" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-square-instagram fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-square-instagram fa-xl text-blue-600"></i>
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/binay-sharma-3507652a1/" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-linkedin fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-linkedin fa-xl text-blue-600"></i>
               </a>
             </li>
             <li>
               <a href="https://github.com/Im-binay" target="_blank" rel="noreferrer">
-                <i className="fa-brands fa-square-github fa-xl text-blue-800"></i>
+                <i className="fa-brands fa-square-github fa-xl text-blue-600"></i>
               </a>
             </li>
           </ul>

@@ -62,7 +62,7 @@ body.dark-mode #contact{ background-color: #1a202c;}
 
 body.dark-mode #contact div{ background-color: #2d3748;}
 
-body.dark-mode #contact .fa{ color: white;}
+body.dark-mode #contact .fa,.dark-mode #contact .fa-brands{ color: white;}
 
 body.dark-mode #skills div div{ background-color: #2d3748;}
 
