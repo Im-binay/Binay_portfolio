@@ -112,7 +112,7 @@ export default function EduExp() {
       {/* Download CV */}
       <div className="mt-10 flex justify-center">
         <a
-          href="/BinaySharmaCV.pdf"
+          href="/Binay_CV.pdf"
           download
           className="bg-[#141d97] px-4 py-2 rounded text-white hover:bg-blue-500 transition-colors duration-300"
         >
