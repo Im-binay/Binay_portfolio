@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UiImage from '../assets/images/ui.ux.jpg';;
+import UiImage from '../assets/images/ui.ux.jpg';
 import courierTrackingImg from '../assets/images/Courier-Tracking.jpg';
 
 const projects = [
