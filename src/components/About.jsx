@@ -1,4 +1,4 @@
-import profile from '../assets/images/binay.jpg';
+import profile from '../assets/images/Image.jpg';
 
 export default function About() {
   return (
@@ -20,7 +20,7 @@ export default function About() {
           modern web trends and technologies.
         </p>
         <div
-          className="w-full md:w-[30%] mt-10 bg-blue-50 rounded-2xl  md:pt-5 perspective"
+          className="w-full md:w-[30%] mt-10 bg-blue-50 rounded-2xl   perspective"
           data-aos="fade-up"
           style={{ perspective: '1000px' }}
         >
@@ -28,7 +28,7 @@ export default function About() {
             <img
               src={profile}
               alt="Profile"
-              className="object-contain h-[380px] w-full rounded-lg shadow-md"
+              className="object-cover h-full  w-full rounded-lg shadow-md"
               loading="lazy"
             />
           </div>
