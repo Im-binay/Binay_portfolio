@@ -2,7 +2,8 @@ import profile from '../assets/images/aboutimage.JPG';
 
 export default function About() {
   return (
-    <section
+    <section 
+
       id="about"
       className="flex flex-col items-center justify-center pb-10 px-4 md:px-0 bg-light text-dark transition-colors duration-300"
     >
