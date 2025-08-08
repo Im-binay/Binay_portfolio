@@ -1,4 +1,4 @@
-import profile from '../assets/images/aboutimage.jpg';
+import myprofile from '../assets/images/aboutimage.jpg';
 
 export default function About() {
   return (
@@ -26,7 +26,7 @@ export default function About() {
         >
           <div className="transform-style preserve-3d transition-transform duration-500  cursor-pointer rounded-lg shadow-xl">
             <img
-              src={profile}
+              src={myprofile}
               alt="Profile"
               className="object-cover h-full  w-full rounded-lg shadow-md"
               loading="lazy"
