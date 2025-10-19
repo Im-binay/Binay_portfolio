@@ -97,7 +97,7 @@ export default function EduExp() {
               <div className="border-b border-gray-300 pb-3 mt-6">
                 <h4 className="text-xl md:text-2xl font-semibold">Data Entry</h4>
                 <p className=" text-sm md:text-lg font-semibold text-blue-500">
-                  Navya Technologies (Jan 2025 – Mar 2025)
+                  Navya Technologies — (Jan 2025 – Mar 2025)
                 </p>
                 <ul className="list-disc list-outside text-base mt-1 ml-5 ">
                   <li>Accurately digitised 5,000+ building-permit records</li>
