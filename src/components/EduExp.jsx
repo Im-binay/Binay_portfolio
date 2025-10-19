@@ -58,7 +58,7 @@ export default function EduExp() {
                   +2 with Computer Science / 2020 AD
                   <br className="md:hidden" />
                       <span className="inline-block md:inline-flex items-center gap-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 mt-1 md:mt-0 md:ml-2 px-2 py-0.5 rounded-full">
-                        🎓 GPA 3.22
+                        🎓 GPA 3.16
                     </span>
                 </p>
 

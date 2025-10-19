@@ -81,11 +81,11 @@ export default function Contact() {
                 <i className="fa-brands fa-square-whatsapp fa-xl text-blue-600"></i>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="https://www.instagram.com/imbinay_/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-square-instagram fa-xl text-blue-600"></i>
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="https://www.linkedin.com/in/binay-sharma-3507652a1/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin fa-xl text-blue-600"></i>

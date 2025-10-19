@@ -11,9 +11,9 @@ export default function Hero() {
         <h4
           data-aos="fade-down"
           data-aos-duration="1000"
-          className="text-sm md:text-xl mb-1"
+          className="text-sm md:text-xl mb-1 underline"
         >
-          Developing Interactive Website since — 2023
+         Turning Ideas into Seamless UI/UX since — 2023
         </h4>
         <h1
           className="text-8xl md:text-9xl lg:text-9xl text-blue-600 font-extrabold uppercase"
