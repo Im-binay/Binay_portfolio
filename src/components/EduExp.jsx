@@ -35,7 +35,7 @@ export default function EduExp() {
         {/* === EDUCATION SECTION === */}
         {selected === 'education' && (
           <div className="education-card bg-blue-50 shadow-lg p-5 rounded-lg p">
-            <h1 className="font-bold text-2xl text-blue-600 md:text-3xl mb-4">Education</h1>
+            <h1 className="font-bold text-2xl text-blue-600 md:text-4xl mb-4">Education</h1>
             <div className="border-l-2  px-4">
               <div className="border-b border-gray-300 pb-2 mt-1">
                 <h4 className="text-xl md:text-2xl font-medium">
@@ -82,7 +82,7 @@ export default function EduExp() {
         {/* === EXPERIENCE SECTION === */}
         {selected === 'experience' && (
           <div className="experience-card bg-blue-50 shadow-lg p-5 rounded-lg">
-            <h1 className="font-bold text-2xl md:text-3xl text-blue-600 mb-4">Experience</h1>
+            <h1 className="font-bold text-2xl md:text-4xl text-blue-600 mb-4">Experience</h1>
             <div className="border-l-2 eduexp-border px-4">
               <div className="border-b border-gray-300 pb-3 mt-1">
                 <h4 className="text-xl md:text-2xl font-semibold">Frontend Developer Intern</h4>

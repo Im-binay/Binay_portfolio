@@ -36,7 +36,7 @@ export default function Project() {
       
     >
       <div className="w-full max-w-6xl mt-5 mx-auto text-center" data-aos="fade-in">
-        <h1 className="text-2xl md:text-3xl font-bold text-blue-800  mb-10" >
+        <h1 className="text-2xl md:text-4xl font-bold text-blue-800  mb-10" >
           Projects
         </h1>
 
