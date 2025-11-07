@@ -1,53 +1,84 @@
-import React from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaFigma } from 'react-icons/fa';
+import React from "react";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaFigma } from "react-icons/fa";
 
-export default function Skill() {
+export default function SkillModernCard() {
   const skills = [
-    { name: 'HTML/CSS', percent: 90, icon: <FaHtml5 className="inline mr-2 text-orange-500" /> },
-    { name: 'JavaScript', percent: 75, icon: <FaJs className="inline mr-2 text-yellow-400" /> },
-    { name: 'Figma', percent: 90, icon: <FaFigma className="inline mr-2 text-pink-500" /> },
-    { name: 'Tailwind CSS', percent: 85, icon: <FaCss3Alt className="inline mr-2 text-sky-500" /> },
-    { name: 'React', percent: 70, icon: <FaReact className="inline mr-2 text-blue-500" /> },
+    { name: "HTML / CSS", percent: 90, icon: <FaHtml5 className="text-orange-500 text-3xl sm:text-4xl" /> },
+    { name: "JavaScript", percent: 75, icon: <FaJs className="text-yellow-400 text-3xl sm:text-4xl" /> },
+    { name: "Figma", percent: 95, icon: <FaFigma className="text-pink-500 text-3xl sm:text-4xl" /> },
+    { name: "Tailwind CSS", percent: 85, icon: <FaCss3Alt className="text-sky-500 text-3xl sm:text-4xl" /> },
+    { name: "React", percent: 70, icon: <FaReact className="text-blue-500 text-3xl sm:text-4xl" /> },
   ];
 
   return (
     <section
-      aria-labelledby="skill-heading"
       id="skills"
-      className="relative flex flex-col items-center justify-center h-auto pb-10 p-5 pt-8 md:px-5 bg-light text-dark transition-colors duration-300"
+      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-light text-dark"
     >
-      {/* Optional floating shapes for design */}
-      <div className="absolute -z-10 w-32 h-32 bg-blue-200 rounded-full top-0 right-10 opacity-20"></div>
-      <div className="absolute -z-10 w-40 h-40 bg-blue-100 rounded-full bottom-0 left-10 opacity-20"></div>
-
-      <div
-        className="w-full max-w-4xl mt-8 p-6 bg-blue-50 shadow-lg rounded-xl"
-        data-aos="fade-up"
-      >
-        <h1
-          id="skill-heading"
-          className="p-2 rounded-md mb-6 text-blue-800 font-bold text-2xl md:text-4xl"
-        >
+      <div className="max-w-5xl w-full text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-10 sm:mb-12">
           Skills
-        </h1>
+        </h2>
 
-        <div className="flex flex-col gap-6">
-          {skills.map((skill) => (
-            <div key={skill.name} className="flex flex-col">
-              {/* Skill Label + Percent */}
-              <div className="flex justify-between items-center mb-2">
-                <label className="flex items-center font-semibold text-lg">
-                  {skill.icon} {skill.name}
-                </label>
-                <span className="text-sm font-semibold">{skill.percent}%</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="group relative bg-white/70 backdrop-blur-md border border-gray-200 hover:border-blue-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-4 sm:p-6 flex flex-col justify-between"
+            >
+              {/* Top section: Icon + Skill name + Percent */}
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                {/* Left: Icon + Name */}
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-2 sm:p-3 bg-blue-50 rounded-xl shadow-inner">
+                    {skill.icon}
+                  </div>
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900">
+                    {skill.name}
+                  </h3>
+                </div>
+
+                {/* Right: Responsive Circular Percentage */}
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12">
+                  <svg viewBox="0 0 48 48" className="w-full h-full transform -rotate-90">
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#e5e7eb"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#3b82f6"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={2 * Math.PI * 20} // 2πr
+                      strokeDashoffset={(1 - skill.percent / 100) * 2 * Math.PI * 20}
+                      strokeLinecap="round"
+                      className="transition-all duration-700 ease-out"
+                    />
+                  </svg>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs sm:text-sm font-semibold text-blue-700">
+                    {skill.percent}%
+                  </span>
+                </div>
               </div>
 
-              {/* Progress Bar */}
-              <div className="w-full h-4 bg-blue-100 rounded-full overflow-hidden shadow-inner">
+              {/* Bottom subtle line */}
+              <div className="w-full h-1 bg-blue-100 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 rounded-full transform transition-all duration-1000 ease-in-out hover:scale-y-110"
+                  className="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full transition-all duration-700"
                   style={{ width: `${skill.percent}%` }}
                 ></div>
+              </div>
+
+              {/* Hover Accent text */}
+              <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out mt-1 text-xs sm:text-sm text-gray-500 text-center">
+                <p>Design · Develop · Iterate</p>
               </div>
             </div>
           ))}

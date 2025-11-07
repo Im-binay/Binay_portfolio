@@ -1,42 +1,88 @@
-import profile from '../assets/images/aboutimage.JPG';
+import React from "react";
+import profile from "../assets/images/aboutimage.JPG";
 
 export default function About() {
   return (
-    <section 
+    <section
       id="about"
-      className="flex flex-col items-center justify-center pb-10 px-4 md:px-0 bg-light text-dark transition-colors duration-300"
+      className="relative flex flex-col items-center justify-center py-14 px-4 sm:px-6 md:px-0 bg-light text-dark transition-colors duration-300 overflow-hidden"
     >
+      {/* Decorative Background Element */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50 via-transparent to-transparent" />
+
       <div
-        className="flex flex-col-reverse justify-around md:flex-row items-center gap-10 max-w-6xl mx-auto py-5"
+        className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-16 max-w-6xl mx-auto"
         data-aos="fade-up"
       >
-        <div className="w-full md:w-[45%] mt-10">
-          {/* Heading */}
-          <h1 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
-            About Me
-          </h1>
+        {/* Left: Text Content */}
+        <div className="w-full md:w-[55%] space-y-4 sm:space-y-6">
+          <div className="relative">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-800 relative inline-block">
+              Meet Binay Sharma
+              <span className="absolute -bottom-2 left-0 w-20 h-[3px] bg-blue-700 rounded-full"></span>
+            </h2>
+          </div>
 
-          {/* Description */}
-          <p className="text-justify text-base md:text-xl">
-            I’m Binay Sharma, a UI/UX & Frontend Developer with a strong foundation in Figma, HTML, Tailwind CSS, and JavaScript. I design and develop intuitive, user-centered interfaces that blend clean aesthetics with functional performance. I believe good design is about simplifying complexity and creating experiences that feel natural, engaging, and meaningful to users.
-            <span className="block mt-4">
-              My process combines research, prototyping, and iterative testing to ensure each product is both visually appealing and highly usable. I’ve recently completed my final semester exams for a Bachelor’s in Computer Application (BCA) at Pokhara University, and I’m passionate about crafting seamless digital experiences while staying current with modern design and web trends.
-            </span>
-          </p>
+        <p className="text-base sm:text-lg md:text-xl text-justify leading-relaxed text-gray-800">
+          I’m <span className="font-semibold text-blue-700">Binay Sharma</span>, a passionate 
+          <span className="font-semibold"> UI/UX Designer & Frontend Developer</span>. 
+          I craft intuitive, visually engaging digital experiences that solve real problems.
+        </p>
+
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-justify text-gray-800">
+          My design process combines <span className="font-medium text-blue-600">research, wireframing, prototyping, and user testing</span> with clean front-end development in 
+          <span className="font-medium text-blue-600"> Figma, Tailwind CSS</span>, and 
+          <span className="font-medium text-blue-600"> JavaScript</span>.
+        </p>
+
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-800 text-justify">
+          Recently, I completed my <span className="font-medium text-blue-700">Bachelor’s in Computer Application (BCA)</span> at Pokhara University. 
+          Now, I focus on building responsive interfaces, seamless user journeys, and subtle motion design to create experiences that feel alive.
+        </p>
+
+          {/* Responsive Buttons */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-0">
+            <button
+              id="hire-me-button"
+              className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-700 text-white font-medium rounded-xl shadow-md hover:bg-blue-800 hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
+            >
+              View My Resume
+            </button>
+            <a
+              href="#contact"
+              className="text-blue-700 font-semibold hover:underline underline-offset-4 text-sm sm:text-base text-center"
+            >
+              Let’s Connect →
+            </a>
+          </div>
         </div>
 
+        {/* Right: Image Section */}
         <div
-          className="w-full md:w-[30%] mt-10 bg-blue-50 rounded-2xl perspective"
+          className="w-full md:w-[40%] flex justify-center"
           data-aos="fade-up"
-          style={{ perspective: '1000px' }}
+          data-aos-delay="200"
         >
-          <div className="transform-style preserve-3d transition-transform duration-500 cursor-pointer rounded-lg shadow-xl">
-            <img
-              src={profile}
-              alt="Profile"
-              className="object-cover h-full w-full rounded-lg shadow-md"
-              loading="lazy"
-            />
+          <div className="relative group">
+            {/* Floating accent circle */}
+            <div className="absolute -top-10 -left-8 w-20 sm:w-28 h-20 sm:h-28 bg-blue-200 rounded-full blur-2xl opacity-50 -z-10" />
+
+            <div
+              className="relative transition-transform duration-700 transform group-hover:scale-[1.05] group-hover:rotate-1 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-3xl shadow-2xl p-2 sm:p-3"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <img
+                src={profile}
+                alt="Profile of Binay Sharma"
+                className="rounded-2xl object-cover w-full max-h-[350px] sm:max-h-[400px] shadow-md grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                loading="lazy"
+              />
+
+              {/* Floating badge overlay */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-md text-sm font-medium text-blue-800 text-center whitespace-nowrap">
+                UI/UX Designer ✦ Frontend Developer
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,120 +1,148 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function EduExp() {
+export default function EduExpTimelineAccordion() {
   const [selected, setSelected] = useState('education');
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [isDark, setIsDark] = useState(
+    typeof window !== "undefined" && document.body.classList.contains("dark-mode")
+  );
+
+  // Watch for dark-mode class changes dynamically
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.body.classList.contains("dark-mode"));
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  const education = [
+    { 
+      title: 'Bal Bikas English Boarding School', 
+      subtitle: 'SEE / 2018', 
+      badge: 'GPA 3.7', 
+      details: 'Completed secondary education with strong academic record.' 
+    },
+    { 
+      title: 'Gaindakot Namuna Secondary School', 
+      subtitle: '+2 CS / 2020', 
+      badge: 'GPA 3.16', 
+      details: 'Focused on computer science and mathematics.' 
+    },
+    { 
+      title: 'Oxford College of Engineering and Management', 
+      subtitle: 'BCA / 2021 - Present', 
+      badge: 'Currently Studying', 
+      details: 'Pursuing Bachelor in Computer Application, focusing on UI/UX and frontend development.' 
+    },
+  ];
+
+  const experience = [
+    { 
+      title: 'Frontend Developer Intern', 
+      subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Mar 2025 – Present', 
+      points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'] 
+    },
+    { 
+      title: 'Data Entry', 
+      subtitle: 'Navya Technologies — Jan 2025 – Mar 2025', 
+      points: ['Accurately digitised 5,000+ building-permit records', 'Maintained data quality and supported smooth rollout'] 
+    },
+  ];
+
+  const data = selected === 'education' ? education : experience;
+
+  const handleToggle = (idx) => {
+    setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
+
+  // Dynamic colors based on theme
+  const bgColor = isDark ? '#2d3748' : '#ffffff';
+  const contentBg = isDark ? '#404a5c' : '#f9fafb';
+  const textColor = isDark ? '#e2e8f0' : '#1f2937';
+  const subtitleColor = isDark ? '#cbd5e1' : '#4b5563';
+  const badgeBg = isDark ? '#2563eb' : '#3b82f6';
+  const badgeText = '#fff';
 
   return (
-    <section
-      id="education"
-      className=" flex flex-col items-center justify-center h-auto pb-10 pt-5 md:px-5 transition-colors duration-300"
-    >
-      {/* Radio Toggle */}
-      <div className="radio flex gap-4 mb-8 mt-10 bg-blue-100 p-2 rounded-full shadow">
-        {['education', 'experience'].map((type) => (
-          <label key={type} className="flex items-center cursor-pointer">
-            <input
-              type="radio"
-              name="toggle"
-              value={type}
-              checked={selected === type}
-              onChange={() => setSelected(type)}
-              className="hidden"
-            />
-            <span
-              className={`px-4 py-2 rounded-full transition-colors duration-300 ${
-                selected === type ? 'bg-blue-600 text-white' : 'text-gray-800'
-              }`}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </span>
-          </label>
+    <section id="education" className="py-8 px-3 sm:py-12 sm:px-6 md:px-12" style={{ color: textColor }}>
+      {/* Tabs */}
+      <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
+        {['education', 'experience'].map(tab => (
+          <button
+            key={tab}
+            onClick={() => { setSelected(tab); setExpandedIndex(null); }}
+            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-colors duration-300 ${selected === tab ? 'font-bold' : ''}`}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            {selected === tab && (
+              <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full" style={{ backgroundColor: badgeBg }} />
+            )}
+          </button>
         ))}
       </div>
 
-      <div className="education-section w-full max-w-4xl p-6" data-aos="fade-up">
-        {/* === EDUCATION SECTION === */}
-        {selected === 'education' && (
-          <div className="education-card bg-blue-50 shadow-lg p-5 rounded-lg p">
-            <h1 className="font-bold text-2xl text-blue-600 md:text-4xl mb-4">Education</h1>
-            <div className="border-l-2  px-4">
-              <div className="border-b border-gray-300 pb-2 mt-1">
-                <h4 className="text-xl md:text-2xl font-medium">
-                  Bal Bikas English Boarding School
-                </h4>
-                <p className="text-xs md:text-base">
-                  Secondary Education Examination (SEE) / 2018 AD
-                  <br className="md:hidden" />
-                  <span className="inline-flex items-center gap-1 md:ml-2 bg-blue-100   text-blue-800 dark:bg-blue-800 dark:text-blue-100  mt-1 md:mt-0  px-2 py-0.5 rounded-full">
-                  🎓 GPA 3.7
+      {/* Timeline Accordion */}
+      <div className="relative max-w-4xl mx-auto">
+        {/* Central vertical line */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2" style={{ borderColor: isDark ? '#1e40af' : '#bfdbfe' }} />
+
+        <div className="space-y-3 sm:space-y-6">
+          {data.map((item, idx) => (
+            <div key={idx} className="relative flex flex-col items-center">
+              {/* Dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full shadow-md" style={{ backgroundColor: badgeBg }} />
+
+              {/* Accordion Header */}
+              <div 
+                className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300"
+                style={{ backgroundColor: bgColor, color: textColor }}
+                onClick={() => handleToggle(idx)}
+              >
+                {/* Left: Title and Subtitle */}
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold flex flex-wrap items-center gap-1 sm:gap-4">
+                    {item.title} 
+                    {item.badge && (
+                      <span className="ml-0 sm:ml-2 text-xs px-2 py-1 rounded-full font-medium" style={{ backgroundColor: badgeBg, color: badgeText }}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-xs sm:text-sm mt-1" style={{ color: subtitleColor }}>{item.subtitle}</p>
+                </div>
+
+                {/* Right: Accordion toggle */}
+                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0" style={{ color: badgeBg }}>
+                  {expandedIndex === idx ? '−' : '+'}
                 </span>
-                </p>
-                
               </div>
-              <div className="border-b border-gray-300 pb-2 mt-6">
-                <h4 className="text-xl md:text-2xl font-medium">
-                  Gaindakot Namuna Secondary School
-                </h4>
-                <p className="text-xs md:text-base eduexp-muted">
-                  +2 with Computer Science / 2020 AD
-                  <br className="md:hidden" />
-                      <span className="inline-block md:inline-flex items-center gap-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 mt-1 md:mt-0 md:ml-2 px-2 py-0.5 rounded-full">
-                        🎓 GPA 3.16
-                    </span>
-                </p>
 
-              </div>
-              <div className="border-b border-gray-300 pb-2 mt-6">
-                <h4 className="text-xl md:text-2xl font-medium">
-                  Oxford College of Engineering and Management
-                </h4>
-                <p className="text-xs md:text-base eduexp-muted">
-                  Bachelor of Computer Application (BCA) / 2021 - Present
-                  <br className="md:hidden" />
-                  <span className="inline-block md:inline-flex items-center gap-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 mt-1 md:mt-0 md:ml-2 px-2 py-0.5 rounded-full">
-                  📚 Currently Studying
-                  </span>
-                </p>
-              </div>
+              {/* Accordion Content */}
+              {expandedIndex === idx && (
+                <div className="mt-1 sm:mt-2 px-3 sm:px-5 pb-3 sm:pb-4 rounded-b-2xl shadow-inner w-full" style={{ backgroundColor: contentBg, color: textColor }}>
+                  {item.points ? (
+                    <ul className="list-disc list-outside pl-5 space-y-1 text-sm sm:text-base">
+                      {item.points.map((p, i) => <li key={i}>{p}</li>)}
+                    </ul>
+                  ) : (
+                    <p className="text-sm sm:text-base">{item.details}</p>
+                  )}
+                </div>
+              )}
             </div>
-          </div>
-        )}
-
-        {/* === EXPERIENCE SECTION === */}
-        {selected === 'experience' && (
-          <div className="experience-card bg-blue-50 shadow-lg p-5 rounded-lg">
-            <h1 className="font-bold text-2xl md:text-4xl text-blue-600 mb-4">Experience</h1>
-            <div className="border-l-2 eduexp-border px-4">
-              <div className="border-b border-gray-300 pb-3 mt-1">
-                <h4 className="text-xl md:text-2xl font-semibold">Frontend Developer Intern</h4>
-                <p className=" text-sm md:text-lg font-semibold text-blue-500">
-                  Akshyaraanga Sanjaal Pvt. Ltd. — (Mar 2025 – Present)
-                </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-5">
-                  <li>Built responsive UI using HTML, Tailwind CSS, React</li>
-                  <li>Worked closely with designers on UI/UX improvements</li>
-                </ul>
-              </div>
-              <div className="border-b border-gray-300 pb-3 mt-6">
-                <h4 className="text-xl md:text-2xl font-semibold">Data Entry</h4>
-                <p className=" text-sm md:text-lg font-semibold text-blue-500">
-                  Navya Technologies — (Jan 2025 – Mar 2025)
-                </p>
-                <ul className="list-disc list-outside text-base mt-1 ml-5 ">
-                  <li>Accurately digitised 5,000+ building-permit records</li>
-                  <li>Maintained data quality and supported smooth rollout</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
 
       {/* Download CV */}
-      <div className="mt-10 flex justify-center">
+      <div className="mt-8 sm:mt-12 flex justify-center">
         <a
           href="/CV_Binay.pdf"
           download
-          className="bg-[#141d97] px-4 py-2 rounded text-white hover:bg-blue-500 transition-colors duration-300"
+          className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-colors duration-300 text-sm sm:text-base"
+          style={{ backgroundColor: badgeBg, color: badgeText }}
         >
           Download CV
         </a>
