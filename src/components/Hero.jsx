@@ -37,7 +37,7 @@ export default function Hero() {
       className={`relative h-screen flex flex-col items-center justify-center text-center overflow-hidden transition-colors duration-500
         ${isDark
           ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100"
-          : "text-gray-900"
+          : "bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-900"
         }`}
     >
       {/* Background blurred shapes */}

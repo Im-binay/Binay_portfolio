@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full min-h-screen flex items-center justify-center px-4 py-10 sm:py-20">
+    <section id="contact" className="relative w-full min-h-screen flex items-center justify-center px-4 py-4 sm:py-20">
 
       {/* Animated Blobs */}
       
@@ -81,7 +81,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <div className=" inputform flex-1 w-full max-w-xl bg-white/40 backdrop-blur-lg border border-white/30 rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 flex flex-col gap-4 sm:gap-6">
+        <div className=" inputform flex-1 w-full max-w-xl bg-white/40 backdrop-blur-lg border border-white/30 rounded-3xl shadow-2xl p-4 sm:p-8 md:px-10 flex flex-col gap-4 sm:gap-6">
 
           <form ref={form} onSubmit={sendEmail} className="w-full flex flex-col gap-4 sm:gap-5">
 
