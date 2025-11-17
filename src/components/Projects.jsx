@@ -14,16 +14,17 @@ const projects = [
     title: 'Courier Tracking System',
     description: 'A web-based system to track and manage courier deliveries.',
     link: 'https://github.com/Im-binay/CourierTrackingProject',
-    tech: ['Laravel', 'MySQL', 'Figma'],
+    tech: ['Laravel', 'HTML', 'CSS', 'Figma'],
     image: courierTrackingImg,
   },  
   {
-    title: 'Demo College Ui Design',
+    title: 'Kaarighar: Skill Hiring App',
     description: 'A platform connecting service seekers with local skilled professionals.',
-    link: 'https://www.figma.com/proto/q8dZbHStkVHuaK33mcMehY/College-Website?node-id=1-3&t=RCWaGgqGTmo7bfJm-1',
+    link: 'https://www.figma.com/design/Dy6PpbhAU0voKti6r2ZDXj/KaariGhar?node-id=0-1&t=u33idKA1h9zyODBN-1',
     tech: ['Wireframe', 'Figma'],
     image: UiImage,
   },
+  
 ];
 
 export default function Project() {
