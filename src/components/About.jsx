@@ -42,12 +42,13 @@ export default function About() {
 
           {/* Responsive Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-0">
-            <button
+            <a href="/BinayUI_Cv.pdf"
+            target="_blank"
               id="hire-me-button"
               className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-700 text-white font-medium rounded-xl shadow-md hover:bg-blue-800 hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
             >
               View My Resume
-            </button>
+            </a>
             <a
               href="#contact"
               className="text-blue-700 font-semibold hover:underline underline-offset-4 text-sm sm:text-base text-center"

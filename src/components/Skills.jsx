@@ -3,11 +3,11 @@ import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaFigma } from "react-icons/fa";
 
 export default function SkillModernCard() {
   const skills = [
-    { name: "HTML / CSS", percent: 90, icon: <FaHtml5 className="text-orange-500 text-3xl sm:text-4xl" /> },
-    { name: "JavaScript", percent: 75, icon: <FaJs className="text-yellow-400 text-3xl sm:text-4xl" /> },
-    { name: "Figma", percent: 95, icon: <FaFigma className="text-pink-500 text-3xl sm:text-4xl" /> },
-    { name: "Tailwind CSS", percent: 85, icon: <FaCss3Alt className="text-sky-500 text-3xl sm:text-4xl" /> },
-    { name: "React", percent: 70, icon: <FaReact className="text-blue-500 text-3xl sm:text-4xl" /> },
+    { name: "HTML / CSS", percent: 85, icon: <FaHtml5 className="text-orange-500 text-3xl sm:text-4xl" /> },
+    { name: "JavaScript", percent: 70, icon: <FaJs className="text-yellow-400 text-3xl sm:text-4xl" /> },
+    { name: "Figma", percent: 80, icon: <FaFigma className="text-pink-500 text-3xl sm:text-4xl" /> },
+    { name: "Tailwind CSS", percent: 80, icon: <FaCss3Alt className="text-sky-500 text-3xl sm:text-4xl" /> },
+    // { name: "React", percent: 70, icon: <FaReact className="text-blue-500 text-3xl sm:text-4xl" /> },
   ];
 
   return (

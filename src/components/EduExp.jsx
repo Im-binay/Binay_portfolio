@@ -26,13 +26,13 @@ export default function EduExpTimelineAccordion() {
     },
     { 
       title: 'Gaindakot Namuna Secondary School', 
-      subtitle: '+2 CS / 2020', 
+      subtitle: '+2 Science with Computer / 2020', 
       badge: 'GPA 3.16', 
       details: 'Focused on computer science and mathematics.' 
     },
     { 
       title: 'Oxford College of Engineering and Management', 
-      subtitle: 'BCA / 2021 - Present', 
+      subtitle: 'Bachelor of Computer Application / 2021 - 2025', 
       badge: 'Currently Studying', 
       details: 'Pursuing Bachelor in Computer Application, focusing on UI/UX and frontend development.' 
     },
@@ -121,16 +121,24 @@ export default function EduExpTimelineAccordion() {
 
               {/* Accordion Content */}
               {expandedIndex === idx && (
-                <div className="mt-1 sm:mt-2 px-3 sm:px-5 pb-3 sm:pb-4 rounded-b-2xl shadow-inner w-full" style={{ backgroundColor: contentBg, color: textColor }}>
-                  {item.points ? (
-                    <ul className="list-disc list-outside pl-5 space-y-1 text-sm sm:text-base">
-                      {item.points.map((p, i) => <li key={i}>{p}</li>)}
-                    </ul>
-                  ) : (
-                    <p className="text-sm sm:text-base">{item.details}</p>
-                  )}
-                </div>
-              )}
+  <div className="w-full flex justify-center">
+    <div
+      className="mt-1 sm:mt-2 px-4 py-3 rounded-2xl shadow-inner inline-block max-w-[90%]"
+      style={{ backgroundColor: contentBg, color: textColor }}
+    >
+      {item.points ? (
+        <ul className="list-disc list-outside  pl-4 space-y-1 text-sm sm:text-base">
+          {item.points.map((p, i) => (
+            <li key={i}>{p}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm sm:text-base">{item.details}</p>
+      )}
+    </div>
+  </div>
+)}
+
             </div>
           ))}
         </div>
@@ -139,7 +147,7 @@ export default function EduExpTimelineAccordion() {
       {/* Download CV */}
       <div className="mt-8 sm:mt-12 flex justify-center">
         <a
-          href="/CV_Binay.pdf"
+          href="/BinayUI_Cv.pdf"
           download
           className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-colors duration-300 text-sm sm:text-base"
           style={{ backgroundColor: badgeBg, color: badgeText }}
