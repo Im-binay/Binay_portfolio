@@ -8,21 +8,16 @@ export default function EduExpTimelineAccordion() {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-useLayoutEffect(() => {
-  setIsDark(document.body.classList.contains('dark-mode'));
-  setMounted(true);
-}, []);
-
+  useLayoutEffect(() => {
+    setIsDark(document.body.classList.contains('dark-mode'));
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    setMounted(true);
-
-    // Observe body class changes
     const observer = new MutationObserver(() => {
       setIsDark(document.body.classList.contains('dark-mode'));
     });
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
     return () => observer.disconnect();
   }, []);
 
@@ -40,38 +35,21 @@ useLayoutEffect(() => {
   ];
 
   const data = selected === 'education' ? education : experience;
-
   const handleToggle = (idx) => setExpandedIndex(expandedIndex === idx ? null : idx);
 
-  // Dynamic colors based on theme
-  const bgColor = isDark ? '#1a202c' : '#f9fafb';
-  const contentBg = isDark ? '#404a5c' : '#f9fafb';
-  const textColor = isDark ? '#e2e8f0' : '#1f2937';
-  const subtitleColor = isDark ? '#cbd5e1' : '#4b5563';
-  const badgeBg = isDark ? '#2563eb' : '#3b82f6';
-  const badgeText = '#fff';
-  const lineColor = isDark ? '#1e40af' : '#bfdbfe';
-  const dotColor = isDark ? '#60a5fa' : '#3b82f6';
-
   return (
-    <section id="education" className="py-8 px-3 sm:py-12  sm:px-6 md:px-12" >
-      
+    <section id="education" className="py-8 px-3 sm:py-12 sm:px-6 md:px-12">
+
       {/* Tabs */}
       <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
-        {['education', 'experience'].map((tab) => (
+        {['education', 'experience'].map(tab => (
           <button
             key={tab}
             onClick={() => { setSelected(tab); setExpandedIndex(null); }}
-            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-all duration-300`}
-            style={{
-              fontWeight: selected === tab ? '700' : '500',
-              color: selected === tab ? badgeBg : subtitleColor
-            }}
+            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-all duration-300 ${selected === tab ? 'font-bold text-blue-600 dark:text-blue-400' : 'font-medium text-gray-600 dark:text-gray-300'}`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
-            {selected === tab && (
-              <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full" style={{ backgroundColor: badgeBg }} />
-            )}
+            {selected === tab && <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full bg-blue-600 dark:bg-blue-400" />}
           </button>
         ))}
       </div>
@@ -79,44 +57,34 @@ useLayoutEffect(() => {
       {/* Timeline Accordion */}
       <div className="relative max-w-4xl mx-auto">
         {/* Central vertical line */}
-        <div
-          className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2"
-          style={{ borderColor: lineColor }}
-        />
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 timeline-line"></div>
 
         <div className="space-y-3 sm:space-y-6">
           {data.map((item, idx) => (
             <div key={idx} className="relative flex flex-col items-center">
-              
+
               {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full shadow-md"
-                   style={{ backgroundColor: dotColor }} />
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full timeline-dot shadow-md"></div>
 
               {/* Accordion Header */}
               <div
-                className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300"
-                style={{ backgroundColor: contentBg, color: textColor }}
+                className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl accordion-card"
                 onClick={() => handleToggle(idx)}
               >
                 <div className="flex-1">
                   <h3 className="text-base sm:text-lg md:text-xl font-semibold flex flex-wrap items-center gap-1 sm:gap-4">
                     {item.title}
                     {item.badge && (
-                      <span
-                        className="ml-0 sm:ml-2 text-xs px-2 py-1 rounded-full font-medium"
-                        style={{ backgroundColor: badgeBg, color: badgeText }}
-                      >
+                      <span className="ml-0 sm:ml-2 text-xs px-2 py-1 rounded-full accordion-badge">
                         {item.badge}
                       </span>
                     )}
                   </h3>
-                  <p className="text-xs sm:text-sm mt-1" style={{ color: subtitleColor }}>
-                    {item.subtitle}
-                  </p>
+                  <p className="text-xs sm:text-sm mt-1 accordion-subtitle">{item.subtitle}</p>
                 </div>
 
-                {/* Toggle */}
-                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0" style={{ color: badgeBg }}>
+                {/* Toggle symbol */}
+                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0 text-blue-600 dark:text-blue-400">
                   {expandedIndex === idx ? '−' : '+'}
                 </span>
               </div>
@@ -124,10 +92,7 @@ useLayoutEffect(() => {
               {/* Accordion Content */}
               {expandedIndex === idx && (
                 <div className="w-full flex justify-center">
-                  <div
-                    className="mt-1 sm:mt-2 px-4 py-3 rounded-2xl shadow-inner max-w-[90%] inline-block"
-                    style={{ backgroundColor: contentBg, color: textColor }}
-                  >
+                  <div className="mt-1 sm:mt-2 px-4 py-3 rounded-2xl shadow-inner max-w-[90%] inline-block accordion-card">
                     {item.points ? (
                       <ul className="list-disc pl-4 space-y-1 text-sm sm:text-base">
                         {item.points.map((p, i) => <li key={i}>{p}</li>)}
@@ -149,8 +114,7 @@ useLayoutEffect(() => {
         <a
           href="/BinayUI_Cv.pdf"
           download
-          className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300"
-          style={{ backgroundColor: badgeBg, color: badgeText }}
+          className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 bg-blue-600 dark:bg-blue-400 text-white"
         >
           Download CV
         </a>
