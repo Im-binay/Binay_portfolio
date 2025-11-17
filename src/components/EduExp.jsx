@@ -3,32 +3,37 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 export default function EduExpTimelineAccordion() {
   const [selected, setSelected] = useState('education');
   const [expandedIndex, setExpandedIndex] = useState(null);
-
-  // Detect dark mode BEFORE first paint
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Runs BEFORE screen paints → prevents white flash
+  // Detect dark mode BEFORE first paint
   useLayoutEffect(() => {
-    setIsDark(document.body.classList.contains("dark-mode"));
+    setIsDark(document.body.classList.contains('dark-mode'));
   }, []);
 
-  // After mount
+  // After mount, watch for theme toggle
   useEffect(() => {
     setMounted(true);
-
-    // Watch for theme toggle
     const observer = new MutationObserver(() => {
-      setIsDark(document.body.classList.contains("dark-mode"));
+      setIsDark(document.body.classList.contains('dark-mode'));
     });
-
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
     return () => observer.disconnect();
   }, []);
 
-  // Prevent flash before dark/light mode is known
-  if (!mounted) return null;
+  // Pre-render placeholder to prevent white flash
+  if (!mounted) {
+    return (
+      <section
+        id="education"
+        className="py-8 px-3 sm:py-12 sm:px-6 md:px-12"
+        style={{
+          backgroundColor: isDark ? '#1a202c' : '#ffffff',
+          color: isDark ? '#e2e8f0' : '#1f2937'
+        }}
+      />
+    );
+  }
 
   const education = [
     { 
@@ -70,17 +75,23 @@ export default function EduExpTimelineAccordion() {
     setExpandedIndex(expandedIndex === idx ? null : idx);
   };
 
-  // Dynamic colors based on theme
-  const bgColor = isDark ? '#2d3748' : '#ffffff';
-  const contentBg = isDark ? '#404a5c' : '#f9fafb';
-  const textColor = isDark ? '#e2e8f0' : '#1f2937';
-  const subtitleColor = isDark ? '#cbd5e1' : '#4b5563';
-  const badgeBg = isDark ? '#2563eb' : '#3b82f6';
-  const badgeText = '#fff';
+  // Theme-based colors
+  const colors = {
+    bgColor: isDark ? '#2d3748' : '#ffffff',
+    contentBg: isDark ? '#404a5c' : '#f9fafb',
+    textColor: isDark ? '#e2e8f0' : '#1f2937',
+    subtitleColor: isDark ? '#cbd5e1' : '#4b5563',
+    badgeBg: isDark ? '#2563eb' : '#3b82f6',
+    badgeText: '#fff',
+    lineColor: isDark ? '#1e40af' : '#bfdbfe',
+  };
 
   return (
-    <section id="education" className="py-8 px-3 sm:py-12 sm:px-6 md:px-12" style={{ color: textColor }}>
-      
+    <section
+      id="education"
+      className="py-8 px-3 sm:py-12 sm:px-6 md:px-12"
+      style={{ color: colors.textColor }}
+    >
       {/* Tabs */}
       <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
         {['education', 'experience'].map(tab => (
@@ -88,10 +99,14 @@ export default function EduExpTimelineAccordion() {
             key={tab}
             onClick={() => { setSelected(tab); setExpandedIndex(null); }}
             className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-colors duration-300 ${selected === tab ? 'font-bold' : ''}`}
+            style={{ color: colors.textColor }}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
             {selected === tab && (
-              <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full" style={{ backgroundColor: badgeBg }} />
+              <span
+                className="absolute -bottom-1 left-0 w-full h-1 rounded-full"
+                style={{ backgroundColor: colors.badgeBg }}
+              />
             )}
           </button>
         ))}
@@ -99,50 +114,44 @@ export default function EduExpTimelineAccordion() {
 
       {/* Timeline Accordion */}
       <div className="relative max-w-4xl mx-auto">
-        
         {/* Central vertical line */}
         <div
           className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2"
-          style={{ borderColor: isDark ? '#1e40af' : '#bfdbfe' }}
+          style={{ borderColor: colors.lineColor }}
         />
 
         <div className="space-y-3 sm:space-y-6">
           {data.map((item, idx) => (
-            <div key={idx} className="relative flex flex-col items-center">
-              
+            <div key={idx} className="relative flex flex-col items-center w-full">
               {/* Dot */}
               <div
                 className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full shadow-md"
-                style={{ backgroundColor: badgeBg }}
+                style={{ backgroundColor: colors.badgeBg }}
               />
 
               {/* Accordion Header */}
               <div
                 className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300"
-                style={{ backgroundColor: bgColor, color: textColor }}
+                style={{ backgroundColor: colors.bgColor, color: colors.textColor }}
                 onClick={() => handleToggle(idx)}
               >
-                {/* Left */}
                 <div className="flex-1">
                   <h3 className="text-base sm:text-lg md:text-xl font-semibold flex flex-wrap items-center gap-1 sm:gap-4">
                     {item.title}
                     {item.badge && (
                       <span
                         className="ml-0 sm:ml-2 text-xs px-2 py-1 rounded-full font-medium"
-                        style={{ backgroundColor: badgeBg, color: badgeText }}
+                        style={{ backgroundColor: colors.badgeBg, color: colors.badgeText }}
                       >
                         {item.badge}
                       </span>
                     )}
                   </h3>
-
-                  <p className="text-xs sm:text-sm mt-1" style={{ color: subtitleColor }}>
+                  <p className="text-xs sm:text-sm mt-1" style={{ color: colors.subtitleColor }}>
                     {item.subtitle}
                   </p>
                 </div>
-
-                {/* Toggle */}
-                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0" style={{ color: badgeBg }}>
+                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0" style={{ color: colors.badgeBg }}>
                   {expandedIndex === idx ? '−' : '+'}
                 </span>
               </div>
@@ -152,7 +161,7 @@ export default function EduExpTimelineAccordion() {
                 <div className="w-full flex justify-center">
                   <div
                     className="mt-1 sm:mt-2 px-4 py-3 rounded-2xl shadow-inner inline-block max-w-[90%]"
-                    style={{ backgroundColor: contentBg, color: textColor }}
+                    style={{ backgroundColor: colors.contentBg, color: colors.textColor }}
                   >
                     {item.points ? (
                       <ul className="list-disc pl-4 space-y-1 text-sm sm:text-base">
@@ -164,7 +173,6 @@ export default function EduExpTimelineAccordion() {
                   </div>
                 </div>
               )}
-
             </div>
           ))}
         </div>
@@ -176,12 +184,11 @@ export default function EduExpTimelineAccordion() {
           href="/BinayUI_Cv.pdf"
           download
           className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-colors duration-300 text-sm sm:text-base"
-          style={{ backgroundColor: badgeBg, color: badgeText }}
+          style={{ backgroundColor: colors.badgeBg, color: colors.badgeText }}
         >
           Download CV
         </a>
       </div>
-
     </section>
   );
 }
