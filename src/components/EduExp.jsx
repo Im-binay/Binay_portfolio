@@ -54,7 +54,7 @@ useLayoutEffect(() => {
   const dotColor = isDark ? '#60a5fa' : '#3b82f6';
 
   return (
-    <section id="education" className="py-8 px-3 sm:py-12  bg-light sm:px-6 md:px-12" style={{ color: textColor, backgroundColor: bgColor }}>
+    <section id="education" className="py-8 px-3 sm:py-12  sm:px-6 md:px-12" >
       
       {/* Tabs */}
       <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
@@ -95,7 +95,7 @@ useLayoutEffect(() => {
               {/* Accordion Header */}
               <div
                 className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300"
-                style={{  color: textColor }}
+                style={{ color: textColor }}
                 onClick={() => handleToggle(idx)}
               >
                 <div className="flex-1">
