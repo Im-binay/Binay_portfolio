@@ -6,9 +6,11 @@ export default function EduExpTimelineAccordion() {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Detect dark mode BEFORE first paint
+  // Detect dark mode BEFORE first paint (production-safe)
   useLayoutEffect(() => {
-    setIsDark(document.body.classList.contains('dark-mode'));
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const bodyDark = document.body.classList.contains('dark-mode');
+    setIsDark(bodyDark || prefersDark);
   }, []);
 
   // After mount, watch for theme toggle
@@ -29,51 +31,49 @@ export default function EduExpTimelineAccordion() {
         className="py-8 px-3 sm:py-12 sm:px-6 md:px-12"
         style={{
           backgroundColor: isDark ? '#1a202c' : '#ffffff',
-          color: isDark ? '#e2e8f0' : '#1f2937'
+          color: isDark ? '#e2e8f0' : '#1f2937',
         }}
       />
     );
   }
 
   const education = [
-    { 
-      title: 'Bal Bikas English Boarding School', 
-      subtitle: 'SEE / 2018', 
-      badge: 'GPA 3.7', 
-      details: 'Completed secondary education with strong academic record.' 
+    {
+      title: 'Bal Bikas English Boarding School',
+      subtitle: 'SEE / 2018',
+      badge: 'GPA 3.7',
+      details: 'Completed secondary education with strong academic record.',
     },
-    { 
-      title: 'Gaindakot Namuna Secondary School', 
-      subtitle: '+2 Science with Computer / 2020', 
-      badge: 'GPA 3.16', 
-      details: 'Focused on computer science and mathematics.' 
+    {
+      title: 'Gaindakot Namuna Secondary School',
+      subtitle: '+2 Science with Computer / 2020',
+      badge: 'GPA 3.16',
+      details: 'Focused on computer science and mathematics.',
     },
-    { 
-      title: 'Oxford College of Engineering and Management', 
-      subtitle: 'Bachelor of Computer Application / 2021 - 2025', 
-      badge: 'Currently Studying', 
-      details: 'Pursuing Bachelor in Computer Application, focusing on UI/UX and frontend development.' 
+    {
+      title: 'Oxford College of Engineering and Management',
+      subtitle: 'Bachelor of Computer Application / 2021 - 2025',
+      badge: 'Currently Studying',
+      details:
+        'Pursuing Bachelor in Computer Application, focusing on UI/UX and frontend development.',
     },
   ];
 
   const experience = [
-    { 
-      title: 'Frontend Developer Intern', 
-      subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Mar 2025 – Present', 
-      points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'] 
+    {
+      title: 'Frontend Developer Intern',
+      subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Mar 2025 – Present',
+      points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'],
     },
-    { 
-      title: 'Data Entry', 
-      subtitle: 'Navya Technologies — Jan 2025 – Mar 2025', 
-      points: ['Accurately digitised 5,000+ building-permit records', 'Maintained data quality and supported smooth rollout'] 
+    {
+      title: 'Data Entry',
+      subtitle: 'Navya Technologies — Jan 2025 – Mar 2025',
+      points: ['Accurately digitised 5,000+ building-permit records', 'Maintained data quality and supported smooth rollout'],
     },
   ];
 
   const data = selected === 'education' ? education : experience;
-
-  const handleToggle = (idx) => {
-    setExpandedIndex(expandedIndex === idx ? null : idx);
-  };
+  const handleToggle = (idx) => setExpandedIndex(expandedIndex === idx ? null : idx);
 
   // Theme-based colors
   const colors = {
@@ -94,11 +94,16 @@ export default function EduExpTimelineAccordion() {
     >
       {/* Tabs */}
       <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
-        {['education', 'experience'].map(tab => (
+        {['education', 'experience'].map((tab) => (
           <button
             key={tab}
-            onClick={() => { setSelected(tab); setExpandedIndex(null); }}
-            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-colors duration-300 ${selected === tab ? 'font-bold' : ''}`}
+            onClick={() => {
+              setSelected(tab);
+              setExpandedIndex(null);
+            }}
+            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-colors duration-300 ${
+              selected === tab ? 'font-bold' : ''
+            }`}
             style={{ color: colors.textColor }}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -165,7 +170,9 @@ export default function EduExpTimelineAccordion() {
                   >
                     {item.points ? (
                       <ul className="list-disc pl-4 space-y-1 text-sm sm:text-base">
-                        {item.points.map((p, i) => <li key={i}>{p}</li>)}
+                        {item.points.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
                       </ul>
                     ) : (
                       <p className="text-sm sm:text-base">{item.details}</p>
