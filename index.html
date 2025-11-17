@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" >
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -14,10 +14,25 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
   </head>
+
   <body>
+    <!-- Inline dark mode script runs BEFORE React -->
+    <script>
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- React root -->
     <div id="root"></div>
+
+    <!-- React bundle -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
