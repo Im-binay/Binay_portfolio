@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 @import "tailwindcss";
 
-/* * { outline: 1px solid red; } */
-
+/* =====================================================
+   GLOBAL STYLES
+   ===================================================== */
 html {
   scroll-behavior: smooth;
   scroll-padding: 40px;
@@ -20,15 +21,19 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* =====================================
-   🌙 DARK MODE OVERRIDES (Refined)
-   ===================================== */
+/* Dark Mode Base */
 body.dark-mode {
   background-color: #1a1c20;
   color: #e2e8f0;
 }
 
-/* ===== NAVIGATION ===== */
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+nav {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 body.dark-mode nav {
   background-color: #111827;
 }
@@ -45,7 +50,9 @@ body.dark-mode .fa-sun:hover {
   color: yellow;
 }
 
-/* ===== GENERAL TEXT ===== */
+/* =====================================================
+   GENERAL TEXT
+   ===================================================== */
 body.dark-mode h1,
 body.dark-mode .fa-solid,
 body.dark-mode .text-dark,
@@ -53,14 +60,22 @@ body.dark-mode #hire-me-button:hover,
 body.dark-mode button {
   color: #fff;
 }
+
 body.dark-mode h2 {
   color: #2563EB;
 }
 
-/* ===== HERO ===== */
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+#home {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 body.dark-mode #home {
   background: #1a202c;
 }
+
 body.dark-mode #home h1 {
   color: #ffffff;
 }
@@ -77,6 +92,8 @@ body.dark-mode #home .hero-shape {
   filter: brightness(50%) blur(30px);
   opacity: 0.25;
 }
+
+/* Hero animation */
 body.dark-mode .animate-bounce {
   animation: bounce 1s infinite;
 }
@@ -85,122 +102,47 @@ body.dark-mode .animate-bounce {
   50% { transform: translateY(10px); }
 }
 
-/* ===== PROJECTS ===== */
-body.dark-mode .project-card .project-link,
-body.dark-mode .project-card p {
-  color: white;
-}
-
-/* ===== EDUCATION + EXPERIENCE ===== */
-body.dark-mode #education {
-  background-color: #1a202c;
-}
-body.dark-mode .education-card,
-body.dark-mode .experience-card {
-  color: white;
-  background-color: #404a5cab;
-}
-body.dark-mode .radio {
-  background-color: #3d2b30;
-}
-body.dark-mode .radio span {
-  color: white;
-}
-
-/* ===== SKILLS SECTION ===== */
-body.dark-mode #skills {
-  background-color: #1a202c;
-  color: #fff;
-}
-body.dark-mode #skills h1 {
-  color: #60a5fa;
-}
-body.dark-mode #skills .group {
-  background-color: #2d3748;
-  border: 1px solid #4a5568;
-}
-
-body.dark-mode #skills .skill-percent, .dark-mode #skills h3{
-  color: #e2e8f0;
-}
-body.dark-mode #skills .bg-blue-100 {
-  background-color: #4a5568 !important;
-}
-body.dark-mode #skills .absolute {
-  opacity: 1;
-  color: white;
-  /* filter: brightness(70%) blur(10px); */
-}
-
-/* ===== ABOUT SECTION ===== */
-body.dark-mode #about {
-  background-color: #1a202c;
-  color: #e2e8f0;
-}
-body.dark-mode #about h2 {
-  color: #60a5fa;
-}
-body.dark-mode #about p {
-  color: #e2e8f0;
-}
-body.dark-mode #about span {
-  color: #93c5fd;
-}
-body.dark-mode #about button {
-  background-color: #2563eb;
-}
-body.dark-mode #about button:hover {
-  background-color: #1d4ed8;
-}
-body.dark-mode #about .from-blue-100,
-body.dark-mode #about .bg-blue-100 {
-  background-color: #2d3748;
-}
-
-/* ===== TIMELINE / EDUCATION ===== */
-#timeline-section {
-  color: #1f2937;
-  position: relative;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-#timeline-section .border-l-2 {
-  border-color: #bfdbfe;
-}
-#timeline-section .w-6.h-6 {
-  background-color: #3b82f6;
-}
-#timeline-section .ml-0.md\:ml-6 {
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+/* =====================================================
+   PROJECTS SECTION
+   ===================================================== */
+.project-card {
   transition: all 0.3s ease;
 }
-#timeline-section .ml-0.md\:ml-6:hover {
-  transform: scale(1.02);
+
+body.dark-mode #project {
+  background-color: #1a202c;
 }
-#timeline-section h3 {
-  color: #1e40af;
+body.dark-mode #project .project-card {
+  background-color: #2d3748; 
+  border: 1px solid #4a5568;  
+  color: #e2e8f0;             
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-#timeline-section p {
-  color: #4b5563;
+body.dark-mode #project .project-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
 }
-#timeline-section span.inline-block {
-  background-color: #3b82f6;
-  color: #ffffff;
+body.dark-mode #project .project-card h3 {
+  color: #60a5fa;
 }
-#timeline-section .ml-0.md\:ml-6.mt-2 {
-  background-color: #eff6ff;
-  color: #1f2937;
+body.dark-mode #project .project-card p {
+  color: #e2e8f0;
 }
-#timeline-section a {
-  background-color: #3b82f6;
-  color: #fff;
+body.dark-mode #project .project-card .tech-tag {
+  background-color: #4a5568;
+  color: #60a5fa;
 }
-#timeline-section a:hover {
-  background-color: #2563eb;
+body.dark-mode #project .project-card a {
+  color: #60a5fa;
+}
+body.dark-mode #project .project-card a:hover {
+  color: #2563eb;
 }
 
-/* ===== TIMELINE DARK ===== */
-body.dark-mode #education {
+/* =====================================================
+   EDUCATION SECTION
+   ===================================================== */
+body.dark-mode #education{
   background-color: #1a202c;
   color: #e2e8f0;
 }
@@ -230,14 +172,72 @@ body.dark-mode #education .ml-0.md\:ml-6.mt-2 {
   background-color: #404a5c;
   color: #e2e8f0;
 }
-body.dark-mode #education a {
-  background-color: #2563eb;
+
+/* =====================================================
+   SKILLS SECTION
+   ===================================================== */
+#skills {
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
-body.dark-mode #education a:hover {
-  background-color: #1d4ed8;
+body.dark-mode #skills {
+  background-color: #1a202c;
+  color: #fff;
+}
+body.dark-mode #skills h1 {
+  color: #60a5fa;
+}
+body.dark-mode #skills .group {
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+}
+body.dark-mode #skills .skill-percent,
+body.dark-mode #skills h3 {
+  color: #e2e8f0;
+}
+body.dark-mode #skills .bg-blue-100 {
+  background-color: #4a5568 !important;
+}
+body.dark-mode #skills .absolute {
+  opacity: 1;
+  color: white;
 }
 
-/* ===== CONTACT SECTION ===== */
+/* =====================================================
+   ABOUT SECTION
+   ===================================================== */
+#about {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+body.dark-mode #about {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+body.dark-mode #about h2 {
+  color: #60a5fa;
+}
+body.dark-mode #about p {
+  color: #e2e8f0;
+}
+body.dark-mode #about span {
+  color: #93c5fd;
+}
+body.dark-mode #about button {
+  background-color: #2563eb;
+}
+body.dark-mode #about button:hover {
+  background-color: #1d4ed8;
+}
+body.dark-mode #about .from-blue-100,
+body.dark-mode #about .bg-blue-100 {
+  background-color: #2d3748;
+}
+
+/* =====================================================
+   CONTACT SECTION
+   ===================================================== */
+#contact {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
 body.dark-mode #contact {
   background-color: #1a202c;
   color: #e2e8f0;
@@ -271,48 +271,13 @@ body.dark-mode #contact .fa-brands {
   color: #e2e8f0;
 }
 
-/* ===== FOOTER ===== */
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
 body.dark-mode footer {
   background-color: #1a202c;
   color: #e2e8f0;
-}
-
-body.dark-mode #project{
-  background-color: #1a202c;
-}
-
-body.dark-mode .project-card .project-link { color: white; }
-body.dark-mode .project-card p { color: white; }
-/* Project Section Dark Mode */
-body.dark-mode #project .project-card {
-  background-color: #2d3748;  /* dark card background */
-  border: 1px solid #4a5568;  /* subtle border */
-  color: #e2e8f0;             /* ensure text inherits */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode #project .project-card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transform: translateY(-2px);
-}
-
-body.dark-mode #project .project-card h3 {
-  color: #60a5fa; /* accent heading */
-}
-
-body.dark-mode #project .project-card p {
-  color: #e2e8f0; /* description text */
-}
-
-body.dark-mode #project .project-card .tech-tag {
-  background-color: #4a5568;  /* dark pill */
-  color: #60a5fa;             /* accent text */
-}
-
-body.dark-mode #project .project-card a {
-  color: #60a5fa;             /* link color */
-}
-
-body.dark-mode #project .project-card a:hover {
-  color: #2563eb;
 }
