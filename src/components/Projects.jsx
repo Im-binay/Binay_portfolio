@@ -210,7 +210,7 @@ export default function Project() {
                   color: '#fff',
                 }}
               >
-                View Full Figma
+                View →
               </a>
             </div>
           </div>
