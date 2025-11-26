@@ -35,7 +35,7 @@ const projects = [
       'Enhanced ability to display complex information clearly and streamline backend integration with a user-friendly front-end.',
     tech: ['Laravel', 'HTML', 'CSS', 'Figma'],
     image: courierTrackingImg,
-    link: 'https://github.com/Im-binay/CourierTrackingProject',
+    link: 'https://github.com/Im-binay/CourierTrackingProject.git',
   },
   {
     title: 'Kaarighar: Skill Hiring App',
