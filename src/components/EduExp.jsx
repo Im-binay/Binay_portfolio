@@ -114,9 +114,10 @@ export default function EduExpTimelineAccordion() {
         <a
           href="/BinayUI_Cv.pdf"
           download
-          className="px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 bg-blue-600 dark:bg-blue-400 text-white"
+          className="px-4 sm:px-6 py-2 sm:py-3  rounded-xl font-medium text-sm sm:text-base transition-all duration-300 bg-blue-600 dark:bg-blue-400 text-white"
         >
           Download CV
+          
         </a>
       </div>
 
