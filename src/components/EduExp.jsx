@@ -30,7 +30,7 @@ export default function EduExpTimelineAccordion() {
   ];
 
   const experience = [
-    { title: 'Frontend Developer Intern', subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Mar 2025 – Present', points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'] },
+    { title: 'Frontend Developer Intern', subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Dec 2024 – Feb 2025 ', points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'] },
     { title: 'Data Entry', subtitle: 'Navya Technologies — Jan 2025 – Mar 2025', points: ['Accurately digitised 5,000+ building-permit records', 'Maintained data quality and supported smooth rollout'] },
   ];
 
