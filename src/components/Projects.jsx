@@ -16,7 +16,7 @@ const projects = [
     ],
     takeaways:
       'Learned how to combine visual aesthetics with usability, creating a functional and engaging user interface.',
-    tech: ['Figma', 'Wireframe'],
+    tech: ['Wireframe', 'Figma'], 
     image: UiImage,
     link: 'https://www.figma.com/proto/xWMRIaZRgfXPB6aJ1V29SX/RRR?node-id=4-4&t=mMYhYnZo21d2vrZh-1',
   },
@@ -33,7 +33,7 @@ const projects = [
     ],
     takeaways:
       'Enhanced ability to display complex information clearly and streamline backend integration with a user-friendly front-end.',
-    tech: ['Laravel', 'HTML', 'CSS', 'Figma'],
+    tech: ['Figma', 'HTML', 'CSS', 'Laravel'],
     image: courierTrackingImg,
     link: 'https://github.com/Im-binay/CourierTrackingProject.git',
   },
@@ -72,16 +72,14 @@ export default function Project() {
     return () => observer.disconnect();
   }, []);
 
-  // Open modal with fade-in
   const openModal = (project) => {
     setSelectedProject(project);
     setShowModal(true);
   };
 
-  // Close modal with fade-out
   const closeModal = () => {
     setShowModal(false);
-    setTimeout(() => setSelectedProject(null), 300); // match transition duration
+    setTimeout(() => setSelectedProject(null), 300);
   };
 
   return (
@@ -90,7 +88,10 @@ export default function Project() {
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 pb-10 transition-colors duration-500"
     >
       <div className="w-full max-w-6xl mt-5 mx-auto text-center" data-aos="fade-in">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 transition-colors duration-500" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
+        <h1
+          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 transition-colors duration-500"
+          style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}
+        >
           Projects
         </h1>
 
@@ -116,7 +117,10 @@ export default function Project() {
                 />
               </div>
 
-              <h3 className="text-center text-lg sm:text-xl md:text-2xl font-bold mb-2" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
+              <h3
+                className="text-center text-lg sm:text-xl md:text-2xl font-bold mb-2"
+                style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}
+              >
                 {project.title}
               </h3>
 
@@ -136,13 +140,6 @@ export default function Project() {
                   </span>
                 ))}
               </div>
-
-              <button
-                className="mt-auto font-semibold transition-colors duration-300 text-sm sm:text-base"
-                style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}
-              >
-                View Project →
-              </button>
             </div>
           ))}
         </div>
