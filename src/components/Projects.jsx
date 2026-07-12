@@ -1,221 +1,200 @@
-import React, { useState, useEffect } from 'react';
-import UiImage from '../assets/images/ui.ux.jpg';
-import courierTrackingImg from '../assets/images/Courier-Tracking.jpg';
+import { useRef } from "react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+import kaarighar from "../assets/images/Courier-Tracking.jpg";
+import courier from "../assets/images/rrr.jpg";
 
 const projects = [
   {
-    title: 'Royal Rhino Rider Website',
+    id: 1,
+    title: "Kaarighar (Skill Hiring App)",
     description:
-      'A professional UI design for the Royal Rider Rhino website. Modern typography, consistent color palette, and a clean layout focused on user experience.',
-    problem:
-      'The client needed a modern, user-friendly website to showcase their riding services. Users wanted clear information and easy navigation.',
-    research: [
-      'Analyzed competitor websites for strengths and weaknesses.',
-      'Interviewed stakeholders to identify key user goals.',
-      'Mapped user journey for better content placement.'
-    ],
-    takeaways:
-      'Learned how to combine visual aesthetics with usability, creating a functional and engaging user interface.',
-    tech: ['Wireframe', 'Figma'], 
-    image: UiImage,
-    link: 'https://www.figma.com/proto/xWMRIaZRgfXPB6aJ1V29SX/RRR?node-id=4-4&t=mMYhYnZo21d2vrZh-1',
+      "Connecting users with trusted local professionals through a simple, intuitive, and mobile-first digital experience.",
+    tools: "Figma • FigJam • Photoshop",
+    category: "Mobile App",
+    image: kaarighar,
+    projectLink: "#",
+    caseStudy: "#",
   },
   {
-    title: 'Courier Tracking System',
+    id: 2,
+    title: "Courier Tracking System",
     description:
-      'A web-based system to track and manage courier deliveries efficiently. Consistent tables, alerts, and color-coded status indicators ensure clarity and ease of use.',
-    problem:
-      'Users needed a reliable way to track courier packages and delivery status. The system had to reduce errors and improve user confidence.',
-    research: [
-      'Studied existing tracking platforms for usability.',
-      'Mapped user flow to simplify package tracking.',
-      'Collected feedback from delivery personnel for practical insights.'
-    ],
-    takeaways:
-      'Enhanced ability to display complex information clearly and streamline backend integration with a user-friendly front-end.',
-    tech: ['Figma', 'HTML', 'CSS', 'Laravel'],
-    image: courierTrackingImg,
-    link: 'https://github.com/Im-binay/CourierTrackingProject.git',
+      "Web-based system to track and manage courier deliveries efficiently.",
+    tools: "Figma",
+    category: "Website",
+    image: courier,
+    projectLink: "#",
+    caseStudy: "#",
   },
   {
-    title: 'Kaarighar: Skill Hiring App',
+    id: 3,
+    title: "Royal Rhino Rider (Redesign)",
     description:
-      'A platform connecting service seekers with local skilled professionals. Minimalist UI with cards for professionals, clean typography, and mobile-first design.',
-    problem:
-      'Local professionals struggled to showcase their skills online effectively. Users needed a simple way to connect with potential clients, and the platform had to streamline hiring and job requests.',
-    research: [
-      'Surveyed potential users to understand needs.',
-      'Mapped job request and hiring flows.',
-      'Analyzed competitor apps for inspiration.'
-    ],
-    takeaways:
-      'Balanced user needs with visual hierarchy and mobile usability, ensuring a smooth, intuitive experience.',
-    tech: ['Wireframe', 'Figma'],
-    image: UiImage,
-    link: 'https://www.figma.com/design/Dy6PpbhAU0voKti6r2ZDXj/KaariGhar?node-id=0-1&t=u33idKA1h9zyODBN-1',
+      "A modern UI design with clean layouts, consistent branding, and user-focused experiences",
+    tools: "Figma • Wireframe",
+    category: "Website",
+    image: courier,
+    projectLink: "#",
+    caseStudy: "#",
+  },
+  {
+    id: 4,
+    title: "College Website Practice Project",
+    description:
+      "A practice project showcasing a clean, modern, and responsive college website design.",
+    tools: "Figma",
+    category: "Website",
+    image: courier,
+    projectLink: "#",
+    caseStudy: "#",
   },
 ];
 
-export default function Project() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+// Reusable animated card component using Framer Motion
+const ProjectCard = ({ project, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.15 }} // Reduced threshold so cards trigger reliably on small screens
+      transition={{ 
+        duration: 1.2, // Smooth, cinematic scroll length
+        ease: [0.25, 1, 0.5, 1], // Custom fluid easing curve
+        delay: index * 0.15 // Elegant staggering for adjacent grid items
+      }}
+      className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-200 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-md md:hover:shadow-xl flex flex-col justify-between max-w-[310px] md:max-w-none mx-auto w-full"
+    >
+      <div>
+        {/* Image Wrapper */}
+        <div className="p-2 md:p-3.5 lg:p-4">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full aspect-[16/10] md:aspect-[16/9] object-cover rounded-xl md:rounded-2xl transition-transform duration-500 hover:scale-[1.02]"
+          />
+        </div>
 
-  // Detect dark mode class on body
-  useEffect(() => {
-    const body = document.body;
-    const observer = new MutationObserver(() => {
-      setIsDarkMode(body.classList.contains('dark-mode'));
-    });
-    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
-    setIsDarkMode(body.classList.contains('dark-mode'));
-    return () => observer.disconnect();
-  }, []);
+        {/* Content Details */}
+        <div className="px-3 md:px-5 lg:px-6 pb-2">
+          <div className="flex justify-between items-center gap-2 mb-1.5 md:mb-3">
+            <p className="text-[9px] md:text-xs text-neutral-500 leading-relaxed max-w-[65%] truncate md:whitespace-normal">
+              <span className="font-semibold text-black">Tools: </span>
+              {project.tools}
+            </p>
+            <span className="bg-neutral-200 rounded-full px-1.5 py-0.5 text-[8px] md:text-[10px] font-medium tracking-wide whitespace-nowrap">
+              {project.category}
+            </span>
+          </div>
 
-  const openModal = (project) => {
-    setSelectedProject(project);
-    setShowModal(true);
-  };
+          <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-tight leading-tight text-neutral-900 line-clamp-1 md:line-clamp-none">
+            {project.title}
+          </h3>
 
-  const closeModal = () => {
-    setShowModal(false);
-    setTimeout(() => setSelectedProject(null), 300);
+          <p className="mt-1 md:mt-2 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-normal md:leading-relaxed lg:leading-7 text-neutral-600 line-clamp-2 md:line-clamp-3 lg:line-clamp-none">
+            {project.description}
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom Actions Area */}
+      <div className="px-3 md:px-5 lg:px-6 pb-3.5 md:pb-5 lg:pb-6 pt-1">
+        <div className="flex flex-row items-center justify-between gap-2 md:gap-3 lg:gap-4 mt-auto">
+          <a
+            href={project.projectLink}
+            className="group relative inline-flex items-center justify-center text-center gap-0.5 overflow-hidden rounded-full border border-black bg-white px-2 py-1.5 md:px-4 lg:px-5 text-[10px] md:text-xs lg:text-sm font-medium text-black transition-all duration-300 hover:text-white flex-1 whitespace-nowrap"
+          >
+            <span className="absolute inset-0 -translate-x-full bg-black transition-transform duration-1000 ease-out group-hover:translate-x-0"></span>
+            <span className="relative z-10">View Project</span>
+            <ArrowUpRight
+              size={10}
+              className="relative z-10 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 md:w-3.5 md:h-3.5"
+            />
+          </a>
+
+          <a
+            href={project.caseStudy}
+            className="group relative inline-flex items-center justify-center text-center gap-0.5 overflow-hidden rounded-full bg-black px-2 py-1.5 md:px-4 lg:px-5 text-[10px] md:text-xs lg:text-sm font-medium text-white transition-all duration-500 hover:shadow-xl flex-1 whitespace-nowrap"
+          >
+            <span className="absolute left-[-150%] top-0 h-full w-1/2 -skew-x-12 bg-white/20 transition-all duration-[1200ms] ease-out group-hover:left-[150%]"></span>
+            <span className="relative z-10">Use Case</span>
+            <ArrowRight
+              size={10}
+              className="relative z-10 transition-transform duration-500 group-hover:translate-x-0.5 md:w-3.5 md:h-3.5"
+            />
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Projects = () => {
+  // Main Header Animation Configurations
+  const headerVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 1.0, 
+        ease: [0.25, 1, 0.5, 1] 
+      }
+    }
   };
 
   return (
     <section
-      id="project"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 pb-10 transition-colors duration-500"
+      id="work"
+      /* FIXED: Changed min-h-screen to min-h-fit lg:min-h-screen, and normalized paddings */
+      className="min-h-fit lg:min-h-screen bg-[#c8c9c4] py-6 md:py-16 lg:py-5 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mt-5 mx-auto text-center" data-aos="fade-in">
-        <h1
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 transition-colors duration-500"
-          style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12">
+
+        {/* ================= Header ================= */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={headerVariants}
+          className="flex flex-row items-center justify-between gap-3 mb-3 md:mb-6 w-full flex-nowrap"
         >
-          Projects
-        </h1>
-
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="project-card flex flex-col items-center rounded-3xl shadow-lg transform transition-all duration-300 p-4 sm:p-6 cursor-pointer"
-              style={{
-                backgroundColor: isDarkMode ? '#2d3748' : '#fff',
-                color: isDarkMode ? '#e2e8f0' : '#1f2937',
-                boxShadow: isDarkMode ? '0 4px 12px rgba(0,0,0,0.3)' : '0 4px 12px rgba(0,0,0,0.1)',
-              }}
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-              onClick={() => openModal(project)}
-            >
-              <div className="w-full rounded-xl overflow-hidden mb-4">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-40 sm:h-44 md:h-48 object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-
-              <h3
-                className="text-center text-lg sm:text-xl md:text-2xl font-bold mb-2"
-                style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}
-              >
-                {project.title}
-              </h3>
-
-              <p className="text-center text-sm sm:text-base md:text-base mb-3 sm:mb-4 px-2">{project.description}</p>
-
-              <div className="flex flex-wrap gap-1 sm:gap-2 justify-center mb-4">
-                {project.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="text-xs sm:text-sm px-2 py-1 rounded-full font-medium"
-                    style={{
-                      backgroundColor: isDarkMode ? '#4a5568' : '#bfdbfe',
-                      color: isDarkMode ? '#60a5fa' : '#1d4ed8',
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Modal */}
-      {selectedProject && (
-        <div
-          className={`fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-4 transition-opacity duration-300 ${showModal ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          style={{ backgroundColor: isDarkMode ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.5)' }}
-          onClick={closeModal}
-        >
-          <div
-            className={`rounded shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-4 sm:p-6 md:p-8 relative transition-all duration-300 transform ${showModal ? 'scale-100' : 'scale-95'}`}
-            style={{
-              backgroundColor: isDarkMode ? '#404a5c' : '#fff',
-              color: isDarkMode ? '#e2e8f0' : '#1f2937',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="absolute top-2 sm:top-3 right-2 sm:right-3 font-bold transition-colors duration-300"
-              style={{ color: isDarkMode ? '#e2e8f0' : '#1f2937', fontSize: '2.5rem' }}
-              onClick={closeModal}
-            >
-              ×
-            </button>
-
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
-              {selectedProject.title}
+          <div className="flex items-center flex-1">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
+              &lt; Selected Work /&gt;
             </h2>
-
-            <img
-              src={selectedProject.image}
-              alt={selectedProject.title}
-              className="w-full h-40 sm:h-56 md:h-64 object-cover rounded-xl mb-4"
-            />
-
-            <p className="mb-3 text-justify">{selectedProject.description}</p>
-
-            <p className="mb-1 text-lg sm:text-xl md:text-xl font-semibold" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
-              Problem:
-            </p>
-            <p className="mb-4 text-justify">{selectedProject.problem}</p>
-
-            <p className="mb-1 text-lg sm:text-xl md:text-xl font-semibold" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
-              Research:
-            </p>
-            <ul className="list-disc list-inside mb-4">
-              {selectedProject.research.map((point, i) => (
-                <li key={i} className="text-justify">{point}</li>
-              ))}
-            </ul>
-
-            <p className="mb-1 text-lg sm:text-xl md:text-xl font-semibold" style={{ color: isDarkMode ? '#60a5fa' : '#1d4ed8' }}>
-              Takeaways & Design System:
-            </p>
-            <p className="mb-2 text-justify">{selectedProject.takeaways}</p>
-
-            <div className="flex justify-end mt-4">
-              <a
-                href={selectedProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-lg font-semibold transition-colors duration-300"
-                style={{
-                  backgroundColor: isDarkMode ? '#2563eb' : '#1d4ed8',
-                  color: '#fff',
-                }}
-              >
-                View →
-              </a>
+            <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-400 rounded-full">
+              <div className="h-px w-full bg-black animate-divider"></div>
             </div>
           </div>
+
+          <a
+            href="#"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4"
+          >
+            <span className="relative">
+              View All Work
+              <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+            </span>
+
+            <ArrowRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-1 sm:w-4 sm:h-4"
+            />
+          </a>
+        </motion.div>
+
+        {/* ================= Cards Grid ================= */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-6 xl:gap-8 ">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
         </div>
-      )}
+
+      </div>
     </section>
   );
-}
+};
+
+export default Projects;

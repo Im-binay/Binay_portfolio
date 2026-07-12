@@ -1,126 +1,229 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { GraduationCap, Briefcase, Layers } from "lucide-react";
 
-export default function EduExpTimelineAccordion() {
-  const [selected, setSelected] = useState('education');
-  const [expandedIndex, setExpandedIndex] = useState(null);
+// ========================================
+// Timeline Data (Cleaned up: No extra sort keys!)
+// ========================================
+const timeline = [
+  {
+    id: 2,
+    type: "education",
+    title: "Bachelor in Computer Application(BCA)",
+    organization: "Oxford College of Engineering and Management",
+    start: "July 2021", 
+    end: "Aug 2025",
+    description: "Built a strong foundation in programming, software development, and user-centered design.",
+  },
+  {
+    id: 1,
+    type: "experience",
+    title: "Frontend Developer Intern",
+    organization: "Akshyaraanga Sanjaal Pvt. Ltd.",
+    start: "Dec 2024",
+    end: "Feb 2025",
+    description: "Designed and developed responsive websites for Sungava College and Royal Rhino Riders using Figma, React.js, and Tailwind CSS.",
+  },
+  {
+    id: 3,
+    type: "experience",
+    title: "Data Entry Assistant",
+    organization: "Navya Technologies",
+    start: "Jan 2025",
+    end: "Mar 2025",
+    description: "Managed, validated, and maintained accurate digital records for the Gaindakot Municipality Digitization Project.",
+  },
+  // {
+  //   id: 4,
+  //   type: "education",
+  //   title: "Higher Secondary Education (+2)",
+  //   organization: "Gaindakot Namuna Secondary School",
+  //   start: "",
+  //   end: " Feb 2019",
+  //   description: "Completed higher secondary education with a computer science background.",
+  // },
+  // {
+  //   id: 5,
+  //   type: "education",
+  //   title: "Secondary Education (SEE)",
+  //   organization: "Bal Bikas English Secondary School",
+  //   start: "",
+  //   end: "2018",
+  //   description: "Completed secondary education while building a strong academic foundation.",
+  // },
+];
 
-  // Detect dark mode before first paint
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useLayoutEffect(() => {
-    setIsDark(document.body.classList.contains('dark-mode'));
-    setMounted(true);
-  }, []);
+const EduExp = () => {
+  const [activeFilter, setActiveFilter] = useState("all"); 
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef();
 
   useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.body.classList.contains('dark-mode'));
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05, rootMargin: "-40px 0px" }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
   }, []);
 
-  if (!mounted) return null;
+  // HELPER: Converts any human "start" date string into a reliable timestamp
+  const parseStartDate = (dateStr) => {
+    // If it's just a 4-digit year like "2022"
+    if (/^\d{4}$/.test(dateStr.trim())) {
+      return new Date(`${dateStr.trim()}-01-01`).getTime();
+    }
+    // For formats like "January 2026" or "Dec 2024"
+    const timestamp = Date.parse(dateStr);
+    return isNaN(timestamp) ? 0 : timestamp;
+  };
 
-  const education = [
-    { title: 'Bal Bikas English Boarding School', subtitle: 'SEE / 2018', badge: 'GPA 3.7', details: 'Completed secondary education with strong academic record.' },
-    { title: 'Gaindakot Namuna Secondary School', subtitle: '+2 Science with Computer / 2020', badge: 'GPA 3.16', details: 'Focused on computer science and mathematics.' },
-    { title: 'Oxford College of Engineering and Management', subtitle: 'Bachelor of Computer Application / 2021 - 2025', badge: 'Currently Studying', details: 'Pursuing Bachelor in Computer Application, focusing on UI/UX and frontend development.' },
-  ];
+  // Sorts items chronologically from Newest to Oldest directly using item.start
+  const sortedTimeline = [...timeline].sort((a, b) => 
+    parseStartDate(b.start) - parseStartDate(a.start)
+  );
 
-  const experience = [
-    { title: 'Frontend Developer Intern', subtitle: 'Akshyaraanga Sanjaal Pvt. Ltd. — Dec 2024 – Feb 2025 ', points: ['Built responsive UI with React & Tailwind CSS', 'Collaborated with designers on UI/UX improvements'] },
-    { title: 'Data Entry', subtitle: 'Navya Technologies — Jan 2025 – Mar 2025', points: ['Accurately digitised 5,000+ building-permit records', 'Maintained data quality and supported smooth rollout'] },
-  ];
-
-  const data = selected === 'education' ? education : experience;
-  const handleToggle = (idx) => setExpandedIndex(expandedIndex === idx ? null : idx);
+  const filteredTimeline = sortedTimeline.filter((item) => {
+    if (activeFilter === "all") return true;
+    return item.type === activeFilter;
+  });
 
   return (
-    <section id="education" className="py-8 px-3 sm:py-12 sm:px-6 md:px-12">
+    <section
+      id="education"
+      ref={sectionRef}
+      className="min-h-fit lg:min-h-screen bg-[#c8c9c4] flex items-center pt-10 pb-14 md:pt-14 md:pb-16 overflow-hidden"
+    >
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-10 lg:px-16">
 
-      {/* Tabs */}
-      <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-12">
-        {['education', 'experience'].map(tab => (
+        {/* ================= Header ================= */}
+        <div 
+          className={`flex flex-row items-center justify-between gap-3 mb-6 md:mb-10 w-full flex-nowrap transition-all duration-700 ease-out transform
+            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <div className="flex items-center flex-1">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
+              &lt; Education & Experience /&gt;
+            </h2>
+            <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-600 rounded-full"></div>
+          </div>
+        </div>
+
+        {/* ================= Mobile Filter Controls ================= */}
+        <div 
+          className={`flex md:hidden gap-1.5 p-1 bg-black/5 rounded-xl mb-6 max-w-sm transition-all duration-700 delay-100 ease-out transform
+            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
           <button
-            key={tab}
-            onClick={() => { setSelected(tab); setExpandedIndex(null); }}
-            className={`relative px-3 sm:px-4 py-1 sm:py-2 font-medium transition-all duration-300 ${selected === tab ? 'font-bold text-blue-600 dark:text-blue-400' : 'font-medium text-gray-600 dark:text-gray-300'}`}
+            onClick={() => setActiveFilter("all")}
+            className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+              activeFilter === "all" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
+            }`}
           >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-            {selected === tab && <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full bg-blue-600 dark:bg-blue-400" />}
+            <Layers size={13} /> All
           </button>
-        ))}
-      </div>
+          <button
+            onClick={() => setActiveFilter("education")}
+            className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+              activeFilter === "education" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
+            }`}
+          >
+            <GraduationCap size={13} /> Edu
+          </button>
+          <button
+            onClick={() => setActiveFilter("experience")}
+            className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+              activeFilter === "experience" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
+            }`}
+          >
+            <Briefcase size={13} /> Exp
+          </button>
+        </div>
 
-      {/* Timeline Accordion */}
-      <div className="relative max-w-4xl mx-auto">
-        {/* Central vertical line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 timeline-line"></div>
+        {/* ================= Timeline Tracker Layout ================= */}
+        <div className="relative pl-5 md:pl-0">
 
-        <div className="space-y-3 sm:space-y-6">
-          {data.map((item, idx) => (
-            <div key={idx} className="relative flex flex-col items-center">
+          <div 
+            className={`absolute left-1 md:left-1/2 top-6 bottom-6 -translate-x-1/2 w-[1.5px] bg-black/15 transition-all duration-1000 delay-200 origin-top transform
+              ${isVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`}
+          ></div>
 
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full timeline-dot shadow-md"></div>
+          <div className="flex flex-col gap-4 md:gap-2">
+            {filteredTimeline.map((item, index) => {
+              const isEven = index % 2 === 0;
 
-              {/* Accordion Header */}
-              <div
-                className="ml-0 md:ml-6 w-full cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 rounded-2xl accordion-card"
-                onClick={() => handleToggle(idx)}
-              >
-                <div className="flex-1">
-                  <h3 className="text-base sm:text-lg md:text-xl font-semibold flex flex-wrap items-center gap-1 sm:gap-4">
-                    {item.title}
-                    {item.badge && (
-                      <span className="ml-0 sm:ml-2 text-xs px-2 py-1 rounded-full accordion-badge">
-                        {item.badge}
+              return (
+                <div
+                  key={item.id}
+                  className={`relative flex flex-col md:flex-row w-full ${
+                    isEven ? "md:justify-start" : "md:justify-end"
+                  }`}
+                >
+                  {/* Timeline Dot Indicator */}
+                  <div 
+                    style={{ transitionDelay: `${250 + index * 80}ms` }}
+                    className={`absolute left-1 md:left-1/2 top-[24px] md:top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 transition-all duration-500 transform
+                      ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+                  >
+                    <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-black border-[2.5px] md:border-[3.5px] border-[#c8c9c4] shadow-sm"></div>
+                  </div>
+
+                  {/* Timeline Card */}
+                  <div 
+                    style={{ transitionDelay: `${300 + index * 100}ms` }}
+                    className={`w-full md:w-[46%] lg:w-[45%] rounded-xl md:rounded-2xl bg-[#F7F7F5] border border-neutral-300 p-3.5 sm:p-4 lg:p-5 shadow-sm transition-all duration-700 ease-out transform
+                      hover:-translate-y-1 hover:shadow-md hover:border-black/20
+                      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                  >
+                    
+                    {/* Upper details label row */}
+                    <div className="flex flex-row items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-black px-2 py-0.5 text-[9px] md:text-[10px] font-medium text-white select-none">
+                        {item.type === "education" ? (
+                          <>
+                            <GraduationCap size={11} />
+                            Education
+                          </>
+                        ) : (
+                          <>
+                            <Briefcase size={11} />
+                            Experience
+                          </>
+                        )}
                       </span>
-                    )}
-                  </h3>
-                  <p className="text-xs sm:text-sm mt-1 accordion-subtitle">{item.subtitle}</p>
-                </div>
 
-                {/* Toggle symbol */}
-                <span className="font-bold text-lg sm:text-xl mt-1 sm:mt-0 text-blue-600 dark:text-blue-400">
-                  {expandedIndex === idx ? '−' : '+'}
-                </span>
-              </div>
+                      <span className="text-[11px] md:text-xs font-medium text-neutral-500 whitespace-nowrap">
+                        {item.start} — {item.end}
+                      </span>
+                    </div>
 
-              {/* Accordion Content */}
-              {expandedIndex === idx && (
-                <div className="w-full flex justify-center">
-                  <div className="mt-1 sm:mt-2 px-4 py-3 rounded-2xl shadow-inner max-w-[90%] inline-block accordion-card">
-                    {item.points ? (
-                      <ul className="list-disc pl-4 space-y-1 text-sm sm:text-base">
-                        {item.points.map((p, i) => <li key={i}>{p}</li>)}
-                      </ul>
-                    ) : (
-                      <p className="text-sm sm:text-base">{item.details}</p>
-                    )}
+                    {/* Content text items */}
+                    <h3 className="mt-2 text-sm md:text-base lg:text-lg font-bold leading-tight text-neutral-900">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-0.5 text-[11px] md:text-xs lg:text-sm font-semibold text-neutral-800">
+                      {item.organization}
+                    </p>
+
+                    <p className="mt-1.5 text-[11px] md:text-xs lg:text-[13px] leading-relaxed md:leading-5 lg:leading-6 text-neutral-600 text-justify hyphens-auto">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
-              )}
+              );
+            })}
+          </div>
 
-            </div>
-          ))}
         </div>
-      </div>
 
-      {/* Download CV */}
-      <div className="mt-8 sm:mt-12 flex justify-center">
-        <a
-          href="/BinayUI_Cv.pdf"
-          download
-          className="px-4 sm:px-6 py-2 sm:py-3  rounded-xl font-medium text-sm sm:text-base transition-all duration-300 bg-blue-600 dark:bg-blue-400 text-white"
-        >
-          Download CV
-          
-        </a>
       </div>
-
     </section>
   );
-}
+};
+
+export default EduExp;

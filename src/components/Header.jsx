@@ -1,122 +1,144 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import logoSvg from "../assets/images/logo.svg"; // Adjust this relative path depending on where you save your SVG file
 
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dateTime, setDateTime] = useState(new Date());
 
-export default function Header() {
-  // Default to light mode if nothing saved in localStorage
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('darkMode');
-    return saved ? saved === 'true' : false;
+  const fullDateTime = dateTime.toLocaleString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('darkMode', 'false');
+  const navItems = ["Home", "Work", "About", "Education", "Contact"];
+
+  // Bulletproof pixel-based scrolling function
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      // 1. Grab the actual header height dynamically to offset the sticky nav overlap
+      const headerHeight = document.querySelector("header")?.offsetHeight || 64;
+      
+      // 2. Compute absolute page metrics
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerHeight;
+
+      // 3. Command the viewport to glide seamlessly to the destination coordinate
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
-  }, [darkMode]);
-
-  // Close menu on scroll
-  useEffect(() => {
-    const handleScroll = () => setMenuOpen(false);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const navLinks = ['Home', 'About', 'Skills','Education', 'Project', 'Contact'];
+  };
 
   return (
-    <header className="fixed top-0 left-0 w-screen z-50 bg-[#1a1c20]">
-      <nav className="flex items-center justify-between h-[80px] px-4 md:px-6 shadow-md flex-wrap relative z-50">
-        
-        {/* Logo */}
-        <a href="#" className="text-3xl md:text-5xl">
-          <h1 className="mt-3 text-white">Binay</h1>
-        </a>
+    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-black/95 backdrop-blur-md">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16">
 
-        {/* Hamburger & Dark Mode (Mobile) */}
-        <div className="md:hidden z-50 flex items-center gap-4">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            <i className="fas fa-bars fa-xl"></i>
-          </button>
-          <button
-            className="w-5 h-5 hover:text-blue-600 text-white"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle dark mode"
-          >
-            <i
-              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-xl
-                transition-transform duration-500 ease-in-out 
-                ${darkMode ? 'rotate-180' : 'rotate-0'}`}
-            />
-          </button>
+          {/* Logo Container */}
+          <div className="flex-1 min-w-0 flex items-center">
+            <a
+              href="#home"
+              onClick={(e) => handleScroll(e, "home")}
+              className="inline-block transition-opacity hover:opacity-80 shrink-0"
+            >
+              {/* FIXED: Replaced text logo with an optimized image instance pointing to your asset path */}
+              <img 
+                src={logoSvg} 
+                alt="BS Studio Logo" 
+                className="h-7 w-auto sm:h-8 lg:h-9 object-contain block " 
+                // Note: added 'invert' assuming your custom logo SVG is black by default, ensuring it glows on your dark header bar.
+              />
+            </a>
+          </div>
+
+          {/* Tablet & Desktop Navigation */}
+          <nav className="hidden md:flex flex-none justify-center">
+            <ul className="flex items-center gap-4 md:gap-5 lg:gap-8">
+              {navItems.map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    onClick={(e) => handleScroll(e, item.toLowerCase())}
+                    className="relative group text-sm lg:text-[15px] text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+                  >
+                    {item}
+                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Right Panel Layout Indicators */}
+          <div className="flex flex-1 justify-end items-center gap-2">
+            <p className="hidden md:block text-xs sm:text-sm text-gray-400 whitespace-nowrap">
+              {fullDateTime}
+            </p>
+
+            {/* Mobile toggle button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className="md:hidden -mr-2 rounded-md p-2 text-white hover:bg-neutral-800 transition shrink-0"
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Menu */}
-        <div
-          className={`transition-all duration-300 ease-in-out
-            ${menuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}
-            md:max-h-full md:opacity-100 md:flex md:items-center md:justify-around
-            absolute md:static top-[60px] left-0 w-full md:w-auto
-            text-white font-bold text-lg
-            bg-black/90 md:bg-transparent md:dark:bg-transparent md:backdrop-blur-0 dark:bg-gray-900/80 backdrop-blur-sm
-            overflow-hidden z-40 rounded-b
-          `}
-        >
-          <ul className="flex flex-col md:flex-row items-center justify-around md:gap-4 lg:gap-8 xl:gap-10 py-4 md:py-0">
-            {navLinks.map((text, i) => (
-              <li
-                key={i}
-                className="hover:text-blue-600 dark:hover:text-blue-400 py-1 transition-colors duration-300"
-              >
-                <a
-                  href={`#${text.toLowerCase()}`}
-                  onClick={() => setMenuOpen(false)}
-                  className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-blue-600 dark:after:bg-blue-400 hover:after:w-full after:transition-all after:duration-300"
-                >
-                  {text}
-                </a>
-              </li>
-            ))}
-
-            {/* Hire Me */}
-            <li className="bg-[#141d97] px-3 cursor-pointer py-1 mt-1 rounded text-white ml-0 md:mb-0 hover:bg-blue-500">
-              <a
-                href="https://wa.me/9779869681196?text=Hi%20Binay,%20I%20am%20interested%20in%20working%20with%20you."
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMenuOpen(false)}
-              >
-                Hire Me
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Dark Mode (Desktop) */}
-        <div className="hidden md:block text-white">
-          <button
-            className="w-10 h-10 cursor-pointer hover:text-blue-500"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle dark mode"
+      {/* ================= Mobile Menu Dropdown Drawer ================= */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="overflow-hidden md:hidden border-t border-neutral-800 bg-black"
           >
-            <i
-              className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'} fa-base
-                transition-transform duration-500 ease-in-out 
-                ${darkMode ? 'rotate-180' : 'rotate-0'}`}
-            />
-          </button>
-        </div>
-      </nav>
+            <nav className="bg-black px-5 sm:px-6 py-5 sm:py-6">
+              <ul className="space-y-4 sm:space-y-5">
+                {navItems.map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase()}`}
+                      onClick={(e) => {
+                        // 1. Close menu drawer immediately so page layout shrinks back to normal
+                        setMenuOpen(false);
+                        
+                        // 2. Fire the absolute scroll math right after the click event processes
+                        setTimeout(() => {
+                          handleScroll(e, item.toLowerCase());
+                        }, 10);
+                      }}
+                      className="block text-base sm:text-lg text-gray-300 hover:text-white transition"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Mobile Footer Date View */}
+              <p className="mt-5 pt-4 border-t border-neutral-800 text-xs text-gray-500">
+                {fullDateTime}
+              </p>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
-}
+};
+
+export default Header;

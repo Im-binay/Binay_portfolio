@@ -1,124 +1,139 @@
-import React, { useState, useEffect } from "react";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import heroImage from "../assets/images/neW.jpeg";
 
-export default function Hero() {
-  const [isDark, setIsDark] = useState(
-    typeof window !== "undefined" && document.body.classList.contains("dark-mode")
-  );
+const Hero = () => {
+  const containerRef = useRef(null);
 
-  // Observe body class changes to update dark mode dynamically
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.body.classList.contains("dark-mode"));
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  // Hook to track the vertical scroll progress of this specific component
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  // Function to render name letters with smooth hover
-  const splitName = (name, defaultLight, defaultDark, hoverLight, hoverDark) =>
-    name.split("").map((letter, i) => (
-      <span
-        key={i}
-        className="inline-block transition-colors duration-500 transform hover:-translate-y-1"
-        style={{
-          color: isDark ? defaultDark : defaultLight,
-          "--hover-color": isDark ? hoverDark : hoverLight,
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = e.currentTarget.style.getPropertyValue("--hover-color"))}
-        onMouseLeave={(e) => (e.currentTarget.style.color = isDark ? defaultDark : defaultLight)}
-      >
-        {letter}
-      </span>
-    ));
+  // Parallax: Maps scroll position to vertical movement (moves down on mobile, up on desktop)
+  const yMobileImage = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const yDesktopImage = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+
+  // Variants for staggered entrance text animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] },
+    },
+  };
 
   return (
     <section
+      ref={containerRef}
       id="home"
-      className={`relative h-screen flex flex-col items-center justify-center text-center overflow-hidden transition-colors duration-500
-        ${isDark
-          ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100"
-          : "bg-gradient-to-b from-gray-100 via-gray-200 to-gray-100 text-gray-900"
-        }`}
+      /* FIXED ONLY THIS LINE: Mobile gets scrollable min-h-[100dvh], tablets reset to md:min-h-fit, desktop stays lg:min-h-screen */
+      className="bg-[#c8c9c4] font-outfit min-h-[calc(100dvh-80px)] md:min-h-fit lg:min-h-screen w-full flex items-center relative overflow-hidden"
     >
-      {/* Background blurred shapes */}
-      <span
-        className={`hero-shape absolute top-10 left-5 w-36 h-36 rounded-full blur-3xl animate-pulse-slow
-          ${isDark ? "bg-blue-500 opacity-25" : "bg-blue-400 opacity-50"}`}
-      ></span>
-      <span
-        className={`hero-shape absolute top-1/4 right-10 w-48 h-48 rounded-full blur-3xl animate-pulse-slow
-          ${isDark ? "bg-pink-500 opacity-25" : "bg-pink-400 opacity-45"}`}
-      ></span>
-      <span
-        className={`hero-shape absolute bottom-16 left-1/3 w-64 h-64 rounded-full blur-3xl animate-pulse-slow
-          ${isDark ? "bg-green-500 opacity-25" : "bg-green-400 opacity-45"}`}
-      ></span>
-      <span
-        className={`hero-shape absolute bottom-10 right-5 w-32 h-32 rounded-full blur-2xl animate-pulse-slow
-          ${isDark ? "bg-purple-500 opacity-25" : "bg-purple-400 opacity-45"}`}
-      ></span>
+      {/* FIXED: Changed min-h-[calc(100vh-80px)] to dynamic scaling py-12 md:py-0 to close the gap */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full mx-auto max-w-[1440px] py-12 md:py-0 gap-8 md:gap-0">
 
-      {/* Floating lines using SVG */}
-      <svg className="absolute top-0 left-0 w-full h-full" preserveAspectRatio="none">
-        <line x1="10%" y1="20%" x2="40%" y2="30%" stroke={isDark ? "#60a5fa" : "#2563eb"} strokeWidth="1" className="animate-line-slow"/>
-        <line x1="30%" y1="60%" x2="70%" y2="40%" stroke={isDark ? "#fcd34d" : "#fbbf24"} strokeWidth="1" className="animate-line-slow"/>
-        <line x1="60%" y1="10%" x2="80%" y2="50%" stroke={isDark ? "#818cf8" : "#818cf8"} strokeWidth="1" className="animate-line-slow"/>
-        <line x1="20%" y1="80%" x2="50%" y2="60%" stroke={isDark ? "#f472b6" : "#f472b6"} strokeWidth="1" className="animate-line-slow"/>
-      </svg>
+        {/* FULL BLEED IMAGE CONTAINER with Parallax Effect */}
+        {/* FIXED: Swapped md:h-screen out for a proportional height structure on tablet profiles */}
+        <div className="absolute inset-0 px-4 py-4 md:px-0 md:relative md:h-[70vh] lg:h-screen w-full md:w-1/2 md:order-2 md:pl-8 lg:pl-14 overflow-hidden">       
+          {/* Animated wrapper handles mobile vs desktop responsive parallax values smoothly */}
+          <motion.div 
+            style={{ y: typeof window !== "undefined" && window.innerWidth >= 768 ? yDesktopImage : yMobileImage }}
+            className="w-full h-full"
+          >
+            <img
+              src={heroImage}
+              alt="Binay Sharma"
+              className="w-full h-full object-cover object-top md:object-contain md:object-center scale-105"
+            />
+          </motion.div>
+        </div>
 
-      {/* Hero content */}
-      <div className="flex flex-col items-center justify-center gap-2 relative z-10">
-        <h4 className={`text-sm md:text-xl mb-1 underline transition-colors duration-500 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-          Turning Ideas into Seamless UI/UX since — 2023
-        </h4>
+        {/* LEFT / CONTENT PANEL with Entrance Animations */}
+        {/* FIXED: Changed md:h-screen to match the image boundary height exactly */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="absolute bottom-0 inset-x-0 md:relative md:inset-auto z-10 w-full md:w-1/2 md:h-[70vh] lg:h-screen flex items-center px-6 sm:px-10 md:px-12 lg:px-24 pt-8 pb-10 md:py-0 md:order-1 bg-gradient-to-t from-[#c8c9c4] via-[#c8c9c4]/95 to-[#c8c9c4]/0 md:bg-[#c8c9c4] backdrop-blur-[2px] md:backdrop-blur-none"
+        >
+          <div className="max-w-lg lg:max-w-xl py-4 w-full">
 
-        <h1 className="text-7xl md:text-8xl lg:text-9xl font-extrabold uppercase leading-tight">
-          {splitName(
-            "Binay",
-            "#2563eb", // Light default blue
-            "#ffffff", // Dark default white
-            "#000000", // Light hover black
-            "#2563eb"  // Dark hover blue
-          )}
-        </h1>
+            {/* Eyebrow */}
+            <motion.p 
+              variants={itemVariants}
+              className="text-[10px] sm:text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-black md:text-neutral-600 drop-shadow-sm"
+            >
+              The portfolio of
+            </motion.p>
 
-        <h2 className="text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-tight">
-          {splitName(
-            "Sharma",
-            "#000000", // Light default black
-            "#2563eb", // Dark default blue
-            "#2563eb", // Light hover blue
-            "#000000"  // Dark hover black
-          )}
-        </h2>
+            {/* Headline */}
+            <motion.h1 
+              variants={itemVariants}
+              className="mt-1 sm:mt-2 md:mt-3 lg:mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] whitespace-nowrap text-neutral-900 drop-shadow-sm"
+            >
+              Binay Sharma
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.div 
+              variants={itemVariants}
+              className="mt-2 sm:mt-4 md:mt-5 lg:mt-7 flex items-center gap-2.5 sm:gap-3"
+            >
+              <span className="h-px w-6 sm:w-8 bg-neutral-500"></span>
+              <p className="text-xs sm:text-base tracking-wide text-neutral-700 font-medium drop-shadow-sm">
+                UI/UX Designer
+              </p>
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-nowrap items-center gap-2 sm:gap-4 mt-6 sm:mt-8 md:mt-12 lg:mt-16 w-full"
+            >
+              {/* See More Button */}
+              <a
+                href="#work"
+                className="group relative inline-flex items-center justify-center text-center overflow-hidden rounded-full border border-black md:border-2 px-3 py-2.5 sm:px-8 sm:py-4 text-xs sm:text-base font-medium text-black transition-all duration-300 hover:text-white whitespace-nowrap flex-1 sm:flex-initial bg-white/10 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none"
+              >
+                <span className="absolute inset-0 -translate-x-full bg-black transition-transform duration-500 ease-out group-hover:translate-x-0"></span>
+                <span className="relative z-10">See My Work</span>
+              </a>
+
+              {/* Let's Connect Button */}
+              <a
+                href="#contact"
+                className="group relative inline-flex items-center justify-center text-center gap-1.5 sm:gap-3 overflow-hidden rounded-full bg-black px-3 py-2.5 sm:px-8 sm:py-4 text-white text-xs sm:text-base font-medium transition-all duration-500 hover:shadow-xl whitespace-nowrap flex-1 sm:flex-initial"
+              >
+                <span className="absolute left-[-150%] top-0 h-full w-1/2 -skew-x-12 bg-white/20 transition-all duration-[1200ms] ease-out group-hover:left-[150%]"></span>
+                <span className="relative z-10">Let's Connect</span>
+                <ArrowRight
+                  size={12}
+                  className="relative z-10 transition-transform duration-700 ease-out group-hover:translate-x-2 sm:w-[18px] sm:h-[18px]"
+                />
+              </a>
+            </motion.div>
+
+          </div>
+        </motion.div>
+
       </div>
-
-      {/* Call-to-action */}
-      <a
-        href="#about"
-        className={`absolute bottom-12 flex items-center justify-center gap-3 text-2xl animate-bounce transition-colors duration-500
-          ${isDark ? "text-blue-400" : "text-blue-600"}`}
-      >
-        See More
-        <i className="fa-solid fa-angles-down"></i>
-      </a>
-
-      {/* Animations */}
-      <style>
-        {`
-          @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.15); opacity: 0.5; }
-          }
-          .animate-pulse-slow { animation: pulse-slow 7s ease-in-out infinite; }
-
-          @keyframes line-move {
-            0%, 100% { transform: translate(0, 0); opacity: 0.2; }
-            50% { transform: translate(5px, -5px); opacity: 0.5; }
-          }
-          .animate-line-slow { animation: line-move 10s ease-in-out infinite; }
-        `}
-      </style>
     </section>
   );
-}
+};
+
+export default Hero;
