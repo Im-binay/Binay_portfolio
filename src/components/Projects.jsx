@@ -15,7 +15,7 @@ const projects = [
     category: "Mobile App",
     image: kaarighar,
     projectLink: "#",
-    caseStudy: "#",
+    caseStudy: "/UseCaseKaarighar.pdf",
   },
   {
     id: 2,
