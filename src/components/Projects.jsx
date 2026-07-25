@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-import kaarighar from "../assets/images/Courier-Tracking.jpg";
-import courier from "../assets/images/rrr.jpg";
+import kaarighar from "../assets/images/UIUX.png";
+import courier from "../assets/images/UIUX.png";
 
 const projects = [
   {
@@ -30,7 +30,7 @@ const projects = [
     id: 3,
     title: "Royal Rhino Rider (Redesign)",
     description:
-      "A modern UI design with clean layouts, consistent branding, and user-focused experiences.",
+      "A modern UI design with clean layouts, consistent branding, and user-focused experiences",
     tools: "Figma • Wireframe",
     category: "Website",
     image: courier,
@@ -49,7 +49,7 @@ const projects = [
 ];
 
 // ========================================
-// Reusable Animated Project Card
+// Reusable Animated Card Component
 // ========================================
 const ProjectCard = ({ project, index }) => {
   return (
@@ -62,12 +62,10 @@ const ProjectCard = ({ project, index }) => {
         ease: [0.25, 1, 0.5, 1],
         delay: index * 0.15,
       }}
-      className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-200 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-md md:hover:shadow-xl flex flex-col h-full max-w-[310px] md:max-w-none mx-auto w-full"
+      className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-200 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-md md:hover:shadow-xl flex flex-col justify-between max-w-[310px] md:max-w-none mx-auto w-full h-full"
     >
-      {/* ===============================
-          Main Card Content
-      =============================== */}
-      <div className="flex-1">
+      {/* Main Content */}
+      <div>
         {/* Image Wrapper */}
         <div className="p-2 md:p-3.5 lg:p-4">
           <img
@@ -79,7 +77,6 @@ const ProjectCard = ({ project, index }) => {
 
         {/* Content Details */}
         <div className="px-3 md:px-5 lg:px-6 pb-2">
-          {/* Tools + Category */}
           <div className="flex justify-between items-center gap-2 mb-1.5 md:mb-3">
             <p className="text-[9px] md:text-xs text-neutral-500 leading-relaxed max-w-[65%] truncate md:whitespace-normal">
               <span className="font-semibold text-black">Tools: </span>
@@ -91,27 +88,23 @@ const ProjectCard = ({ project, index }) => {
             </span>
           </div>
 
-          {/* Project Title */}
-          <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-tight leading-tight text-neutral-900">
+          <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-tight leading-tight text-neutral-900 line-clamp-1 md:line-clamp-none">
             {project.title}
           </h3>
 
-          {/* Project Description */}
-          <p className="mt-1 md:mt-2 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-normal md:leading-relaxed lg:leading-7 text-neutral-600">
+          <p className="mt-1 md:mt-2 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-normal md:leading-relaxed lg:leading-7 text-neutral-600 line-clamp-2 md:line-clamp-3 lg:line-clamp-none">
             {project.description}
           </p>
         </div>
       </div>
 
-      {/* ===============================
-          View Case Study Button
-      =============================== */}
-      <div className="px-3 md:px-5 lg:px-6 pb-3.5 md:pb-5 lg:pb-6 pt-3 md:pt-4">
+      {/* Bottom Action */}
+      <div className="px-3 md:px-5 lg:px-6 pb-3.5 md:pb-5 lg:pb-6 pt-1">
         <a
           href={project.caseStudy}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-black px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3 text-[11px] md:text-sm lg:text-[15px] font-medium text-white transition-all duration-500 hover:shadow-xl"
+          className="group relative inline-flex w-full items-center justify-center text-center gap-1.5 overflow-hidden rounded-full bg-black px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3 text-[11px] md:text-sm lg:text-[15px] font-medium text-white transition-all duration-500 hover:shadow-xl"
         >
           {/* Hover Shine */}
           <span className="absolute left-[-150%] top-0 h-full w-1/2 -skew-x-12 bg-white/20 transition-all duration-[1200ms] ease-out group-hover:left-[150%]"></span>
@@ -141,15 +134,12 @@ const Projects = () => {
   // Reference for the 4th project
   const fourthProjectRef = useRef(null);
 
-  // ========================================
   // Header Animation
-  // ========================================
   const headerVariants = {
     hidden: {
       opacity: 0,
       y: 40,
     },
-
     visible: {
       opacity: 1,
       y: 0,
@@ -160,13 +150,11 @@ const Projects = () => {
     },
   };
 
-  // ========================================
   // View All Work
-  // ========================================
   const handleViewAll = () => {
     setShowAll(true);
 
-    // Wait for the 4th project to appear
+    // Smooth scroll to 4th project
     setTimeout(() => {
       fourthProjectRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -175,9 +163,7 @@ const Projects = () => {
     }, 150);
   };
 
-  // ========================================
   // Show Less
-  // ========================================
   const handleShowLess = () => {
     setShowAll(false);
   };
@@ -189,37 +175,27 @@ const Projects = () => {
     >
       <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12">
 
-        {/* ===============================
-            Header
-        =============================== */}
+        {/* ================= Header ================= */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{
-            once: false,
-            amount: 0.2,
-          }}
+          viewport={{ once: false, amount: 0.2 }}
           variants={headerVariants}
           className="flex flex-row items-center justify-between gap-3 mb-3 md:mb-6 w-full flex-nowrap"
         >
-          {/* Section Title */}
           <div className="flex items-center flex-1">
             <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
               &lt; Selected Work /&gt;
             </h2>
 
-            {/* Divider */}
             <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-400 rounded-full">
               <div className="h-px w-full bg-black animate-divider"></div>
             </div>
           </div>
 
-          {/* ===============================
-              View All / Show Less
-          =============================== */}
+          {/* View All / Show Less */}
           {!showAll ? (
             <button
-              type="button"
               onClick={handleViewAll}
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4"
             >
@@ -236,7 +212,6 @@ const Projects = () => {
             </button>
           ) : (
             <button
-              type="button"
               onClick={handleShowLess}
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4"
             >
@@ -254,10 +229,8 @@ const Projects = () => {
           )}
         </motion.div>
 
-        {/* ===============================
-            Cards Grid
-        =============================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-6 xl:gap-8 items-stretch">
+        {/* ================= Cards Grid ================= */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-6 xl:gap-8">
           {projects
             .slice(0, showAll ? projects.length : 3)
             .map((project, index) => (
