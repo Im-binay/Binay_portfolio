@@ -30,7 +30,7 @@ const projects = [
     id: 3,
     title: "Royal Rhino Rider (Redesign)",
     description:
-      "A modern UI design with clean layouts, consistent branding, and user-focused experiences",
+      "A modern UI design with clean layouts, consistent branding, and user-focused experiences.",
     tools: "Figma • Wireframe",
     category: "Website",
     image: courier,
@@ -49,7 +49,7 @@ const projects = [
 ];
 
 // ========================================
-// Reusable Animated Card Component
+// Reusable Animated Project Card
 // ========================================
 const ProjectCard = ({ project, index }) => {
   return (
@@ -64,7 +64,6 @@ const ProjectCard = ({ project, index }) => {
       }}
       className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-200 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-md md:hover:shadow-xl flex flex-col justify-between max-w-[310px] md:max-w-none mx-auto w-full h-full"
     >
-      {/* Main Content */}
       <div>
         {/* Image Wrapper */}
         <div className="p-2 md:p-3.5 lg:p-4">
@@ -88,10 +87,12 @@ const ProjectCard = ({ project, index }) => {
             </span>
           </div>
 
+          {/* Project Title */}
           <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-tight leading-tight text-neutral-900 line-clamp-1 md:line-clamp-none">
             {project.title}
           </h3>
 
+          {/* Project Description */}
           <p className="mt-1 md:mt-2 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-normal md:leading-relaxed lg:leading-7 text-neutral-600 line-clamp-2 md:line-clamp-3 lg:line-clamp-none">
             {project.description}
           </p>
@@ -154,7 +155,7 @@ const Projects = () => {
   const handleViewAll = () => {
     setShowAll(true);
 
-    // Smooth scroll to 4th project
+    // Wait for the 4th project to appear
     setTimeout(() => {
       fourthProjectRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -196,6 +197,7 @@ const Projects = () => {
           {/* View All / Show Less */}
           {!showAll ? (
             <button
+              type="button"
               onClick={handleViewAll}
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4"
             >
@@ -212,6 +214,7 @@ const Projects = () => {
             </button>
           ) : (
             <button
+              type="button"
               onClick={handleShowLess}
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4"
             >
