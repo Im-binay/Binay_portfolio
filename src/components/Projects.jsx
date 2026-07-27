@@ -34,7 +34,7 @@ const projects = [
     tools: "Figma • Wireframe",
     category: "Website",
     image: courier,
-    caseStudy: "/RRRUseCAse.pdf",
+    caseStudy: "/RRR_UseCase.pdf",
   },
   {
     id: 4,
