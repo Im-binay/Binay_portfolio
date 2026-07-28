@@ -142,7 +142,7 @@ const About = () => {
 
 
             <a
-              href="/BinayUI_Cv.pdf"
+              href="/BinayCV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 mt-6 rounded-full border border-black px-5 py-2.5 text-sm font-medium text-black transition-all duration-300 hover:bg-black hover:text-white"
