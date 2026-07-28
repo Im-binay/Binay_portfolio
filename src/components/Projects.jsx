@@ -24,7 +24,7 @@ const projects = [
     tools: "Figma",
     category: "Website",
     image: courier,
-    caseStudy: "#",
+    caseStudy: "/BeeTrio.pdf",
   },
   {
     id: 3,
