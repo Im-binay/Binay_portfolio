@@ -18,7 +18,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Courier Tracking System",
+    title: "BeeTrio (Courier Tracking System)",
     description:
       "Web-based system to track and manage courier deliveries efficiently.",
     tools: "Figma",
