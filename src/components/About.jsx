@@ -196,7 +196,7 @@ const About = () => {
 
             {/* Development Row */}
             <div className="mt-6 md:mt-5 lg:mt-8">
-              <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-3 underline decoration-2 underline-offset-4 decoration-black">
+              <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-4 underline decoration-[var(--accent-color)] decoration-1 underline-offset-4">
                 Development
               </h4>
               <div className="flex flex-wrap gap-2 lg:gap-3">
