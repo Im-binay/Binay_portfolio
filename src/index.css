@@ -11,7 +11,9 @@ html {
   scroll-padding-top: 3.5rem;
 }
 
-
+:root {
+  --accent-color: #2563EB;
+}
 
 @media (min-width: 768px) {
   html {

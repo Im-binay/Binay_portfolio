@@ -106,11 +106,11 @@ const EduExp = () => {
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="flex items-center flex-1">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold whitespace-nowrap tracking-[-0.02em] leading-none">
               &lt; Education & Experience /&gt;
             </h2>
-            <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-600 rounded-full"></div>
-          </div>
+          <div className="hidden sm:block ml-6 md:ml-8 flex-1 h-px bg-[var(--accent-color)]"></div>
+        </div>
         </div>
 
         {/* ================= Mobile Filter Controls ================= */}
@@ -121,15 +121,14 @@ const EduExp = () => {
           <button
             onClick={() => setActiveFilter("all")}
             className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
-              activeFilter === "all" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
-            }`}
+            activeFilter === "all" ? "bg-[var(--accent-color)] text-white" : "text-neutral-700 hover:bg-black/5"            }`}
           >
             <Layers size={13} /> All
           </button>
           <button
             onClick={() => setActiveFilter("education")}
             className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
-              activeFilter === "education" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
+              activeFilter === "education" ? "bg-[var(--accent-color)] text-white" : "text-neutral-700 hover:bg-black/5"
             }`}
           >
             <GraduationCap size={13} /> Edu
@@ -137,7 +136,7 @@ const EduExp = () => {
           <button
             onClick={() => setActiveFilter("experience")}
             className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold rounded-lg transition-all ${
-              activeFilter === "experience" ? "bg-black text-white shadow-sm" : "text-neutral-700 hover:bg-black/5"
+              activeFilter === "experience" ? "bg-[var(--accent-color)] text-white" : "text-neutral-700 hover:bg-black/5"
             }`}
           >
             <Briefcase size={13} /> Exp
@@ -148,7 +147,7 @@ const EduExp = () => {
         <div className="relative pl-5 md:pl-0">
 
           <div 
-            className={`absolute left-1 md:left-1/2 top-6 bottom-6 -translate-x-1/2 w-[1.5px] bg-black/15 transition-all duration-1000 delay-200 origin-top transform
+            className={`absolute left-1 md:left-1/2 top-6 bottom-6 -translate-x-1/2 w-px bg-black/15 transition-all duration-1000 delay-200 origin-top transform
               ${isVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`}
           ></div>
 
@@ -169,21 +168,21 @@ const EduExp = () => {
                     className={`absolute left-1 md:left-1/2 top-[24px] md:top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 transition-all duration-500 transform
                       ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
                   >
-                    <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-black border-[2.5px] md:border-[3.5px] border-[#c8c9c4] shadow-sm"></div>
-                  </div>
+                  <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[var(--accent-color)] border-2 md:border-[3px] border-[#c8c9c4]"></div>
+                </div>
 
                   {/* Timeline Card */}
                   <div 
                     style={{ transitionDelay: `${300 + index * 100}ms` }}
-                    className={`w-full md:w-[46%] lg:w-[45%] rounded-xl md:rounded-2xl bg-[#F7F7F5] border border-neutral-300 p-3.5 sm:p-4 lg:p-5 shadow-sm transition-all duration-700 ease-out transform
-                      hover:-translate-y-1 hover:shadow-md hover:border-black/20
+                    className={`w-full md:w-[46%] lg:w-[45%] rounded-xl md:rounded-2xl bg-[#F7F7F5] border border-neutral-300/70 p-4 sm:p-5 lg:p-6 transition-all duration-700 ease-out transform
+                    hover:-translate-y-1 hover:border-[var(--accent-color)]/40
                       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                   >
                     
                     {/* Upper details label row */}
                     <div className="flex flex-row items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-black px-2 py-0.5 text-[9px] md:text-[10px] font-medium text-white select-none">
-                        {item.type === "education" ? (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-[var(--accent-color)]/10 px-2.5 py-1 text-[9px] md:text-[10px] font-semibold text-[var(--accent-color)] select-none">
+                      {item.type === "education" ? (
                           <>
                             <GraduationCap size={11} />
                             Education
@@ -196,21 +195,21 @@ const EduExp = () => {
                         )}
                       </span>
 
-                      <span className="text-[11px] md:text-xs font-medium text-neutral-500 whitespace-nowrap">
+                      <span className="text-[10px] md:text-xs font-medium tracking-wide text-neutral-500 whitespace-nowrap">
                         {item.start} — {item.end}
                       </span>
                     </div>
 
                     {/* Content text items */}
-                    <h3 className="mt-2 text-sm md:text-base lg:text-lg font-bold leading-tight text-neutral-900">
+                    <h3 className="mt-4 text-sm md:text-base lg:text-lg font-bold tracking-[-0.01em] leading-[1.2] text-neutral-900">
                       {item.title}
                     </h3>
 
-                    <p className="mt-0.5 text-[11px] md:text-xs lg:text-sm font-semibold text-neutral-800">
+                    <p className="mt-1 text-[11px] md:text-xs lg:text-sm font-medium text-neutral-700">
                       {item.organization}
                     </p>
 
-                    <p className="mt-1.5 text-[11px] md:text-xs lg:text-[13px] leading-relaxed md:leading-5 lg:leading-6 text-neutral-600 text-justify hyphens-auto">
+                    <p className="mt-2.5 text-[11px] md:text-xs lg:text-[13px] leading-relaxed md:leading-5 lg:leading-6 text-neutral-600">
                       {item.description}
                     </p>
                   </div>

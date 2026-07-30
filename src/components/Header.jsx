@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-black/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
 
@@ -53,25 +53,23 @@ const Header = () => {
               <img 
                 src={logoSvg} 
                 alt="BS Studio Logo" 
-                className="h-7 w-auto sm:h-8 lg:h-9 object-contain block " 
-                // Note: added 'invert' assuming your custom logo SVG is black by default, ensuring it glows on your dark header bar.
+                className="h-7 w-auto sm:h-8 lg:h-8 object-contain block " 
               />
             </a>
           </div>
 
           {/* Tablet & Desktop Navigation */}
           <nav className="hidden md:flex flex-none justify-center">
-            <ul className="flex items-center gap-4 md:gap-5 lg:gap-8">
+            <ul className="flex items-center gap-4 md:gap-5 lg:gap-7">
               {navItems.map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
                     onClick={(e) => handleScroll(e, item.toLowerCase())}
-                    className="relative group text-sm lg:text-[15px] text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+                    className="relative group text-sm lg:text-[14px] font-medium tracking-wide text-neutral-400 hover:text-white transition-colors whitespace-nowrap"
                   >
                     {item}
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-                  </a>
+                  <span className="absolute left-0 -bottom-1 h-px w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full"></span>                  </a>
                 </li>
               ))}
             </ul>
@@ -79,7 +77,7 @@ const Header = () => {
 
           {/* Right Panel Layout Indicators */}
           <div className="flex flex-1 justify-end items-center gap-2">
-            <p className="hidden md:block text-xs sm:text-sm text-gray-400 whitespace-nowrap">
+            <p className="hidden md:block text-xs text-neutral-500 tracking-wide whitespace-nowrap">  
               {fullDateTime}
             </p>
 
@@ -88,8 +86,8 @@ const Header = () => {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="md:hidden -mr-2 rounded-md p-2 text-white hover:bg-neutral-800 transition shrink-0"
-            >
+              className="md:hidden -mr-2 rounded-md p-2 text-neutral-300 hover:text-[var(--accent-color)] transition-colors shrink-0"
+              >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -104,9 +102,9 @@ const Header = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden border-t border-neutral-800 bg-black"
+            className="overflow-hidden md:hidden border-t border-white/10 bg-black"
           >
-            <nav className="bg-black px-5 sm:px-6 py-5 sm:py-6">
+            <nav className="bg-black px-5 sm:px-6 py-6 sm:py-7">
               <ul className="space-y-4 sm:space-y-5">
                 {navItems.map((item) => (
                   <li key={item}>
@@ -121,7 +119,7 @@ const Header = () => {
                           handleScroll(e, item.toLowerCase());
                         }, 10);
                       }}
-                      className="block text-base sm:text-lg text-gray-300 hover:text-white transition"
+                      className="block text-base sm:text-lg font-medium tracking-wide text-neutral-400 hover:text-[var(--accent-color)] transition-colors"
                     >
                       {item}
                     </a>
@@ -130,7 +128,7 @@ const Header = () => {
               </ul>
 
               {/* Mobile Footer Date View */}
-              <p className="mt-5 pt-4 border-t border-neutral-800 text-xs text-gray-500">
+              <p className="mt-6 pt-5 border-t border-white/10 text-xs tracking-wide text-neutral-500">                
                 {fullDateTime}
               </p>
             </nav>

@@ -3,7 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 import kaarighar from "../assets/images/UIUX.png";
-import courier from "../assets/images/UIUX.png";
+import courier from "../assets/images/Courier-Tracking.jpg";
+import rrr from "../assets/images/rrr.jpg";
 
 const projects = [
   {
@@ -11,7 +12,7 @@ const projects = [
     title: "Kaarighar (Skill Hiring App)",
     description:
       "Connecting users with trusted local professionals through a simple, intuitive, and mobile-first digital experience.",
-    tools: " Figma • FigJam • Photoshop",
+    tools: "Figma • FigJam • Photoshop",
     category: "Mobile App",
     image: kaarighar,
     caseStudy: "/UseCaseKaarighar.pdf",
@@ -29,23 +30,22 @@ const projects = [
   {
     id: 3,
     title: "Royal Rhino Rider (Redesign)",
-    description:
-      "A modern UI design with clean layouts, consistent branding, and user-focused experiences.",
+    description:"A modern redesign website for showcasing rides, events, and the rider community.",
     tools: "Figma • Wireframe",
     category: "Website",
-    image: courier,
+    image: rrr,
     caseStudy: "/RRR_UseCase.pdf",
   },
-  {
-    id: 4,
-    title: "College Website Practice Project",
-    description:
-      "A practice project showcasing a clean, modern, and responsive college website design.",
-    tools: "Figma",
-    category: "Website",
-    image: courier,
-    caseStudy: "#",
-  },
+  // {
+  //   id: 4,
+  //   title: "College Website Practice Project",
+  //   description:
+  //     "A practice project showcasing a clean, modern, and responsive college website design.",
+  //   tools: "Figma",
+  //   category: "Website",
+  //   image: courier,
+  //   caseStudy: "#",
+  // },
 ];
 
 // ================= Project Card =================
@@ -60,8 +60,8 @@ const ProjectCard = ({ project, index }) => {
         ease: [0.25, 1, 0.5, 1],
         delay: index * 0.15,
       }}
-      className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-200 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-md md:hover:shadow-xl flex flex-col justify-between h-full max-w-[310px] md:max-w-none mx-auto w-full"
-    >
+        className="bg-[#F7F7F5] rounded-[18px] md:rounded-[24px] lg:rounded-[28px] border border-neutral-300/60 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full max-w-[310px] md:max-w-none mx-auto w-full"  
+      >
       <div>
         {/* ================= Image Wrapper ================= */}
         <div className="p-2 md:p-3.5 lg:p-4">
@@ -75,24 +75,24 @@ const ProjectCard = ({ project, index }) => {
         {/* ================= Content Details ================= */}
         <div className="px-3 md:px-5 lg:px-6 pb-2">
           {/* Tools + Category */}
-          <div className="flex justify-between items-center gap-2 mb-1.5 md:mb-3">
-            <p className="text-[9px] md:text-xs text-neutral-500 leading-relaxed max-w-[65%] truncate md:whitespace-normal">
+          <div className="flex justify-between items-center gap-3 mb-3 md:mb-4">
+            <p className="text-[9px] md:text-xs text-neutral-500 leading-normal max-w-[65%] truncate md:whitespace-normal">
               <span className="font-semibold text-black">Tools: </span>
               {project.tools}
             </p>
 
-            <span className="bg-neutral-200 rounded-full px-1.5 py-0.5 text-[8px] md:text-[10px] font-medium tracking-wide whitespace-nowrap">
+            <span className="bg-[var(--accent-color)/10] text-[var(--accent-color)] rounded-full px-2 md:px-2.5 py-1 text-[8px] md:text-[10px] font-medium tracking-wide whitespace-nowrap">
               {project.category}
             </span>
           </div>
 
           {/* Project Title */}
-          <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-tight leading-tight text-neutral-900 line-clamp-1 md:line-clamp-none">
+          <h3 className="text-base md:text-xl lg:text-2xl font-bold tracking-[-0.02em] leading-[1.1] text-neutral-900 line-clamp-1 md:line-clamp-none">
             {project.title}
           </h3>
 
           {/* Project Description */}
-          <p className="mt-1 md:mt-2 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-normal md:leading-relaxed lg:leading-7 text-neutral-600 line-clamp-2 md:line-clamp-3 lg:line-clamp-none">
+          <p className="mt-2 md:mt-3 lg:mt-4 text-[11px] md:text-sm lg:text-[15px] leading-relaxed text-neutral-600 line-clamp-2 md:line-clamp-3 lg:line-clamp-none">
             {project.description}
           </p>
         </div>
@@ -103,7 +103,7 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex justify-end mt-auto">
           <a
             href={project.caseStudy}
-            className="group relative inline-flex items-center justify-center gap-1 overflow-hidden rounded-full bg-black px-4 py-1.5 md:px-5 md:py-2 lg:px-6 text-[10px] md:text-xs lg:text-sm font-medium text-white transition-all duration-500 hover:shadow-xl whitespace-nowrap"
+            className="group relative inline-flex items-center justify-center gap-1 overflow-hidden rounded-full bg-[var(--accent-color)] px-4 py-1.5 md:px-5 md:py-2 lg:px-6 text-[10px] md:text-xs lg:text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 whitespace-nowrap"
           >
             {/* Shine Animation */}
             <span className="absolute left-[-150%] top-0 h-full w-1/2 -skew-x-12 bg-white/20 transition-all duration-[1200ms] ease-out group-hover:left-[150%]"></span>
@@ -178,17 +178,17 @@ const Projects = () => {
             amount: 0.2,
           }}
           variants={headerVariants}
-          className="flex flex-row items-center justify-between gap-3 mb-3 md:mb-6 w-full flex-nowrap"
+          className="flex flex-row items-center justify-between gap-4 mb-6 md:mb-10 w-full flex-nowrap"
         >
           {/* Header Title + Divider */}
           <div className="flex items-center flex-1">
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold whitespace-nowrap  tracking-[-0.02em] leading-none">
               &lt; Selected Work /&gt;
             </h2>
 
             {/* Divider */}
-            <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-400 rounded-full">
-              <div className="h-px w-full bg-black animate-divider"></div>
+            <div className="hidden sm:block ml-6 md:ml-8 flex-1 h-px overflow-hidden bg-neutral-300">
+              <div className="h-px w-full bg-[var(--accent-color)] animate-divider"></div>
             </div>
           </div>
 
@@ -196,8 +196,8 @@ const Projects = () => {
           <button
             onClick={handleViewAll}
             disabled={showAll}
-            className={`group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-black whitespace-nowrap shrink-0 ml-4 ${
-              showAll
+            className={`group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[var(--accent-color)] whitespace-nowrap shrink-0 ml-4 ${
+                showAll
                 ? "opacity-50 cursor-default"
                 : "cursor-pointer"
             }`}
@@ -205,7 +205,7 @@ const Projects = () => {
             <span className="relative">
               {showAll ? "All Work" : "View All Work"}
 
-              <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full"></span>
             </span>
 
             <ArrowRight
@@ -220,7 +220,7 @@ const Projects = () => {
         </motion.div>
 
         {/* ================= Cards Grid ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-6 xl:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8 lg:gap-10 xl:gap-10 items-stretch">
           {visibleProjects.map((project, index) => {
             const isFourthProject = project.id === 4;
 

@@ -107,10 +107,10 @@ const About = () => {
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="flex items-center flex-1">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold whitespace-nowrap tracking-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold whitespace-nowrap tracking-[-0.02em] leading-none">
               &lt; About me /&gt;
             </h2>
-            <div className="hidden sm:block ml-4 md:ml-5 flex-1 h-[1px] overflow-hidden bg-neutral-600 rounded-full"></div>
+            <div className="hidden sm:block ml-6 md:ml-8 flex-1 h-px bg-[var(--accent-color)]"></div>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ const About = () => {
             className={`w-full transition-all duration-700 delay-200 ease-out transform
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <p className="text-sm md:text-[15px] lg:text-base leading-relaxed md:leading-7 lg:leading-8 text-neutral-800 text-justify hyphens-auto">
+            <p className="text-sm md:text-[15px] lg:text-base leading-relaxed md:leading-7 lg:leading-8 text-neutral-800">
               I'm passionate about designing intuitive and user-centered
               digital experiences that balance functionality with clean,
               modern aesthetics. Using <strong>Figma</strong>, I create
@@ -130,7 +130,7 @@ const About = () => {
               on usability and problem solving.
             </p>
 
-            <p className="mt-4 md:mt-3 lg:mt-5 text-sm md:text-[15px] lg:text-base leading-relaxed md:leading-7 lg:leading-8 text-neutral-800 text-justify hyphens-auto">
+            <p className="mt-5 md:mt-5 lg:mt-6 text-sm md:text-[15px] lg:text-base leading-relaxed md:leading-7 lg:leading-8 text-neutral-800">
               Alongside design, I work with
               <strong> HTML</strong>,
               <strong> CSS</strong>,
@@ -145,7 +145,7 @@ const About = () => {
               href="/BinayCV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 mt-6 rounded-full border border-black px-5 py-2.5 text-sm font-medium text-black transition-all duration-300 hover:bg-black hover:text-white"
+              className="group inline-flex items-center gap-2 mt-7 rounded-full border border-[var(--accent-color)] px-5 py-2.5 text-sm font-medium text-[var(--accent-color)] transition-all duration-300 hover:bg-[var(--accent-color)] hover:text-white"
             >
               View Resume
 
@@ -162,7 +162,7 @@ const About = () => {
           >
             <div className="flex flex-col items-center h-full">
               <div className="flex-1 w-px bg-neutral-400"></div>
-              <div className="my-3 md:my-2 lg:my-4 text-lg lg:text-xl text-neutral-600 select-none">
+              <div className="my-4 md:my-3 lg:my-5 text-lg lg:text-xl text-[var(--accent-color)] select-none">
                 ✦
               </div>
               <div className="flex-1 w-px bg-neutral-400"></div>
@@ -174,13 +174,13 @@ const About = () => {
             className={`flex flex-col w-full transition-all duration-700 delay-400 ease-out transform
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-4 lg:mb-6">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-6 lg:mb-8 tracking-[-0.02em] leading-none">
               Technology
             </h3>
 
             {/* Design Row */}
             <div>
-              <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-3 underline decoration-2 underline-offset-4 decoration-black">
+              <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-4 underline decoration-[var(--accent-color)] decoration-1 underline-offset-4">
                 Design
               </h4>
               <div className="flex flex-wrap gap-2 lg:gap-3">
@@ -221,8 +221,8 @@ const About = () => {
 
 const Skill = ({ icon, name }) => {
   return (
-    <div className="flex items-center gap-2 lg:gap-3 rounded-xl sm:rounded-2xl border border-neutral-200 bg-white px-2.5 py-2 md:px-3 md:py-2.5 lg:px-4 lg:py-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-      <span className="text-lg md:text-xl lg:text-2xl">
+      <div className="flex items-center gap-2 lg:gap-3 rounded-xl sm:rounded-2xl border border-neutral-200 bg-white px-2.5 py-2 md:px-3 md:py-2.5 lg:px-4 lg:py-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-color)]">
+        <span className="text-lg md:text-xl lg:text-2xl">
         {icon}
       </span>
       <span className="text-[11px] md:text-xs lg:text-[15px] font-medium whitespace-nowrap">
