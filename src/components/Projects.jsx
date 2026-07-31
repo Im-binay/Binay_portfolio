@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-import kaarighar from "../assets/images/UIUX.png";
-import courier from "../assets/images/Courier-Tracking.jpg";
-import rrr from "../assets/images/rrr.jpg";
+import kaarighar from "../assets/images/Kaarighar_mockup.png";
+import courier from "../assets/images/BeeTrio.png";
+import rrr from "../assets/images/Rrr.png";
 
 const projects = [
   {
@@ -68,7 +68,7 @@ const ProjectCard = ({ project, index }) => {
           <img
             src={project.image}
             alt={project.title}
-            className="w-full aspect-[16/10] md:aspect-[16/9] object-cover rounded-xl md:rounded-2xl transition-transform duration-500 hover:scale-[1.02]"
+            className="w-full aspect-[16/10] md:aspect-[16/9] object-contain rounded-xl md:rounded-2xl transition-transform duration-500 hover:scale-[1.02]"
           />
         </div>
 
