@@ -340,7 +340,7 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Abc Xyz"
                   className="w-full rounded-lg md:rounded-xl border border-neutral-200 bg-white px-3.5 py-2.5 md:px-4 md:py-3 text-xs md:text-sm outline-none transition-all duration-300 focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)]/20"
                 />
               </div>
@@ -355,7 +355,7 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="abc@example.com"
                   className="w-full rounded-lg md:rounded-xl border border-neutral-200 bg-white px-3.5 py-2.5 md:px-4 md:py-3 text-xs md:text-sm outline-none transition-all duration-300 focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)]/20"
                 />
               </div>
