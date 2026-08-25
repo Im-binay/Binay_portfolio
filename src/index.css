@@ -1,32 +1,56 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 /* =====================================================
-   GLOBAL STYLES
-   ===================================================== */
+   GLOBAL
+===================================================== */
+
 html {
   scroll-behavior: smooth;
-  scroll-padding: 40px;
   scroll-padding-top: 3.5rem;
 }
 
-:root {
-  --accent-color: #2563EB;
+body {
+  margin: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
+
+/* =====================================================
+   DESIGN TOKENS
+===================================================== */
+
+:root {
+  --accent-color: #6D4AFF;
+
+  --bg-color: #F1F1F6;
+  --text-color: #0D0D12;
+  --text-muted: #62626D;
+
+  --card-color: #FFFFFF;
+  --border-color: rgba(13, 13, 18, 0.12);
+
+  --accent-light: rgba(109, 74, 255, 0.10);
+
+  --text-light: #FFFFFF;
+}
+
+/* =====================================================
+   DESKTOP SCROLL OFFSET
+===================================================== */
 
 @media (min-width: 768px) {
   html {
-    scroll-padding-top: 4rem; /* 64px - Desktop Header height */
+    scroll-padding-top: 4rem;
   }
 }
-body {
-  background: linear-gradient(to bottom, #cce4ff, #99ccff, #66b2ff);
-  font-family: 'Outfit';
-  max-width: 100vw;
-  overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
+
+/* =====================================================
+   SECTION DIVIDER ANIMATION
+===================================================== */
 
 @keyframes divider {
   0% {
@@ -37,9 +61,7 @@ body {
     transform: translateX(100%);
   }
 }
+
 .animate-divider {
   animation: divider 2.5s linear infinite;
 }
-
-
-.transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoSvg from "../assets/images/logo.svg"; // Adjust this relative path depending on where you save your SVG file
+import logoSvg from "../assets/images/logo.svg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,123 +14,220 @@ const Header = () => {
     year: "numeric",
   });
 
-  const navItems = ["Home", "Work", "About", "Education", "Contact"];
+  const navItems = [
+    {
+      label: "Home",
+      target: "home",
+    },
+    {
+      label: "Work",
+      target: "work",
+    },
+    {
+      label: "About",
+      target: "about",
+    },
+    {
+      label: "Education",
+      target: "education",
+    },
+    {
+      label: "Contact",
+      target: "contact",
+    },
+  ];
 
-  // Bulletproof pixel-based scrolling function
+  // ========================================
+  // Update displayed date
+  // ========================================
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDateTime(new Date());
+    }, 60000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // ========================================
+  // Smooth Section Navigation
+  // ========================================
   const handleScroll = (e, targetId) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      // 1. Grab the actual header height dynamically to offset the sticky nav overlap
-      const headerHeight = document.querySelector("header")?.offsetHeight || 64;
-      
-      // 2. Compute absolute page metrics
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerHeight;
 
-      // 3. Command the viewport to glide seamlessly to the destination coordinate
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+    const element = document.getElementById(targetId);
+
+    if (!element) return;
+
+    const headerHeight =
+      document.querySelector("header")?.offsetHeight || 64;
+
+    const elementPosition =
+      element.getBoundingClientRect().top;
+
+    const offsetPosition =
+      elementPosition + window.scrollY - headerHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95">
+    <header
+      className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--text-color)]"
+    >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+
         <div className="flex items-center justify-between h-14 sm:h-16">
 
-          {/* Logo Container */}
+          {/* ========================================
+              LOGO
+          ========================================= */}
           <div className="flex-1 min-w-0 flex items-center">
             <a
               href="#home"
               onClick={(e) => handleScroll(e, "home")}
+              aria-label="Binay Sharma UI/UX Designer — Home"
               className="inline-block transition-opacity hover:opacity-80 shrink-0"
             >
-              {/* FIXED: Replaced text logo with an optimized image instance pointing to your asset path */}
-              <img 
-                src={logoSvg} 
-                alt="BS Studio Logo" 
-                className="h-7 w-auto sm:h-8 lg:h-8 object-contain block " 
+              <img
+                src={logoSvg}
+                alt="Binay Sharma UI/UX Designer logo"
+                className="h-7 w-auto sm:h-8 lg:h-8 object-contain block"
+                width="120"
+                height="32"
               />
             </a>
           </div>
 
-          {/* Tablet & Desktop Navigation */}
-          <nav className="hidden md:flex flex-none justify-center">
+          {/* ========================================
+              DESKTOP NAVIGATION
+          ========================================= */}
+          <nav
+            aria-label="Primary navigation"
+            className="hidden md:flex flex-none justify-center"
+          >
             <ul className="flex items-center gap-4 md:gap-5 lg:gap-7">
               {navItems.map((item) => (
-                <li key={item}>
+                <li key={item.target}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    onClick={(e) => handleScroll(e, item.toLowerCase())}
-                    className="relative group text-sm lg:text-[14px] font-medium tracking-wide text-neutral-400 hover:text-white transition-colors whitespace-nowrap"
+                    href={`#${item.target}`}
+                    onClick={(e) =>
+                      handleScroll(e, item.target)
+                    }
+                    className="relative group text-sm lg:text-[14px] font-medium tracking-wide text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors whitespace-nowrap"
                   >
-                    {item}
-                  <span className="absolute left-0 -bottom-1 h-px w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full"></span>                  </a>
+                    {item.label}
+
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 -bottom-1 h-px w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full"
+                    />
+                  </a>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Right Panel Layout Indicators */}
+          {/* ========================================
+              DATE + MOBILE MENU
+          ========================================= */}
           <div className="flex flex-1 justify-end items-center gap-2">
-            <p className="hidden md:block text-xs text-neutral-500 tracking-wide whitespace-nowrap">  
-              {fullDateTime}
-            </p>
 
-            {/* Mobile toggle button */}
+            <time
+              dateTime={dateTime.toISOString().split("T")[0]}
+              className="hidden md:block text-xs text-[var(--text-light)] tracking-wide whitespace-nowrap"
+            >
+              {fullDateTime}
+            </time>
+
+            {/* Mobile Menu Button */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={
+                menuOpen
+                  ? "Close primary navigation menu"
+                  : "Open primary navigation menu"
+              }
               aria-expanded={menuOpen}
-              className="md:hidden -mr-2 rounded-md p-2 text-neutral-300 hover:text-[var(--accent-color)] transition-colors shrink-0"
-              >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              aria-controls="mobile-navigation"
+              className="md:hidden -mr-2 rounded-md p-2 text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors shrink-0"
+            >
+              {menuOpen ? (
+                <X
+                  size={24}
+                  aria-hidden="true"
+                />
+              ) : (
+                <Menu
+                  size={24}
+                  aria-hidden="true"
+                />
+              )}
             </button>
+
           </div>
         </div>
       </div>
 
-      {/* ================= Mobile Menu Dropdown Drawer ================= */}
+      {/* ========================================
+          MOBILE MENU
+      ======================================== */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden border-t border-white/10 bg-black"
+            id="mobile-navigation"
+            initial={{
+              height: 0,
+              opacity: 0,
+            }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.2,
+              ease: "easeInOut",
+            }}
+            className="overflow-hidden md:hidden border-t border-[var(--border-color)] bg-[var(--text-color)]"
           >
-            <nav className="bg-black px-5 sm:px-6 py-6 sm:py-7">
+            <nav
+              aria-label="Mobile primary navigation"
+              className="bg-[var(--text-color)] px-5 sm:px-6 py-6 sm:py-7"
+            >
               <ul className="space-y-4 sm:space-y-5">
                 {navItems.map((item) => (
-                  <li key={item}>
+                  <li key={item.target}>
                     <a
-                      href={`#${item.toLowerCase()}`}
+                      href={`#${item.target}`}
                       onClick={(e) => {
-                        // 1. Close menu drawer immediately so page layout shrinks back to normal
                         setMenuOpen(false);
-                        
-                        // 2. Fire the absolute scroll math right after the click event processes
+
                         setTimeout(() => {
-                          handleScroll(e, item.toLowerCase());
+                          handleScroll(e, item.target);
                         }, 10);
                       }}
-                      className="block text-base sm:text-lg font-medium tracking-wide text-neutral-400 hover:text-[var(--accent-color)] transition-colors"
+                      className="block text-base sm:text-lg font-medium tracking-wide text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors"
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
 
-              {/* Mobile Footer Date View */}
-              <p className="mt-6 pt-5 border-t border-white/10 text-xs tracking-wide text-neutral-500">                
+              {/* Mobile Date */}
+              <time
+                dateTime={dateTime.toISOString().split("T")[0]}
+                className="block mt-6 pt-5 border-t border-[var(--border-color)] text-xs tracking-wide text-[var(--text-light)]"
+              >
                 {fullDateTime}
-              </p>
+              </time>
             </nav>
           </motion.div>
         )}

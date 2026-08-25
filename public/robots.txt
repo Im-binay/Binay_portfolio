@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://binay-sharma.com.np/sitemap.xml

@@ -1,34 +1,34 @@
 const Footer = () => {
   return (
-    <footer className="bg-[#e9e9e3] border-t border-black/10">
+    <footer
+      className="bg-[var(--card-color)] border-t border-[var(--border-color)]"
+      aria-label="Website footer"
+    >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 py-6 md:py-8">
+        <div className="flex flex-row items-center justify-between gap-2 md:gap-4 w-full">
 
-        {/* Arranges both items side-by-side on mobile, and adapts to a 3-column layout from tablet upwards */}
-        <div className="flex flex-row md:flex-row items-center justify-between gap-2 md:gap-4 w-full">
-
-          {/* Copyright Segment - Slightly smaller font size on mobile/tablet */}
-          <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 text-left tracking-normal">
-              © 2023–{new Date().getFullYear()}{" "}
-            <span className="font-medium text-neutral-800 whitespace-nowrap">
+          {/* Copyright */}
+          <small className="text-[10px] sm:text-xs md:text-sm text-[var(--text-muted)] text-left tracking-normal">
+            © 2023–{new Date().getFullYear()}{" "}
+            <span className="font-medium text-[var(--text-color)] whitespace-nowrap">
               Binay Sharma
             </span>
+          </small>
+
+          {/* Professional Role */}
+          <p className="hidden md:block md:text-xs lg:text-sm text-[var(--accent-color)] font-medium text-center tracking-wide">
+            UI/UX Designer & Interaction Designer
           </p>
 
-          {/* Role Segment - Hidden entirely on mobile viewports */}
-          <p className="hidden md:block md:text-xs lg:text-sm text-[#2563EB] font-medium text-center tracking-wide">
-            UI/UX Designer
-          </p>
-
-          {/* Credit Segment - Slightly smaller font size on mobile/tablet */}
-            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 text-right tracking-normal">            
-              Designed & Developed by{" "}
-            <span className="font-medium text-neutral-800 whitespace-nowrap">
+          {/* Credit */}
+          <small className="text-[10px] sm:text-xs md:text-sm text-[var(--text-muted)] text-right tracking-normal">
+            Designed & Developed by{" "}
+            <span className="font-medium text-[var(--text-color)] whitespace-nowrap">
               Binay Sharma
             </span>
-          </p>
+          </small>
 
         </div>
-
       </div>
     </footer>
   );
