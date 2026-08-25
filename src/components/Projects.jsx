@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import kaarighar from "../assets/images/Kaarighar_mockup.png";
 import courier from "../assets/images/BeeTrio.png";
-import rrr from "../assets/images/Rrr.png";
+import rrr from "../assets/images/Rrr.webp";
 
 /* =========================================================
    PROJECT DATA
