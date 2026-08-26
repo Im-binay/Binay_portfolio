@@ -127,7 +127,7 @@ const Hero = () => {
             ========================== */}
             <motion.p
               variants={itemVariants}
-              className="text-[10px] sm:text-xs md:text-sm lg:text-base font-medium uppercase tracking-[0.18em] text-[var(--accent-color)]"
+              className="text-[10px] sm:text-xs md:text-sm lg:text-base font-medium tracking-[0.18em] text-[var(--accent-color)]"
             >
               UI/UX & Interaction Designer from Nepal
             </motion.p>
