@@ -379,7 +379,7 @@ const Hero = () => {
               className="
                 mt-4
                 w-full
-                max-w-[680px]
+                max-w-[720px]
                 text-xs
                 leading-relaxed
                 text-[var(--text-muted)]
