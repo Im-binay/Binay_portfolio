@@ -163,9 +163,13 @@ const Hero = () => {
 
             <motion.p
               variants={itemVariants}
-              className="mt-4 w-full max-w-[520px] text-xs leading-relaxed text-[var(--text-muted)] sm:mt-5 sm:max-w-[580px] sm:text-sm md:mt-6 md:max-w-[540px] md:text-base lg:max-w-[600px] lg:text-lg"
+              className="mt-4 text-xs leading-relaxed text-[var(--text-muted)] sm:mt-5 sm:text-sm md:mt-6 md:text-base lg:text-lg"
             >
-              I design user-centered digital experiences for web and mobile products through interaction design, wireframing, prototyping, and intuitive interfaces.
+              I design user-centered digital experiences for web and mobile
+              <br />
+              products through interaction design, wireframing, prototyping,
+              <br />
+              and intuitive interfaces.
             </motion.p>
 
             <motion.div
