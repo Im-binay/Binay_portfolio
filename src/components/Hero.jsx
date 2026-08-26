@@ -335,7 +335,6 @@ const Hero = () => {
               className="
                 text-[10px]
                 font-medium
-                uppercase
                 tracking-[0.18em]
                 text-[var(--accent-color)]
 
