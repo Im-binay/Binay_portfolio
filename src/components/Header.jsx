@@ -6,6 +6,7 @@ import logoSvg from "../assets/images/logo.svg";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
+  const [activeSection, setActiveSection] = useState("home");
 
   const fullDateTime = dateTime.toLocaleString("en-US", {
     weekday: "long",
@@ -49,6 +50,41 @@ const Header = () => {
   }, []);
 
   // ========================================
+  // Detect Active Section
+  // ========================================
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.target))
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // ========================================
   // Smooth Section Navigation
   // ========================================
   const handleScroll = (e, targetId) => {
@@ -57,6 +93,9 @@ const Header = () => {
     const element = document.getElementById(targetId);
 
     if (!element) return;
+
+    setActiveSection(targetId);
+    setMenuOpen(false);
 
     const headerHeight =
       document.querySelector("header")?.offsetHeight || 64;
@@ -75,26 +114,38 @@ const Header = () => {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--text-color)]"
+      className="
+        sticky top-0 z-50
+        border-b border-[var(--border-color)]
+        bg-[var(--bg-color)]
+      "
     >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
 
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex h-14 items-center justify-between sm:h-16">
 
           {/* ========================================
               LOGO
           ========================================= */}
-          <div className="flex-1 min-w-0 flex items-center">
+          <div className="flex min-w-0 flex-1 items-center">
             <a
               href="#home"
               onClick={(e) => handleScroll(e, "home")}
               aria-label="Binay Sharma UI/UX Designer — Home"
-              className="inline-block transition-opacity hover:opacity-80 shrink-0"
+              className="
+                inline-block shrink-0
+                transition-opacity duration-200
+                hover:opacity-80
+              "
             >
               <img
                 src={logoSvg}
                 alt="Binay Sharma UI/UX Designer logo"
-                className="h-7 w-auto sm:h-8 lg:h-8 object-contain block"
+                className="
+                  block h-7 w-auto
+                  object-contain
+                  sm:h-8 lg:h-8
+                "
                 width="120"
                 height="32"
               />
@@ -106,38 +157,76 @@ const Header = () => {
           ========================================= */}
           <nav
             aria-label="Primary navigation"
-            className="hidden md:flex flex-none justify-center"
+            className="hidden flex-none justify-center md:flex"
           >
             <ul className="flex items-center gap-4 md:gap-5 lg:gap-7">
-              {navItems.map((item) => (
-                <li key={item.target}>
-                  <a
-                    href={`#${item.target}`}
-                    onClick={(e) =>
-                      handleScroll(e, item.target)
-                    }
-                    className="relative group text-sm lg:text-[14px] font-medium tracking-wide text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors whitespace-nowrap"
-                  >
-                    {item.label}
+              {navItems.map((item) => {
+                const isActive =
+                  activeSection === item.target;
 
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-0 -bottom-1 h-px w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full"
-                    />
-                  </a>
-                </li>
-              ))}
+                return (
+                  <li key={item.target}>
+                    <a
+                      href={`#${item.target}`}
+                      onClick={(e) =>
+                        handleScroll(e, item.target)
+                      }
+                      aria-current={
+                        isActive ? "page" : undefined
+                      }
+                      className={`
+                        group relative
+                        whitespace-nowrap
+                        text-sm font-medium
+                        tracking-wide
+                        transition-colors duration-200
+                        lg:text-[14px]
+
+                        ${
+                          isActive
+                            ? "text-[var(--accent-color)]"
+                            : "text-[var(--text-color)] hover:text-[var(--accent-color)]"
+                        }
+                      `}
+                    >
+                      {item.label}
+
+                      <span
+                        aria-hidden="true"
+                        className={`
+                          absolute left-0 -bottom-1
+                          h-px
+                          bg-[var(--accent-color)]
+                          transition-all duration-300
+
+                          ${
+                            isActive
+                              ? "w-full"
+                              : "w-0 group-hover:w-full"
+                          }
+                        `}
+                      />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
           {/* ========================================
               DATE + MOBILE MENU
-          ========================================= */}
-          <div className="flex flex-1 justify-end items-center gap-2">
+          ======================================== */}
+          <div className="flex flex-1 items-center justify-end gap-2">
 
+            {/* Desktop Date */}
             <time
               dateTime={dateTime.toISOString().split("T")[0]}
-              className="hidden md:block text-xs text-[var(--text-light)] tracking-wide whitespace-nowrap"
+              className="
+                hidden whitespace-nowrap
+                text-xs tracking-wide
+                text-[var(--text-muted)]
+                md:block
+              "
             >
               {fullDateTime}
             </time>
@@ -145,7 +234,9 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
+              onClick={() =>
+                setMenuOpen((prev) => !prev)
+              }
               aria-label={
                 menuOpen
                   ? "Close primary navigation menu"
@@ -153,7 +244,13 @@ const Header = () => {
               }
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
-              className="md:hidden -mr-2 rounded-md p-2 text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors shrink-0"
+              className="
+                -mr-2 shrink-0 rounded-md p-2
+                text-[var(--text-color)]
+                transition-colors duration-200
+                hover:text-[var(--accent-color)]
+                md:hidden
+              "
             >
               {menuOpen ? (
                 <X
@@ -195,36 +292,66 @@ const Header = () => {
               duration: 0.2,
               ease: "easeInOut",
             }}
-            className="overflow-hidden md:hidden border-t border-[var(--border-color)] bg-[var(--text-color)]"
+            className="
+              overflow-hidden
+              border-t border-[var(--border-color)]
+              bg-[var(--bg-color)]
+              md:hidden
+            "
           >
             <nav
               aria-label="Mobile primary navigation"
-              className="bg-[var(--text-color)] px-5 sm:px-6 py-6 sm:py-7"
+              className="
+                px-5 py-6
+                sm:px-6 sm:py-7
+              "
             >
               <ul className="space-y-4 sm:space-y-5">
-                {navItems.map((item) => (
-                  <li key={item.target}>
-                    <a
-                      href={`#${item.target}`}
-                      onClick={(e) => {
-                        setMenuOpen(false);
+                {navItems.map((item) => {
+                  const isActive =
+                    activeSection === item.target;
 
-                        setTimeout(() => {
-                          handleScroll(e, item.target);
-                        }, 10);
-                      }}
-                      className="block text-base sm:text-lg font-medium tracking-wide text-[var(--text-light)] hover:text-[var(--accent-color)] transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+                  return (
+                    <li key={item.target}>
+                      <a
+                        href={`#${item.target}`}
+                        onClick={(e) =>
+                          handleScroll(e, item.target)
+                        }
+                        aria-current={
+                          isActive ? "page" : undefined
+                        }
+                        className={`
+                          block
+                          text-base font-medium
+                          tracking-wide
+                          transition-colors duration-200
+                          sm:text-lg
+
+                          ${
+                            isActive
+                              ? "text-[var(--accent-color)]"
+                              : "text-[var(--text-color)] hover:text-[var(--accent-color)]"
+                          }
+                        `}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
 
               {/* Mobile Date */}
               <time
                 dateTime={dateTime.toISOString().split("T")[0]}
-                className="block mt-6 pt-5 border-t border-[var(--border-color)] text-xs tracking-wide text-[var(--text-light)]"
+                className="
+                  mt-6 block
+                  border-t border-[var(--border-color)]
+                  pt-5
+                  text-xs tracking-wide
+                  text-[var(--text-muted)]
+                "
               >
                 {fullDateTime}
               </time>

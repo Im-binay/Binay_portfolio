@@ -24,18 +24,14 @@ body {
 ===================================================== */
 
 :root {
-  --accent-color: #6D4AFF;
-
-  --bg-color: #F1F1F6;
-  --text-color: #0D0D12;
-  --text-muted: #62626D;
-
-  --card-color: #FFFFFF;
-  --border-color: rgba(13, 13, 18, 0.12);
-
-  --accent-light: rgba(109, 74, 255, 0.10);
-
-  --text-light: #FFFFFF;
+  --accent-color: #C2622D;
+  --bg-color: #0F2229;
+  --text-color: #EDEFEC;
+  --text-muted: #7C9198;
+  --card-color: #16323B;
+  --border-color: rgba(237, 239, 236, 0.10);
+  --accent-light: rgba(194, 98, 45, 0.16);
+  --text-light: #0F2229;
 }
 
 /* =====================================================

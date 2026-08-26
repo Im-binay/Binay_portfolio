@@ -23,10 +23,12 @@ const projects = [
       "Kaarighar mobile skill-hiring app UI/UX design case study by Binay Sharma",
     caseStudy: "/UseCaseKaarighar.pdf",
   },
+
   {
     id: 2,
     title: "BeeTrio – Courier Tracking System",
-    description:"BeeTrio is a courier tracking system designed to help users track deliveries and manage shipment information through a clear, efficient, and easy-to-use web interface.",
+    description:
+      "BeeTrio is a courier tracking system designed to help users track deliveries and manage shipment information through a clear, efficient, and easy-to-use web interface.",
     tools: "Figma",
     category: "Website",
     image: courier,
@@ -34,6 +36,7 @@ const projects = [
       "BeeTrio courier tracking system website UI/UX design by Binay Sharma",
     caseStudy: "/BeeTrio.pdf",
   },
+
   {
     id: 3,
     title: "Royal Rhino Rider – Website Redesign",
@@ -55,26 +58,50 @@ const projects = [
 const ProjectCard = ({ project, index }) => {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{
+        opacity: 0,
+        y: 35,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
       viewport={{
         once: false,
         amount: 0.15,
       }}
       transition={{
-        duration: 1,
+        duration: 0.8,
         ease: [0.25, 1, 0.5, 1],
-        delay: index * 0.12,
+        delay: index * 0.1,
       }}
       aria-labelledby={`project-title-${project.id}`}
-      className="bg-[var(--card-color)] rounded-[18px] md:rounded-[22px] lg:rounded-[24px] border border-[var(--border-color)] overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full max-w-[310px] md:max-w-none mx-auto w-full"
+      className="
+        flex
+        h-full
+        w-full
+        max-w-[290px]
+        mx-auto
+        flex-col
+        justify-between
+        overflow-hidden
+        rounded-[16px]
+        border
+        border-[var(--border-color)]
+        bg-[var(--card-color)]
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        md:max-w-none
+        md:rounded-[18px]
+      "
     >
       <div>
-        {/* =========================
+        {/* =================================================
             PROJECT IMAGE
-        ========================== */}
+        ================================================== */}
 
-        <div className="p-2 md:p-3 lg:p-3.5">
+        <div className="p-2 md:p-2.5">
           <img
             src={project.image}
             alt={project.imageAlt}
@@ -83,76 +110,181 @@ const ProjectCard = ({ project, index }) => {
             height="500"
             loading={index === 0 ? "eager" : "lazy"}
             decoding="async"
-            className="w-full aspect-[16/9] object-contain rounded-xl md:rounded-2xl transition-transform duration-500 hover:scale-[1.02]"
+            className="
+              aspect-[16/9]
+              w-full
+              rounded-[12px]
+              object-contain
+              transition-transform
+              duration-500
+              hover:scale-[1.015]
+              md:rounded-[14px]
+            "
           />
         </div>
 
-        {/* =========================
+        {/* =================================================
             PROJECT INFORMATION
-        ========================== */}
+        ================================================== */}
 
-        <div className="px-3 md:px-5 lg:px-5 pb-2">
-          <div className="flex justify-between items-center gap-3 mb-2.5 md:mb-3">
-            <p className="text-[9px] md:text-xs text-[var(--text-muted)] leading-normal max-w-[65%] truncate md:whitespace-normal">
+        <div className="px-3 pb-2.5 md:px-4 md:pb-3.5">
+
+          {/* Tools + Category */}
+          <div className="mb-2 flex items-center justify-between gap-2">
+
+            <p
+              className="
+                max-w-[65%]
+                truncate
+                text-[9px]
+                leading-normal
+                text-[var(--text-muted)]
+                md:text-[11px]
+              "
+            >
               <span className="font-semibold text-[var(--text-color)]">
-                Tools:{" "}
-              </span>
-
+                Tools:
+              </span>{" "}
               {project.tools}
             </p>
 
             <span
               aria-label={`Project category: ${project.category}`}
-              className="bg-[var(--accent-light)] text-[var(--accent-color)] rounded-full px-2 md:px-2.5 py-1 text-[8px] md:text-[10px] font-medium tracking-wide whitespace-nowrap"
+              className="
+                whitespace-nowrap
+                rounded-full
+                bg-[var(--accent-light)]
+                px-2
+                py-1
+                text-[8px]
+                font-medium
+                tracking-wide
+                text-[var(--accent-color)]
+                md:px-2.5
+                md:text-[9px]
+              "
             >
               {project.category}
             </span>
           </div>
 
-          {/* Project title */}
+          {/* =================================================
+              PROJECT TITLE
+          ================================================== */}
 
           <h3
             id={`project-title-${project.id}`}
-            className="text-base md:text-xl lg:text-2xl font-bold tracking-[-0.02em] leading-[1.1] text-[var(--text-color)] line-clamp-1 md:line-clamp-none"
+            className="
+              line-clamp-1
+              text-base
+              font-bold
+              leading-tight
+              tracking-[-0.02em]
+              text-[var(--text-color)]
+              md:text-lg
+              lg:text-xl
+            "
           >
             {project.title}
           </h3>
 
-          {/* Project description */}
+          {/* =================================================
+              PROJECT DESCRIPTION
+          ================================================== */}
 
-          <p className="mt-2 md:mt-2.5 lg:mt-3 text-[11px] md:text-sm lg:text-[15px] leading-relaxed text-[var(--text-muted)] line-clamp-2 md:line-clamp-3 lg:line-clamp-3">
+          <p
+            className="
+              mt-1.5
+              line-clamp-2
+              text-[10px]
+              leading-[1.55]
+              text-[var(--text-muted)]
+              md:mt-2
+              md:text-xs
+              lg:text-[13px]
+            "
+          >
             {project.description}
           </p>
         </div>
       </div>
 
-      {/* =========================
+      {/* =================================================
           CASE STUDY LINK
-      ========================== */}
+      ================================================== */}
 
-      <div className="px-3 md:px-5 lg:px-5 pb-3 md:pb-4 lg:pb-4 pt-1">
-        <div className="flex justify-end mt-auto">
+      <div className="px-3 pb-3 pt-0 md:px-4 md:pb-4">
+
+        <div className="flex justify-end">
+
           <a
             href={project.caseStudy}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Read the ${project.title} UI/UX design case study`}
-            className="group relative inline-flex items-center justify-center gap-1 overflow-hidden rounded-full bg-[var(--accent-color)] px-4 py-1.5 md:px-5 md:py-2 lg:px-5 text-[10px] md:text-xs lg:text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 whitespace-nowrap"
+            className="
+              group
+              relative
+              inline-flex
+              items-center
+              justify-center
+              gap-1
+              overflow-hidden
+              rounded-full
+              bg-[var(--accent-color)]
+              px-3.5
+              py-1.5
+              text-[9px]
+              font-medium
+              text-white
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              md:px-4
+              md:py-1.5
+              md:text-[11px]
+              lg:text-xs
+            "
           >
+
+            {/* Button Shine */}
             <span
               aria-hidden="true"
-              className="absolute left-[-150%] top-0 h-full w-1/2 -skew-x-12 bg-white/20 transition-all duration-[1200ms] ease-out group-hover:left-[150%]"
+              className="
+                absolute
+                left-[-150%]
+                top-0
+                h-full
+                w-1/2
+                -skew-x-12
+                bg-white/20
+                transition-all
+                duration-[1200ms]
+                ease-out
+                group-hover:left-[150%]
+              "
             />
 
+            {/* Button Text */}
             <span className="relative z-10">
               View Case Study
             </span>
 
+            {/* Arrow */}
             <ArrowRight
-              size={10}
+              size={11}
               aria-hidden="true"
-              className="relative z-10 transition-transform duration-500 group-hover:translate-x-1 md:w-3.5 md:h-3.5"
+              className="
+                relative
+                z-10
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+                md:h-3
+                md:w-3
+              "
             />
+
           </a>
         </div>
       </div>
@@ -166,7 +298,12 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   const [showAll, setShowAll] = useState(false);
+
   const fourthProjectRef = useRef(null);
+
+  /* =======================================================
+     VIEW ALL WORK
+  ======================================================= */
 
   const handleViewAll = () => {
     setShowAll(true);
@@ -179,33 +316,67 @@ const Projects = () => {
     }, 100);
   };
 
+  /* =======================================================
+     VISIBLE PROJECTS
+  ======================================================= */
+
   const visibleProjects = showAll
     ? projects
     : projects.slice(0, 3);
 
+  /* =======================================================
+     HEADER ANIMATION
+  ======================================================= */
+
   const headerVariants = {
     hidden: {
       opacity: 0,
-      y: 40,
+      y: 35,
     },
 
     visible: {
       opacity: 1,
       y: 0,
+
       transition: {
-        duration: 1,
+        duration: 0.8,
         ease: [0.25, 1, 0.5, 1],
       },
     },
   };
 
+  /* =======================================================
+     RETURN
+  ======================================================= */
+
   return (
     <section
       id="work"
       aria-labelledby="work-heading"
-      className="min-h-fit lg:min-h-screen bg-[var(--bg-color)] pt-9 pb-6 md:pt-20 md:pb-10 lg:pt-8 lg:pb-6 overflow-hidden"
+      className="
+        min-h-fit
+        overflow-hidden
+        bg-[var(--bg-color)]
+        pt-9
+        pb-6
+        md:pt-20
+        md:pb-10
+        lg:min-h-screen
+        lg:pt-8
+        lg:pb-6
+      "
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12">
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-[1440px]
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-12
+        "
+      >
 
         {/* =================================================
             SECTION HEADER
@@ -219,20 +390,67 @@ const Projects = () => {
             amount: 0.2,
           }}
           variants={headerVariants}
-          className="flex flex-row items-center justify-between gap-4 mb-4 md:mb-6 w-full flex-nowrap"
+          className="
+            mb-4
+            flex
+            w-full
+            flex-row
+            flex-nowrap
+            items-center
+            justify-between
+            gap-4
+            md:mb-6
+          "
         >
-          <div className="flex items-center flex-1">
+
+          {/* Heading + Divider */}
+          <div className="flex flex-1 items-center">
+
             <h2
               id="work-heading"
-              className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold whitespace-nowrap tracking-[-0.02em] leading-none text-[var(--text-color)]"
+              className="
+                whitespace-nowrap
+                text-lg
+                font-bold
+                leading-none
+                tracking-[-0.02em]
+                text-[var(--text-color)]
+                sm:text-2xl
+                md:text-3xl
+                lg:text-4xl
+              "
             >
               Selected Work
             </h2>
 
-            <div className="hidden sm:block ml-6 md:ml-8 flex-1 h-px overflow-hidden bg-[var(--border-color)]">
-              <div className="h-px w-full bg-[var(--accent-color)] animate-divider" />
+            {/* Divider */}
+            <div
+              className="
+                ml-5
+                hidden
+                h-px
+                flex-1
+                overflow-hidden
+                bg-[var(--border-color)]
+                sm:block
+                md:ml-8
+              "
+            >
+              <div
+                className="
+                  h-px
+                  w-full
+                  animate-divider
+                  bg-[var(--accent-color)]
+                "
+              />
             </div>
+
           </div>
+
+          {/* =================================================
+              VIEW ALL BUTTON
+          ================================================== */}
 
           <button
             type="button"
@@ -243,27 +461,68 @@ const Projects = () => {
                 ? "All UI/UX design projects are displayed"
                 : "View all UI/UX design projects"
             }
-            className={`group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[var(--accent-color)] whitespace-nowrap shrink-0 ml-4 ${
-              showAll
-                ? "opacity-50 cursor-default"
-                : "cursor-pointer"
-            }`}
-          >
-            <span className="relative">
-              {showAll ? "All Work" : "View All Work"}
+            className={`
+              group
+              ml-4
+              inline-flex
+              shrink-0
+              items-center
+              gap-1.5
+              whitespace-nowrap
+              text-xs
+              font-medium
+              text-[var(--accent-color)]
+              transition-opacity
+              sm:text-sm
 
-              <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-hover:w-full" />
+              ${
+                showAll
+                  ? "cursor-default opacity-50"
+                  : "cursor-pointer"
+              }
+            `}
+          >
+
+            <span className="relative">
+
+              {showAll
+                ? "All Work"
+                : "View All Work"}
+
+              <span
+                className="
+                  absolute
+                  left-0
+                  -bottom-1
+                  h-[1.5px]
+                  w-0
+                  bg-[var(--accent-color)]
+                  transition-all
+                  duration-300
+                  group-hover:w-full
+                "
+              />
+
             </span>
 
             <ArrowRight
               size={14}
               aria-hidden="true"
-              className={`transition-transform duration-300 ${
-                !showAll
-                  ? "group-hover:translate-x-1"
-                  : ""
-              } sm:w-4 sm:h-4`}
+              className={`
+                transition-transform
+                duration-300
+
+                ${
+                  !showAll
+                    ? "group-hover:translate-x-1"
+                    : ""
+                }
+
+                sm:h-4
+                sm:w-4
+              `}
             />
+
           </button>
         </motion.header>
 
@@ -273,9 +532,19 @@ const Projects = () => {
 
         <div
           aria-label="UI/UX design projects by Binay Sharma"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8 xl:gap-8 items-stretch"
+          className="
+            grid
+            grid-cols-1
+            items-stretch
+            gap-4
+            md:grid-cols-2
+            md:gap-5
+            lg:grid-cols-3
+            lg:gap-6
+          "
         >
           {visibleProjects.map((project, index) => {
+
             const isFourthProject = project.id === 4;
 
             return (
@@ -296,6 +565,7 @@ const Projects = () => {
             );
           })}
         </div>
+
       </div>
     </section>
   );
