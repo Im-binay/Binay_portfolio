@@ -7,7 +7,6 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-
 import heroImage from "../assets/images/BinayHeroImg.png";
 
 const Hero = () => {
@@ -18,8 +17,7 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const yMobileImage = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
-  const yDesktopImage = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -38,16 +36,13 @@ const Hero = () => {
 
   const rotateX = useTransform(smoothY, [-0.5, 0.5], [3, -3]);
   const rotateY = useTransform(smoothX, [-0.5, 0.5], [-3, 3]);
-  const imageX = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
-  const imageY = useTransform(smoothY, [-0.5, 0.5], [-8, 8]);
+  const moveX = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
+  const moveY = useTransform(smoothY, [-0.5, 0.5], [-8, 8]);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    mouseX.set(x);
-    mouseY.set(y);
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -99,23 +94,20 @@ const Hero = () => {
       aria-labelledby="hero-heading"
       className="relative flex min-h-[calc(100dvh-80px)] w-full items-center overflow-hidden bg-[var(--bg-color)] font-outfit lg:min-h-screen"
     >
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-8 py-12 md:flex-row md:gap-0 md:px-8 md:py-0 lg:px-0">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center md:flex-row md:px-8 lg:px-0">
         <figure
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="absolute inset-0 m-0 overflow-hidden px-4 py-4 md:relative md:order-2 md:h-[72vh] md:w-[46%] md:px-0 md:pl-4 lg:h-screen lg:w-1/2 lg:pl-14"
           aria-label="Portrait of Binay Sharma, UI/UX Designer"
+          className="absolute inset-0 m-0 overflow-hidden px-4 py-4 md:relative md:order-2 md:h-[72vh] md:w-[46%] md:px-0 md:pl-4 lg:h-screen lg:w-1/2 lg:pl-14"
         >
           <motion.div
             variants={imageVariants}
             initial="hidden"
             animate="visible"
             style={{
-              y:
-                typeof window !== "undefined" && window.innerWidth >= 768
-                  ? yDesktopImage
-                  : yMobileImage,
-              x: imageX,
+              y: imageY,
+              x: moveX,
               rotateX,
               rotateY,
             }}
@@ -131,8 +123,8 @@ const Hero = () => {
               decoding="async"
               whileHover={{ scale: 1.015 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              style={{ y: imageY }}
-              className="h-full w-full object-cover object-top md:object-contain md:object-center will-change-transform"
+              style={{ y: moveY }}
+              className="h-full w-full object-cover object-top will-change-transform md:object-contain md:object-center"
             />
           </motion.div>
         </figure>
@@ -154,14 +146,14 @@ const Hero = () => {
             <motion.h1
               id="hero-heading"
               variants={itemVariants}
-              className="mt-1 whitespace-nowrap text-3xl font-bold leading-none tracking-normal text-[var(--text-color)] sm:mt-2 sm:text-4xl md:mt-3 md:text-4xl md:leading-[0.95] lg:mt-5 lg:text-7xl xl:text-8xl"
+              className="mt-1 whitespace-nowrap text-3xl font-bold leading-none tracking-normal text-[var(--text-color)] sm:mt-2 sm:text-4xl md:mt-3 md:text-4xl lg:mt-5 lg:text-7xl xl:text-8xl"
             >
               Binay Sharma
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="mt-4 w-full max-w-[720px] text-xs leading-relaxed text-[var(--text-muted)] sm:mt-5 sm:text-sm md:mt-5 md:max-w-[500px] md:text-sm md:leading-relaxed lg:mt-6 lg:max-w-[680px] lg:text-lg"
+              className="mt-4 w-full max-w-[720px] text-xs leading-relaxed text-[var(--text-muted)] sm:mt-5 sm:text-sm md:mt-5 md:max-w-[500px] md:text-sm lg:mt-6 lg:max-w-[680px] lg:text-lg"
             >
               I design user-centered digital experiences for web and mobile
               products through interaction design, wireframing, prototyping,
@@ -170,7 +162,7 @@ const Hero = () => {
 
             <motion.div
               variants={itemVariants}
-              className="mt-8 flex w-full flex-nowrap items-center gap-2 sm:mt-10 sm:gap-4 md:mt-8 md:max-w-[500px] md:gap-3 lg:mt-16"
+              className="mt-8 flex w-full items-center gap-2 sm:mt-10 sm:gap-4 md:mt-8 md:max-w-[500px] md:gap-3 lg:mt-16"
             >
               <a
                 href="#work"
