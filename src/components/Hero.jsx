@@ -154,7 +154,7 @@ const Hero = () => {
             <motion.h1
               id="hero-heading"
               variants={itemVariants}
-              className="mt-1 text-3xl font-bold leading-none tracking-normal text-[var(--text-color)] sm:mt-2 sm:text-4xl md:mt-3 md:text-5xl md:leading-[0.95] lg:mt-5 lg:text-7xl xl:text-8xl"
+              className="mt-1 whitespace-nowrap text-3xl font-bold leading-none tracking-normal text-[var(--text-color)] sm:mt-2 sm:text-4xl md:mt-3 md:text-4xl md:leading-[0.95] lg:mt-5 lg:text-7xl xl:text-8xl"
             >
               Binay Sharma
             </motion.h1>
